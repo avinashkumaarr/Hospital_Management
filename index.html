@@ -3,65 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MediLink — Unified Hospital Management & EMR System</title>
+  <title>MediLink — Unified Hospital Management & Health Records Network</title>
   
-  <!-- Clean Clinical Typography -->
+  <!-- Clinical Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Chart.js for Interactive Healthcare Analytics -->
+  <!-- Chart.js for Clinical Visual Analytics -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <style>
     /* ==========================================================================
-       CLINICAL DESIGN SYSTEM (PROFESSIONAL HEALTHCARE THEME)
+       HOSPITAL BRAND DESIGN SYSTEM (INSPIRED BY APOLLO & MANIPAL HOSPITALS)
        ========================================================================== */
     :root {
-      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
-      /* Light Theme (Default: Clinical Clean) */
-      --bg: #f8fafc;
-      --bg-alt: #f1f5f9;
+      /* Apollo & Manipal Hospitals Clinical Light Theme (Default) */
+      --bg: #f4f7fa;
+      --bg-alt: #ecf1f6;
       --surface: #ffffff;
       --surface-hover: #f8fafc;
       --card: #ffffff;
       --card-alt: #f8fafc;
-      --border: #e2e8f0;
-      --border-light: #cbd5e1;
-      --border-focus: #0284c7;
+      --border: #d4e0eb;
+      --border-light: #e6edf5;
+      --border-focus: #004b87;
 
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-dim: #94a3b8;
+      --text: #0f2236;
+      --text-muted: #4a5d73;
+      --text-dim: #7e91a6;
 
-      --primary: #0284c7;         /* Hospital Navy Blue */
-      --primary-rgb: 2, 132, 199;
-      --primary-hover: #0369a1;
-      --primary-light: #e0f2fe;
+      /* Primary Trust Blue (Manipal Deep Navy & Apollo Blue Standard) */
+      --primary: #004b87;
+      --primary-hover: #003660;
+      --primary-light: #e8f1f8;
+      --primary-rgb: 0, 75, 135;
 
-      --success: #059669;         /* Clinical Green */
-      --success-rgb: 5, 150, 105;
-      --success-light: #d1fae5;
+      /* Apollo Accent (Warm Amber / Gold Standard) */
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --accent-light: #fef3c7;
 
-      --warning: #d97706;         /* Clinical Amber */
-      --warning-rgb: 217, 119, 6;
-      --warning-light: #fef3c7;
-
-      --danger: #dc2626;          /* Emergency Red */
+      /* Clinical Status Colors */
+      --success: #059669;
+      --success-light: #e6f7f0;
+      --warning: #d97706;
+      --warning-light: #fef7e6;
+      --danger: #dc2626;
+      --danger-light: #fee8e8;
       --danger-rgb: 220, 38, 38;
-      --danger-light: #fee2e2;
 
-      --indigo: #4f46e5;
-      --indigo-rgb: 79, 70, 229;
-      --indigo-light: #e0e7ff;
+      --shadow-xs: 0 1px 2px rgba(15, 34, 54, 0.05);
+      --shadow-sm: 0 2px 5px rgba(15, 34, 54, 0.06);
+      --shadow-md: 0 4px 12px rgba(15, 34, 54, 0.08);
+      --shadow-lg: 0 10px 24px rgba(15, 34, 54, 0.12);
 
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.09);
-      --radius-sm: 6px;
+      --radius-sm: 4px;
       --radius-md: 8px;
       --radius-lg: 12px;
       --radius-full: 9999px;
@@ -69,42 +70,43 @@
       --transition: all 0.18s ease-in-out;
     }
 
-    /* Dark Theme (Hospital Night Mode) */
+    /* Hospital Night Shift Mode (Cerner / Epic / Philips Clinical Night Standard) */
     [data-theme="dark"] {
-      --bg: #0b1120;
-      --bg-alt: #0f172a;
-      --surface: #111827;
-      --surface-hover: #1e293b;
-      --card: #151f32;
-      --card-alt: #0f172a;
-      --border: #243248;
-      --border-light: #334155;
-      --border-focus: #38bdf8;
+      --bg: #0c141f;
+      --bg-alt: #111d2e;
+      --surface: #162438;
+      --surface-hover: #1c2e46;
+      --card: #162438;
+      --card-alt: #111d2e;
+      --border: #233750;
+      --border-light: #1b2b40;
+      --border-focus: #0284c7;
 
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --text: #f1f5f9;
+      --text-muted: #94a8be;
+      --text-dim: #627b96;
 
-      --primary: #38bdf8;
-      --primary-rgb: 56, 189, 248;
-      --primary-hover: #0284c7;
-      --primary-light: rgba(56, 189, 248, 0.12);
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --primary-light: rgba(2, 132, 199, 0.16);
+      --primary-rgb: 2, 132, 199;
+
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --accent-light: rgba(245, 158, 11, 0.16);
 
       --success: #10b981;
-      --success-rgb: 16, 185, 129;
-      --success-light: rgba(16, 185, 129, 0.12);
-
+      --success-light: rgba(16, 185, 129, 0.16);
       --warning: #f59e0b;
-      --warning-rgb: 245, 158, 11;
-      --warning-light: rgba(245, 158, 11, 0.12);
-
+      --warning-light: rgba(245, 158, 11, 0.16);
       --danger: #ef4444;
+      --danger-light: rgba(239, 68, 68, 0.18);
       --danger-rgb: 239, 68, 68;
-      --danger-light: rgba(239, 68, 68, 0.14);
 
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.55);
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.55);
     }
 
     /* Reset & Base */
@@ -113,28 +115,63 @@
     }
 
     body {
-      font-family: var(--font-main);
+      font-family: var(--font-body);
       background-color: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      overflow-x: hidden;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     /* ==========================================================================
-       TOP APP HEADER
+       TOP UTILITY BAR (EMERGENCY HELPLINE & FACILITY)
+       ========================================================================== */
+    .utility-bar {
+      background: #004b87;
+      color: #ffffff;
+      padding: 6px 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    [data-theme="dark"] .utility-bar {
+      background: #090f18;
+      border-bottom-color: #1a283c;
+    }
+    .utility-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .emergency-hotline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: #fed7aa;
+    }
+    .utility-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* ==========================================================================
+       PRIMARY APP HEADER
        ========================================================================== */
     header.app-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      transition: var(--transition);
+      box-shadow: var(--shadow-xs);
     }
-
     .header-inner {
       max-width: 1440px;
       margin: 0 auto;
@@ -149,42 +186,43 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
       cursor: pointer;
+      text-decoration: none;
     }
-    .brand-icon {
-      width: 34px;
-      height: 34px;
+    .brand-symbol {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: #ffffff;
       border-radius: var(--radius-md);
-      background: #0284c7;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-text-block {
+      display: flex;
+      flex-direction: column;
     }
     .brand-title {
       font-family: var(--font-heading);
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.3px;
       color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      line-height: 1.1;
     }
     .brand-title span {
       color: var(--primary);
     }
-    .brand-badge {
-      font-size: 0.68rem;
-      font-family: var(--font-mono);
+    .brand-subline {
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 2px 7px;
-      border-radius: var(--radius-full);
-      background: var(--primary-light);
-      color: var(--primary);
-      border: 1px solid rgba(var(--primary-rgb), 0.25);
+      color: var(--text-muted);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
     }
 
     .header-controls {
@@ -193,8 +231,8 @@
       gap: 10px;
     }
 
-    /* Hospital selector */
-    .hospital-selector-wrap {
+    /* Facility Dropdown */
+    .facility-selector {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -204,48 +242,37 @@
       border-radius: var(--radius-md);
       font-size: 0.82rem;
     }
-    .status-ping {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--success);
-      display: inline-block;
-    }
-    .hospital-select {
+    .facility-select {
       background: transparent;
       border: none;
       color: var(--text);
-      font-family: var(--font-main);
+      font-family: var(--font-body);
       font-size: 0.82rem;
       font-weight: 600;
       outline: none;
       cursor: pointer;
     }
-    .hospital-select option {
+    .facility-select option {
       background: var(--surface);
       color: var(--text);
     }
 
-    /* Role switcher */
-    .role-badge {
+    /* Role Badge */
+    .staff-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      color: var(--text-muted);
+      color: var(--text);
       padding: 5px 10px;
       border-radius: var(--radius-md);
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--transition);
-    }
-    .role-badge:hover {
-      border-color: var(--border-focus);
-      color: var(--text);
     }
 
+    /* Icon Action Buttons */
     .btn-icon {
       width: 34px;
       height: 34px;
@@ -262,11 +289,11 @@
     .btn-icon:hover {
       background: var(--surface-hover);
       color: var(--text);
-      border-color: var(--border-light);
+      border-color: var(--border-focus);
     }
 
-    /* Mobile Menu Toggle Button */
-    .btn-mobile-menu {
+    /* Mobile Hamburger Menu Button */
+    .btn-hamburger {
       display: none;
       width: 36px;
       height: 36px;
@@ -280,20 +307,20 @@
     }
 
     /* ==========================================================================
-       SUB-NAVIGATION TABS BAR (RESPONSIVE WITH NO CUTOFF)
+       MAIN NAVIGATION BAR (APOLLO & MANIPAL TAB STRIP)
        ========================================================================== */
     nav.app-nav {
       background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
       position: sticky;
-      top: 54px;
+      top: 51px;
       z-index: 90;
       transition: var(--transition);
     }
     .nav-inner {
       max-width: 1440px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 1.25rem;
       display: flex;
       align-items: center;
       gap: 2px;
@@ -305,65 +332,58 @@
       height: 3px;
     }
     .nav-inner::-webkit-scrollbar-thumb {
-      background: var(--border-light);
+      background: var(--border);
       border-radius: 4px;
     }
 
     .nav-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 10px 12px;
-      font-size: 0.82rem;
+      gap: 5px;
+      padding: 9px 12px;
+      font-size: 0.83rem;
       font-weight: 600;
       color: var(--text-muted);
       background: transparent;
       border: none;
-      border-bottom: 2px solid transparent;
+      border-bottom: 3px solid transparent;
       cursor: pointer;
       white-space: nowrap;
       transition: var(--transition);
       flex-shrink: 0;
     }
     .nav-btn:hover {
-      color: var(--text);
+      color: var(--primary);
       background: var(--bg-alt);
     }
     .nav-btn.active {
       color: var(--primary);
       border-bottom-color: var(--primary);
-      background: var(--bg);
+      font-weight: 700;
     }
     .nav-badge {
       font-size: 0.68rem;
       font-family: var(--font-mono);
-      padding: 1px 5px;
+      font-weight: 700;
+      padding: 1px 6px;
       border-radius: var(--radius-full);
       background: var(--primary-light);
       color: var(--primary);
     }
-    .nav-badge.danger {
-      background: var(--danger-light);
-      color: var(--danger);
-    }
 
-    /* Mobile Drawer Menu */
-    .mobile-drawer-overlay {
+    /* Mobile Navigation Drawer */
+    .drawer-overlay {
       position: fixed;
       inset: 0;
       background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(2px);
       z-index: 150;
       display: none;
     }
-    .mobile-drawer-overlay.active {
-      display: block;
-    }
-    .mobile-drawer {
+    .drawer-overlay.active { display: block; }
+    .drawer-menu {
       position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
+      top: 0; left: 0; bottom: 0;
       width: 280px;
       background: var(--surface);
       border-right: 1px solid var(--border);
@@ -371,27 +391,25 @@
       padding: 1.25rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       transform: translateX(-100%);
-      transition: transform 0.25s ease-in-out;
+      transition: transform 0.22s ease-in-out;
       overflow-y: auto;
     }
-    .mobile-drawer.active {
-      transform: translateX(0);
-    }
+    .drawer-menu.active { transform: translateX(0); }
     .drawer-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 1rem;
+      padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border);
       margin-bottom: 0.5rem;
     }
-    .drawer-nav-btn {
+    .drawer-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: var(--radius-md);
       font-size: 0.88rem;
       font-weight: 600;
@@ -401,10 +419,9 @@
       cursor: pointer;
       text-align: left;
       width: 100%;
-      transition: var(--transition);
     }
-    .drawer-nav-btn:hover, .drawer-nav-btn.active {
-      background: var(--bg-alt);
+    .drawer-item:hover, .drawer-item.active {
+      background: var(--primary-light);
       color: var(--primary);
     }
 
@@ -414,37 +431,33 @@
     main.app-main {
       max-width: 1440px;
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 5rem;
+      padding: 1.5rem 1.25rem 4rem;
       min-height: calc(100vh - 120px);
     }
 
     .page {
       display: none;
-      animation: pageFade 0.2s ease-in-out;
+      animation: pageIn 0.16s ease-in-out;
     }
     .page.active {
       display: block;
     }
-    @keyframes pageFade {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes pageIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    /* Common Card Styles */
+    /* Hospital Cards */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 1.25rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-    .card:hover {
-      border-color: var(--border-light);
+      box-shadow: var(--shadow-xs);
     }
 
     .page-header {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
@@ -453,26 +466,27 @@
     }
     .page-title {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 800;
       color: var(--text);
       display: flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: -0.3px;
     }
     .page-sub {
       color: var(--text-muted);
-      font-size: 0.88rem;
-      margin-top: 3px;
+      font-size: 0.86rem;
+      margin-top: 2px;
     }
 
-    /* Button Styles */
+    /* Clean Clinical Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      font-family: var(--font-main);
+      font-family: var(--font-body);
       font-size: 0.85rem;
       font-weight: 600;
       padding: 8px 14px;
@@ -498,6 +512,13 @@
     .btn-primary:hover {
       background: var(--primary-hover);
     }
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
     .btn-secondary {
       background: var(--surface);
       border-color: var(--border);
@@ -505,7 +526,7 @@
     }
     .btn-secondary:hover {
       background: var(--surface-hover);
-      border-color: var(--border-light);
+      border-color: var(--border-focus);
     }
     .btn-danger {
       background: var(--danger);
@@ -524,7 +545,7 @@
       border-color: var(--danger);
     }
 
-    /* Form Elements */
+    /* Form Fields */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -533,14 +554,14 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
     }
     .form-group.full {
       grid-column: 1 / -1;
     }
     .form-label {
-      font-size: 0.78rem;
-      font-weight: 600;
+      font-size: 0.76rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.3px;
@@ -549,19 +570,18 @@
       justify-content: space-between;
     }
     .form-control {
-      background: var(--bg-alt);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 9px 12px;
       color: var(--text);
-      font-family: var(--font-main);
+      font-family: var(--font-body);
       font-size: 0.9rem;
       outline: none;
       transition: var(--transition);
     }
     .form-control:focus {
       border-color: var(--border-focus);
-      background: var(--surface);
       box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.15);
     }
     textarea.form-control {
@@ -575,23 +595,22 @@
       font-weight: 600;
     }
 
-    /* Badges */
+    /* Clinical Badges */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
       font-size: 0.72rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
     .badge-primary { background: var(--primary-light); color: var(--primary); border: 1px solid rgba(var(--primary-rgb), 0.25); }
-    .badge-success { background: var(--success-light); color: var(--success); border: 1px solid rgba(var(--success-rgb), 0.25); }
-    .badge-warning { background: var(--warning-light); color: var(--warning); border: 1px solid rgba(var(--warning-rgb), 0.25); }
+    .badge-success { background: var(--success-light); color: var(--success); border: 1px solid rgba(5, 150, 105, 0.25); }
+    .badge-warning { background: var(--warning-light); color: var(--warning); border: 1px solid rgba(217, 119, 6, 0.25); }
     .badge-danger  { background: var(--danger-light); color: var(--danger); border: 1px solid rgba(var(--danger-rgb), 0.25); }
-    .badge-indigo  { background: var(--indigo-light); color: var(--indigo); border: 1px solid rgba(var(--indigo-rgb), 0.25); }
 
     /* Tables */
     .table-container {
@@ -599,19 +618,19 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       overflow-x: auto;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-xs);
     }
     table.data-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
     }
     table.data-table th {
       background: var(--bg-alt);
       color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.76rem;
+      font-weight: 700;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.4px;
       padding: 10px 14px;
@@ -628,90 +647,77 @@
       border-bottom: none;
     }
     table.data-table tbody tr:hover td {
-      background: var(--bg-alt);
+      background: var(--surface-hover);
     }
 
     /* ==========================================================================
-       SECTION 1: CLINICAL DASHBOARD (HOME)
+       SECTION 1: APPOINTMENT & PATIENT LOOKUP HUB (HOMEPAGE)
        ========================================================================== */
-    .dashboard-hero {
+    .hospital-hub-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2rem 1.5rem;
+      padding: 1.75rem 1.5rem;
       margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-xs);
     }
-    .hero-top-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: var(--primary-light);
-      color: var(--primary);
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    .hero-heading {
+    .hub-title {
       font-family: var(--font-heading);
-      font-size: 1.85rem;
+      font-size: 1.65rem;
       font-weight: 800;
       color: var(--text);
-      letter-spacing: -0.5px;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.4px;
+      margin-bottom: 0.35rem;
     }
-    .hero-lead {
+    .hub-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 720px;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      max-width: 680px;
     }
 
-    .hero-search-row {
+    .hub-search-box {
       display: flex;
       gap: 8px;
       max-width: 640px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
-    .hero-search-row input {
+    .hub-search-box input {
       flex: 1;
     }
 
-    .quick-chips-row {
+    .demo-chips-strip {
       display: flex;
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
-    .quick-chip {
+    .demo-chip-btn {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 4px 10px;
+      color: var(--text);
+      padding: 3px 10px;
       border-radius: var(--radius-full);
       cursor: pointer;
       font-weight: 500;
       transition: var(--transition);
     }
-    .quick-chip:hover {
-      background: var(--surface);
-      border-color: var(--border-focus);
+    .demo-chip-btn:hover {
+      border-color: var(--primary);
       color: var(--primary);
+      background: var(--primary-light);
     }
 
-    /* Live Operational KPI Grid */
-    .kpi-grid {
+    /* Key Hospital Operational Metrics */
+    .metric-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-    .kpi-card {
+    .metric-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
@@ -719,126 +725,98 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border-top: 3px solid var(--primary);
     }
-    .kpi-card.border-left-primary { border-left: 4px solid var(--primary); }
-    .kpi-card.border-left-success { border-left: 4px solid var(--success); }
-    .kpi-card.border-left-warning { border-left: 4px solid var(--warning); }
-    .kpi-card.border-left-danger  { border-left: 4px solid var(--danger); }
+    .metric-card.accent-top { border-top-color: var(--accent); }
+    .metric-card.success-top { border-top-color: var(--success); }
+    .metric-card.danger-top { border-top-color: var(--danger); }
 
-    .kpi-label {
-      font-size: 0.78rem;
-      font-weight: 600;
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.3px;
     }
-    .kpi-value {
+    .metric-num {
       font-family: var(--font-heading);
       font-size: 1.85rem;
       font-weight: 800;
       color: var(--text);
-      margin: 4px 0;
+      margin: 2px 0;
     }
-    .kpi-sub {
-      font-size: 0.75rem;
+    .metric-foot {
+      font-size: 0.74rem;
       color: var(--text-dim);
     }
 
-    /* Quick Action Hospital Operations Grid */
-    .quick-actions-grid {
+    /* Hospital Service Action Grid (Apollo / Manipal style) */
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-    .action-card {
+    .service-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 1.25rem;
-      cursor: pointer;
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      cursor: pointer;
       transition: var(--transition);
-      text-decoration: none;
     }
-    .action-card:hover {
-      border-color: var(--border-focus);
-      box-shadow: var(--shadow-md);
+    .service-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
     }
-    .action-icon {
-      width: 40px;
-      height: 40px;
+    .service-icon-box {
+      width: 42px;
+      height: 42px;
       border-radius: var(--radius-md);
-      background: var(--bg-alt);
+      background: var(--primary-light);
       color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
-    .action-title {
+    .service-title {
       font-family: var(--font-heading);
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
-    .action-desc {
+    .service-desc {
       font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.4;
     }
 
     /* ==========================================================================
-       SECTION 2: PATIENT EHR & 360 HEALTH LOCKER
+       SECTION 2: PATIENT EHR (360 HEALTH LOCKER)
        ========================================================================== */
-    .ehr-search-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    .ehr-search-input {
-      flex: 1;
-      min-width: 260px;
-    }
-
-    /* Break Glass Emergency Card */
-    .break-glass-card {
+    .break-glass-bar {
       background: var(--danger-light);
       border: 1px solid rgba(var(--danger-rgb), 0.3);
       border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
+      padding: 0.9rem 1.25rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
       flex-wrap: wrap;
     }
-    .break-glass-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .break-glass-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--danger);
-    }
-    .break-glass-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
 
-    /* Patient Header Banner */
-    .patient-hero-banner {
+    .patient-summary-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
+      padding: 1.25rem;
       margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
@@ -846,249 +824,151 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .patient-main-meta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .patient-avatar-box {
-      width: 56px;
-      height: 56px;
+    .patient-avatar {
+      width: 52px;
+      height: 52px;
       border-radius: var(--radius-md);
       background: var(--primary);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ffffff;
       flex-shrink: 0;
     }
-    .patient-name-wrap h2 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .patient-sub-tags {
+    .patient-tags-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
-    /* Sub Tabs for Patient EHR */
-    .ehr-subtabs {
+    .ehr-subnav {
       display: flex;
-      gap: 4px;
-      border-bottom: 1px solid var(--border);
+      gap: 2px;
+      border-bottom: 2px solid var(--border);
       margin-bottom: 1.25rem;
       overflow-x: auto;
     }
-    .ehr-subtab-btn {
+    .ehr-tab-btn {
       padding: 8px 14px;
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       cursor: pointer;
       border-bottom: 2px solid transparent;
-      display: flex;
-      align-items: center;
-      gap: 6px;
       white-space: nowrap;
-      transition: var(--transition);
     }
-    .ehr-subtab-btn.active {
+    .ehr-tab-btn.active {
       color: var(--primary);
       border-bottom-color: var(--primary);
+      font-weight: 700;
     }
 
-    /* Timeline */
-    .timeline-container {
+    /* Clinical Timeline */
+    .timeline-wrap {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 1.75rem;
     }
-    .timeline-container::before {
+    .timeline-wrap::before {
       content: '';
       position: absolute;
-      left: 8px;
+      left: 7px;
       top: 10px;
       bottom: 20px;
       width: 2px;
-      background: var(--border-light);
+      background: var(--border);
     }
-    .timeline-card {
+    .timeline-node {
       position: relative;
       margin-bottom: 1.25rem;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.15rem;
+      padding: 1rem;
     }
-    .timeline-dot {
+    .timeline-bullet {
       position: absolute;
-      left: -2rem;
-      top: 18px;
-      width: 18px;
-      height: 18px;
+      left: -1.75rem;
+      top: 16px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: var(--surface);
       border: 3px solid var(--primary);
     }
-    .timeline-dot.emergency { border-color: var(--danger); }
-    .timeline-dot.surgery   { border-color: var(--warning); }
-    .timeline-dot.checkup   { border-color: var(--success); }
+    .timeline-bullet.danger { border-color: var(--danger); }
+    .timeline-bullet.warning { border-color: var(--warning); }
 
-    .tl-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-    .tl-diag-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .tl-meta-strip {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Vitals Tracker Section */
-    .vitals-grid {
+    /* Vitals Cards */
+    .vitals-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    .vital-stat-box {
+    .vital-item {
       background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1rem;
+      padding: 0.9rem;
       text-align: center;
     }
-    .vital-title {
-      font-size: 0.74rem;
-      font-weight: 600;
+    .vital-item-title {
+      font-size: 0.72rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
     }
-    .vital-val {
+    .vital-item-val {
       font-family: var(--font-heading);
-      font-size: 1.65rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: var(--text);
-      margin: 3px 0;
-    }
-    .vital-status {
-      font-size: 0.74rem;
-      font-weight: 600;
+      margin: 2px 0;
     }
 
-    /* Digital ABHA Card */
-    .abha-card-wrap {
-      max-width: 480px;
+    /* Digital ABHA Card (Government Standard Medical Card) */
+    .abha-box {
+      max-width: 440px;
       margin: 1.5rem auto;
-    }
-    .abha-smart-card {
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 1.5rem;
-      color: #ffffff;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-    .card-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .card-gold-chip {
-      width: 40px;
-      height: 28px;
-      border-radius: 4px;
-      background: #f59e0b;
-      border: 1px solid #b45309;
-    }
-    .card-body-row {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .card-photo {
-      width: 64px;
-      height: 76px;
-      border-radius: 8px;
-      background: #1e293b;
-      border: 1px solid #38bdf8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-    }
-    .card-pat-name {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-    .card-aadhaar-num {
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      letter-spacing: 2px;
-      color: #38bdf8;
-      margin: 3px 0 5px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-md);
+      border-top: 4px solid var(--primary);
     }
 
     /* ==========================================================================
-       SECTION 3: CLINICAL CONSULTATION & PRESCRIPTION WRITER
+       SECTION 3: CLINICAL CONSULTATION & ALLERGY SAFETY
        ========================================================================== */
-    .cdss-alert-banner {
+    .allergy-alert-card {
       background: var(--danger-light);
       border: 1px solid var(--danger);
       border-radius: var(--radius-md);
       padding: 0.85rem 1rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       display: none;
     }
-    .cdss-alert-title {
+    .allergy-alert-title {
       font-weight: 700;
       color: var(--danger);
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.9rem;
-    }
-    .cdss-alert-desc {
-      font-size: 0.84rem;
-      color: var(--text);
-      margin-top: 4px;
+      font-size: 0.88rem;
     }
 
-    /* Autocomplete Dropdown */
-    .autocomplete-box {
+    .autocomplete-wrap {
       position: relative;
     }
-    .suggestions-list {
+    .autocomplete-dropdown {
       position: absolute;
       top: 100%;
       left: 0;
@@ -1096,204 +976,133 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      max-height: 200px;
+      max-height: 190px;
       overflow-y: auto;
       z-index: 50;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
       display: none;
     }
-    .suggestion-item {
-      padding: 9px 12px;
+    .dropdown-row {
+      padding: 8px 12px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
     }
-    .suggestion-item:hover {
+    .dropdown-row:hover {
       background: var(--bg-alt);
       color: var(--primary);
     }
 
-    .dictate-btn {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      border-radius: var(--radius-md);
-      padding: 4px 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .dictate-btn.listening {
-      background: var(--danger-light);
-      border-color: var(--danger);
-      color: var(--danger);
-    }
-
     /* ==========================================================================
-       SECTION 4: EMERGENCY SEVERITY TRIAGE (ESI 1-5)
+       SECTION 4: EMERGENCY TRIAGE (ESI 1-5)
        ========================================================================== */
-    .triage-layout {
+    .triage-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
     }
-    .triage-score-card {
+    .triage-score-box {
       background: var(--card);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.75rem;
+      padding: 1.5rem;
       text-align: center;
     }
-    .triage-level-num {
+    .triage-score-num {
       font-family: var(--font-heading);
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 800;
       line-height: 1;
-      margin: 8px 0;
-    }
-    .triage-level-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .triage-action-box {
-      margin-top: 1.25rem;
-      padding: 0.9rem;
-      border-radius: var(--radius-md);
-      font-size: 0.85rem;
-      text-align: left;
+      margin: 6px 0;
     }
 
     /* ==========================================================================
-       SECTION 5: BED & WARD MANAGEMENT
+       SECTION 5: BED & WARD OPERATIONS
        ========================================================================== */
-    .ward-tabs {
+    .ward-pill-bar {
       display: flex;
       gap: 6px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       flex-wrap: wrap;
     }
-    .ward-tab-btn {
-      padding: 6px 12px;
+    .ward-pill {
+      padding: 5px 12px;
       border-radius: var(--radius-md);
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      transition: var(--transition);
     }
-    .ward-tab-btn.active {
+    .ward-pill.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
     }
 
-    .bed-grid {
+    .bed-matrix-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.85rem;
     }
-    .bed-card {
+    .bed-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1rem;
+      padding: 0.9rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
     }
-    .bed-card.occupied { border-left: 4px solid var(--danger); }
-    .bed-card.vacant   { border-left: 4px solid var(--success); }
-    .bed-card.cleaning { border-left: 4px solid var(--warning); }
+    .bed-item.occupied { border-left: 4px solid var(--danger); }
+    .bed-item.vacant   { border-left: 4px solid var(--success); }
+    .bed-item.cleaning { border-left: 4px solid var(--warning); }
 
     /* ==========================================================================
        SECTION 6: OPD TOKEN QUEUE
        ========================================================================== */
-    .queue-display-box {
+    .token-display-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 2rem 1.25rem;
+      padding: 1.75rem 1rem;
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    .now-serving-badge {
-      font-size: 0.8rem;
+    .now-calling-tag {
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .token-number-hero {
+    .token-big-num {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 800;
       color: var(--primary);
-      margin: 6px 0;
-    }
-    .token-patient-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
+      margin: 4px 0;
     }
 
     /* ==========================================================================
-       SECTION 7: SQL WORKBENCH
+       SECTION 7: SQL SCHEMA & QUERY RUNNER
        ========================================================================== */
-    .sql-code-block {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: #93c5fd;
-      line-height: 1.6;
-      overflow-x: auto;
-      margin-bottom: 1rem;
-    }
-
-    .er-grid-modern {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .er-card {
-      background: var(--surface);
+    .sql-snippet {
+      background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .er-header {
-      padding: 8px 12px;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 0.84rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .er-row {
-      padding: 6px 12px;
-      font-size: 0.78rem;
+      padding: 0.9rem;
       font-family: var(--font-mono);
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: auto;
+      margin-bottom: 0.85rem;
     }
-    .er-row.pk { color: var(--primary); font-weight: 600; }
-    .er-row.fk { color: var(--indigo); }
 
     /* ==========================================================================
        MODALS & NOTIFICATIONS
@@ -1301,46 +1110,34 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(2px);
       z-index: 200;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1rem;
     }
-    .modal-backdrop.active {
-      display: flex;
-    }
-    .modal-window {
+    .modal-backdrop.active { display: flex; }
+    .modal-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       width: 100%;
-      max-width: 680px;
+      max-width: 660px;
       max-height: 90vh;
       overflow-y: auto;
       padding: 1.5rem;
       box-shadow: var(--shadow-lg);
     }
 
-    /* Print Slip */
-    .print-slip-container {
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 8px;
-      padding: 2rem;
-      font-family: var(--font-main);
-    }
-
-    /* Toast Notifications */
     #toast-wrap {
       position: fixed;
       bottom: 20px;
       right: 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       z-index: 999;
       pointer-events: none;
     }
@@ -1349,89 +1146,87 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 10px 14px;
-      font-size: 0.84rem;
-      font-weight: 500;
+      padding: 9px 13px;
+      font-size: 0.82rem;
+      font-weight: 600;
       color: var(--text);
       box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .toast-msg.success { border-left: 4px solid var(--success); }
     .toast-msg.danger  { border-left: 4px solid var(--danger); }
 
-    /* Print Media */
+    /* Print Styles */
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
-      header.app-header, nav.app-nav, .no-print, #toast-wrap, .btn-row, .btn { display: none !important; }
+      .utility-bar, header.app-header, nav.app-nav, .no-print, #toast-wrap, .btn-row, .btn { display: none !important; }
       main.app-main { padding: 0 !important; max-width: 100% !important; }
-      .print-area { display: block !important; }
+      .print-slip { display: block !important; padding: 2rem !important; }
     }
 
-    /* ==========================================================================
-       RESPONSIVENESS (MOBILE, TABLET & SMALL LAPTOPS)
-       ========================================================================== */
+    /* Responsiveness */
     @media (max-width: 1024px) {
-      .btn-mobile-menu { display: flex; }
-      nav.app-nav { display: block; }
-      .hospital-selector-wrap { display: none; }
-      .triage-layout { grid-template-columns: 1fr; }
+      .btn-hamburger { display: flex; }
+      .facility-selector { display: none; }
+      .triage-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 768px) {
       .form-grid { grid-template-columns: 1fr; }
-      .hero-heading { font-size: 1.45rem; }
+      .hub-title { font-size: 1.35rem; }
       .page-header { flex-direction: column; align-items: flex-start; }
-      .ehr-search-row { flex-direction: column; }
-      .patient-hero-banner { flex-direction: column; align-items: flex-start; }
-      .vitals-grid { grid-template-columns: 1fr 1fr; }
-      .kpi-grid { grid-template-columns: 1fr 1fr; }
-      .quick-actions-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 480px) {
-      .vitals-grid { grid-template-columns: 1fr; }
-      .kpi-grid { grid-template-columns: 1fr; }
-      .header-inner { padding: 0.5rem 0.75rem; }
-      .brand-title { font-size: 1.1rem; }
-      .role-badge { display: none; }
+      .patient-summary-box { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <!-- ==========================================================================
-       TOP APP HEADER
+       UTILITY BAR (EMERGENCY HELPLINE & NETWORK STATUS)
+       ========================================================================== -->
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="emergency-hotline">
+          🚨 24x7 Emergency Helpline: 1066 / 102 (Ambulance)
+        </span>
+        <span style="opacity:0.85;">• National Health Exchange Gateway (ABDM)</span>
+      </div>
+      <div class="utility-right">
+        <span>NABH & NABL Accredited Network</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       APP HEADER
        ========================================================================== -->
   <header class="app-header">
     <div class="header-inner">
-      <div style="display:flex; align-items:center; gap:8px;">
-        <button class="btn-mobile-menu" onclick="toggleMobileDrawer()" title="Open Navigation Menu">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="btn-hamburger" onclick="toggleDrawer()" title="Open Navigation Menu">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
 
         <div class="brand-group" onclick="showPage('home')">
-          <div class="brand-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-            </svg>
-          </div>
-          <div class="brand-title">
-            Medi<span>Link</span>
-            <span class="brand-badge">ABDM</span>
+          <div class="brand-symbol">M</div>
+          <div class="brand-text-block">
+            <div class="brand-title">Medi<span>Link</span></div>
+            <div class="brand-subline">Hospital Network & EMR</div>
           </div>
         </div>
       </div>
 
       <div class="header-controls">
-        <!-- Hospital Node Selector -->
-        <div class="hospital-selector-wrap">
-          <span class="status-ping" title="Connected to Health Exchange"></span>
-          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600">FACILITY:</span>
-          <select id="active-hospital-select" class="hospital-select" onchange="onHospitalChange(this.value)">
+        <!-- Hospital Facility Selector -->
+        <div class="facility-selector">
+          <span style="width:8px; height:8px; border-radius:50%; background:var(--success);"></span>
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700">HOSPITAL:</span>
+          <select id="active-facility-select" class="facility-select" onchange="onFacilityChange(this.value)">
             <option value="1">AIIMS New Delhi</option>
             <option value="2">Apollo Hospitals</option>
             <option value="3">Fortis Healthcare</option>
@@ -1442,29 +1237,26 @@
         </div>
 
         <!-- Role Badge -->
-        <div class="role-badge" onclick="cycleRole()" title="Switch Portal Role">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-          </svg>
+        <div class="staff-badge" onclick="cycleRole()" title="Switch Staff Role">
           <span id="active-role-label">Doctor</span>
         </div>
 
-        <!-- Quick Patient Search -->
-        <button class="btn-icon" onclick="openQuickSearch()" title="Quick Patient Lookup (Ctrl+K)">
+        <!-- Quick Patient Lookup -->
+        <button class="btn-icon" onclick="openQuickSearch()" title="Lookup Patient (Ctrl+K)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
           </svg>
         </button>
 
-        <!-- Theme Toggle -->
-        <button class="btn-icon" onclick="toggleTheme()" title="Toggle Light/Dark Theme">
-          <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Theme Toggle (Clinical Light vs Night Shift) -->
+        <button class="btn-icon" onclick="toggleTheme()" title="Toggle Light / Night Shift Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
           </svg>
         </button>
 
         <!-- Database Backup / Reset -->
-        <button class="btn-icon" onclick="openDatabaseModal()" title="Data Persistence & Backup">
+        <button class="btn-icon" onclick="openDatabaseModal()" title="Database Tools & Backup">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
           </svg>
@@ -1474,266 +1266,249 @@
   </header>
 
   <!-- ==========================================================================
-       SUB-NAVIGATION TABS BAR
+       SUB-NAVIGATION TAB STRIP (APOLLO & MANIPAL HIS HEADER)
        ========================================================================== -->
   <nav class="app-nav">
     <div class="nav-inner" id="nav-tabs-bar">
-      <button class="nav-btn active" onclick="showPage('home')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Dashboard
-      </button>
+      <button class="nav-btn active" onclick="showPage('home')">Dashboard</button>
       <button class="nav-btn" onclick="showPage('search')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         Patient EHR <span class="nav-badge" id="nav-patient-count">5</span>
       </button>
-      <button class="nav-btn" onclick="showPage('register')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-        Enroll Patient
-      </button>
-      <button class="nav-btn" onclick="showPage('add')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-        Consultation
-      </button>
-      <button class="nav-btn" onclick="showPage('triage')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Triage (ESI)
-      </button>
+      <button class="nav-btn" onclick="showPage('register')">Enroll Patient</button>
+      <button class="nav-btn" onclick="showPage('add')">Consultation &amp; Rx</button>
+      <button class="nav-btn" onclick="showPage('triage')">Emergency Triage</button>
       <button class="nav-btn" onclick="showPage('beds')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-        Beds & Wards <span class="nav-badge" id="nav-bed-stat">8/12</span>
+        Beds &amp; Wards <span class="nav-badge" id="nav-bed-stat">8/12</span>
       </button>
-      <button class="nav-btn" onclick="showPage('queue')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        OPD Queue
-      </button>
-      <button class="nav-btn" onclick="showPage('analytics')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        Analytics
-      </button>
-      <button class="nav-btn" onclick="showPage('audit')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Audit Trail
-      </button>
-      <button class="nav-btn" onclick="showPage('er')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
-        SQL Schema
-      </button>
+      <button class="nav-btn" onclick="showPage('queue')">OPD Queue</button>
+      <button class="nav-btn" onclick="showPage('analytics')">Analytics</button>
+      <button class="nav-btn" onclick="showPage('audit')">Audit Trail</button>
+      <button class="nav-btn" onclick="showPage('er')">SQL Schema</button>
     </div>
   </nav>
 
-  <!-- Mobile Drawer Menu Component -->
-  <div class="mobile-drawer-overlay" id="drawer-overlay" onclick="toggleMobileDrawer()"></div>
-  <aside class="mobile-drawer" id="mobile-drawer">
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <aside class="drawer-menu" id="drawer-menu">
     <div class="drawer-header">
-      <div class="brand-title">
-        Medi<span>Link</span>
-      </div>
-      <button class="btn-icon" onclick="toggleMobileDrawer()">✕</button>
+      <div class="brand-title">Medi<span>Link</span></div>
+      <button class="btn-icon" onclick="toggleDrawer()">✕</button>
     </div>
-    <button class="drawer-nav-btn active" onclick="showPage('home'); toggleMobileDrawer();">🏠 Dashboard</button>
-    <button class="drawer-nav-btn" onclick="showPage('search'); toggleMobileDrawer();">🔍 Patient EHR</button>
-    <button class="drawer-nav-btn" onclick="showPage('register'); toggleMobileDrawer();">➕ Enroll Patient</button>
-    <button class="drawer-nav-btn" onclick="showPage('add'); toggleMobileDrawer();">📋 Consultation & Rx</button>
-    <button class="drawer-nav-btn" onclick="showPage('triage'); toggleMobileDrawer();">🚨 Triage (ESI 1-5)</button>
-    <button class="drawer-nav-btn" onclick="showPage('beds'); toggleMobileDrawer();">🛏️ Beds & Wards</button>
-    <button class="drawer-nav-btn" onclick="showPage('queue'); toggleMobileDrawer();">🎫 OPD Live Queue</button>
-    <button class="drawer-nav-btn" onclick="showPage('analytics'); toggleMobileDrawer();">📊 Analytics</button>
-    <button class="drawer-nav-btn" onclick="showPage('audit'); toggleMobileDrawer();">🛡️ Audit Trail</button>
-    <button class="drawer-nav-btn" onclick="showPage('er'); toggleMobileDrawer();">🗄️ SQL Schema</button>
+    <button class="drawer-item active" onclick="showPage('home'); toggleDrawer();">🏠 Hospital Dashboard</button>
+    <button class="drawer-item" onclick="showPage('search'); toggleDrawer();">🔍 Patient Health Records</button>
+    <button class="drawer-item" onclick="showPage('register'); toggleDrawer();">➕ Enroll Patient Profile</button>
+    <button class="drawer-item" onclick="showPage('add'); toggleDrawer();">📋 Consultation & Prescription</button>
+    <button class="drawer-item" onclick="showPage('triage'); toggleDrawer();">🚨 Emergency Triage (ESI)</button>
+    <button class="drawer-item" onclick="showPage('beds'); toggleDrawer();">🛏️ Bed & Ward Management</button>
+    <button class="drawer-item" onclick="showPage('queue'); toggleDrawer();">🎫 OPD Live Queue</button>
+    <button class="drawer-item" onclick="showPage('analytics'); toggleDrawer();">📊 Analytics & Reporting</button>
+    <button class="drawer-item" onclick="showPage('audit'); toggleDrawer();">🛡️ Interop Audit Trail</button>
+    <button class="drawer-item" onclick="showPage('er'); toggleDrawer();">🗄️ Relational Schema</button>
   </aside>
 
   <!-- ==========================================================================
-       MAIN VIEW CONTAINER
+       MAIN CONTENT CONTAINER
        ========================================================================== -->
   <main class="app-main">
 
     <!-- ========================================================================
-         PAGE 1: CLINICAL DASHBOARD (HOME)
+         PAGE 1: HOSPITAL DASHBOARD & PATIENT LOOKUP (APOLLO / MANIPAL STYLE)
          ======================================================================== -->
     <div id="page-home" class="page active">
-      <div class="dashboard-hero">
-        <div class="hero-top-badge">
-          Ayushman Bharat Digital Mission (ABDM) • Unified Hospital Network
+      <div class="hospital-hub-card">
+        <div style="display:inline-flex; align-items:center; gap:8px; background:var(--primary-light); color:var(--primary); padding:4px 12px; border-radius:var(--radius-full); font-size:0.75rem; font-weight:700; margin-bottom:0.85rem; border:1px solid rgba(var(--primary-rgb),0.2);">
+          <span>🏥</span> Apollo &amp; Manipal Clinical Network Hub • Integrated Health Information System (HIS)
         </div>
-        <h1 class="hero-heading">
-          Centralized Health Records & Hospital Management
-        </h1>
-        <p class="hero-lead">
-          Interoperable Electronic Medical Records (EMR) for cross-hospital patient history retrieval, bed occupancy management, OPD queue coordination, and real-time clinical safety checks.
+        <h1 class="hub-title">Hospital Patient Care &amp; Clinical Records Hub</h1>
+        <p class="hub-desc">
+          Unified Electronic Health Record (EHR) gateway connecting AIIMS, Apollo, Fortis, Max, PGIMER, and Manipal hospitals. Look up comprehensive patient medical histories via 12-digit Aadhaar UID, monitor live inpatient beds, and coordinate emergency triage.
         </p>
 
-        <!-- Fast Aadhaar Search Box -->
-        <div class="hero-search-row">
-          <input type="text" id="hero-aadhaar-input" class="form-control aadhaar-input" placeholder="Enter 12-digit Aadhaar UID (XXXX XXXX XXXX)" maxlength="14" oninput="formatAadhaar(this)" onkeydown="if(event.key==='Enter') executeHeroSearch()" />
-          <button class="btn btn-primary btn-lg" onclick="executeHeroSearch()">
-            <span>Lookup Patient</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <!-- Central Search Bar -->
+        <div class="hub-search-box">
+          <input type="text" id="hero-aadhaar-input" class="form-control aadhaar-input" placeholder="Enter Aadhaar UID (XXXX XXXX XXXX) or Patient Name" maxlength="14" oninput="formatAadhaar(this)" onkeydown="if(event.key==='Enter') executeHeroSearch()" />
+          <button class="btn btn-accent btn-lg" onclick="executeHeroSearch()" style="font-weight:700;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>Search Patient EMR</span>
           </button>
         </div>
 
-        <!-- Sample Profiles -->
-        <div class="quick-chips-row">
-          <span>Quick Patient Profiles:</span>
-          <span class="quick-chip" onclick="quickLoadPatient('2345 6789 0123')">Priya Sharma (Hypertension, Penicillin Allergy)</span>
-          <span class="quick-chip" onclick="quickLoadPatient('1111 2222 3333')">Arjun Kapoor (Knee Surgery, Diabetic)</span>
-          <span class="quick-chip" onclick="quickLoadPatient('5555 6666 7777')">Rajesh Verma (Cardiac NSTEMI, ICU)</span>
-          <span class="quick-chip" onclick="quickLoadPatient('4444 3333 2222')">Ananya Patel (Asthma)</span>
+        <!-- Quick Demo Patient Profiles -->
+        <div class="demo-chips-strip">
+          <span style="font-weight:700; color:var(--text);">Quick Clinical Profiles:</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('2345 6789 0123')">👤 Priya Sharma (Cardiac • Penicillin Allergy)</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('1111 2222 3333')">👤 Arjun Kapoor (Orthopedics • Post-Knee Surgery)</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('5555 6666 7777')">👤 Rajesh Verma (Emergency Trauma ICU • ESI-1)</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('4444 3333 2222')">👤 Ananya Patel (Pediatric Pulmonology • Asthma)</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('9999 8888 7777')">👤 Meera Iyer (Endocrinology • Type-2 Diabetes)</span>
         </div>
       </div>
 
-      <!-- Operational KPIs -->
-      <div class="kpi-grid">
-        <div class="kpi-card border-left-primary">
-          <div class="kpi-label">Registered Patients</div>
-          <div class="kpi-value" id="stat-patient-count">5</div>
-          <div class="kpi-sub">Verified via Aadhaar UIDAI</div>
+      <!-- Hospital Operational Metrics -->
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-label">Enrolled Patients</div>
+          <div class="metric-num" id="stat-patient-count">5</div>
+          <div class="metric-foot">Aadhaar Linked &amp; Verified</div>
         </div>
 
-        <div class="kpi-card border-left-success">
-          <div class="kpi-label">Total Clinical Encounters</div>
-          <div class="kpi-value" id="stat-record-count">7</div>
-          <div class="kpi-sub">Cross-Hospital Network Records</div>
+        <div class="metric-card success-top">
+          <div class="metric-label">Total Clinical Encounters</div>
+          <div class="metric-num" id="stat-record-count">7</div>
+          <div class="metric-foot">Cross-Hospital Network History</div>
         </div>
 
-        <div class="kpi-card border-left-warning">
-          <div class="kpi-label">Ward Bed Occupancy</div>
-          <div class="kpi-value" id="stat-bed-occupancy">67%</div>
-          <div class="kpi-sub">4 Beds Currently Available</div>
+        <div class="metric-card accent-top">
+          <div class="metric-label">Ward Bed Occupancy</div>
+          <div class="metric-num" id="stat-bed-occupancy">67%</div>
+          <div class="metric-foot">4 Beds Currently Available</div>
         </div>
 
-        <div class="kpi-card border-left-danger">
-          <div class="kpi-label">Emergency Cases (30D)</div>
-          <div class="kpi-value" id="stat-emergency-count">2</div>
-          <div class="kpi-sub">Break-Glass Protocol Active</div>
+        <div class="metric-card danger-top">
+          <div class="metric-label">Emergency Cases (30D)</div>
+          <div class="metric-num" id="stat-emergency-count">2</div>
+          <div class="metric-foot">Zero-Delay Triage Protocol</div>
         </div>
       </div>
 
-      <!-- Practical Hospital Action Cards -->
-      <div style="font-family:var(--font-heading); font-size:1.1rem; font-weight:700; margin: 1.5rem 0 0.75rem;">
-        Clinical Operations & Workflows
+      <!-- Core Hospital Services Grid (Apollo / Manipal 6-Card Suite) -->
+      <div style="font-family:var(--font-heading); font-size:1.05rem; font-weight:800; margin: 1.5rem 0 0.75rem;">
+        Hospital Clinical Modules &amp; Workflows
       </div>
-      <div class="quick-actions-grid">
-        <div class="action-card" onclick="showPage('search')">
-          <div class="action-icon">
+      <div class="services-grid">
+        <div class="service-card" onclick="showPage('search')">
+          <div class="service-icon-box">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </div>
           <div>
-            <div class="action-title">Patient 360° Health Locker</div>
-            <div class="action-desc">Search patient medical history across AIIMS, Apollo, Fortis, and Max in real time.</div>
+            <div class="service-title">Patient 360° Health Locker</div>
+            <div class="service-desc">Complete medical history, diagnostic reports, and digital ABHA health cards.</div>
           </div>
         </div>
 
-        <div class="action-card" onclick="showPage('add')">
-          <div class="action-icon" style="color:var(--success)">
+        <div class="service-card" onclick="showPage('add')">
+          <div class="service-icon-box" style="background:var(--success-light); color:var(--success)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
           </div>
           <div>
-            <div class="action-title">Consultation & Prescription</div>
-            <div class="action-desc">Record visit notes, ICD-10 diagnosis, and scan prescriptions for drug-allergy safety.</div>
+            <div class="service-title">Consultation &amp; Prescription (CDSS)</div>
+            <div class="service-desc">Log physician notes, ICD-10 diagnosis, and automatic allergy safety scanning.</div>
           </div>
         </div>
 
-        <div class="action-card" onclick="showPage('beds')">
-          <div class="action-icon" style="color:var(--warning)">
+        <div class="service-card" onclick="showPage('triage')">
+          <div class="service-icon-box" style="background:var(--danger-light); color:var(--danger)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <div class="service-title">Emergency Severity Index (ESI) Triage</div>
+            <div class="service-desc">Standardized 5-tier trauma acuity scoring and real-time resuscitation alarms.</div>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="showPage('beds')">
+          <div class="service-icon-box" style="background:var(--warning-light); color:var(--warning)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
           </div>
           <div>
-            <div class="action-title">Ward & Bed Management</div>
-            <div class="action-desc">Live occupancy board across ICU, Emergency Bay, and General Inpatient Wards.</div>
+            <div class="service-title">Ward &amp; Bed Management</div>
+            <div class="service-desc">Live bed allocation for ICU, Emergency Trauma Bay, HDU, and Surgical wards.</div>
           </div>
         </div>
 
-        <div class="action-card" onclick="showPage('queue')">
-          <div class="action-icon" style="color:var(--indigo)">
+        <div class="service-card" onclick="showPage('queue')">
+          <div class="service-icon-box" style="background:var(--primary-light); color:var(--primary)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <div>
-            <div class="action-title">OPD Live Token Queue</div>
-            <div class="action-desc">Call next consultation token with audio chime and manage walk-in queues.</div>
+            <div class="service-title">OPD Live Queue Coordinator</div>
+            <div class="service-desc">Audio announcement chime, token calling display, and queue sequencing.</div>
+          </div>
+        </div>
+
+        <div class="service-card" onclick="showPage('analytics')">
+          <div class="service-icon-box" style="background:var(--accent-light); color:var(--accent)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div>
+            <div class="service-title">Clinical Quality &amp; SQL Engine</div>
+            <div class="service-desc">Bed occupancy rates, departmental encounters, and interactive query runner (Q1-Q5).</div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- ========================================================================
-         PAGE 2: PATIENT EHR & 360 HEALTH LOCKER
+         PAGE 2: PATIENT EHR (360 HEALTH RECORDS)
          ======================================================================== -->
     <div id="page-search" class="page">
       <div class="page-header">
         <div>
           <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Patient 360° Health Records
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Patient 360° Medical Record
           </h1>
-          <div class="page-sub">Lifelong Electronic Medical Record identified by Aadhaar UID</div>
+          <div class="page-sub">Federated health profile retrieved across network hospitals via Aadhaar UID</div>
         </div>
-        <div class="btn-row">
+        <div>
           <button class="btn btn-secondary btn-sm" onclick="showPage('register')">+ Enroll Patient</button>
         </div>
       </div>
 
       <!-- Search Bar -->
       <div class="card" style="margin-bottom: 1.25rem;">
-        <div class="ehr-search-row">
-          <input type="text" id="ehr-search-input" class="form-control ehr-search-input aadhaar-input" placeholder="Search by Aadhaar (XXXX XXXX XXXX), Mobile, or Patient Name" maxlength="24" oninput="handleEhrSearchInput(this)" onkeydown="if(event.key==='Enter') executeEhrSearch()" />
-          <button class="btn btn-primary" onclick="executeEhrSearch()">
-            <span>Fetch Records</span>
-          </button>
+        <div style="display:flex; gap:8px; margin-bottom:0.75rem; flex-wrap:wrap;">
+          <input type="text" id="ehr-search-input" class="form-control aadhaar-input" style="flex:1; min-width:260px;" placeholder="Search Aadhaar (XXXX XXXX XXXX), Mobile No, or Patient Name" maxlength="24" oninput="handleEhrSearchInput(this)" onkeydown="if(event.key==='Enter') executeEhrSearch()" />
+          <button class="btn btn-primary" onclick="executeEhrSearch()">Fetch Records</button>
         </div>
 
-        <div class="quick-chips-row">
+        <div class="demo-chips-strip">
           <span>Quick Profiles:</span>
-          <span class="quick-chip" onclick="quickLoadPatient('2345 6789 0123')">Priya Sharma</span>
-          <span class="quick-chip" onclick="quickLoadPatient('1111 2222 3333')">Arjun Kapoor</span>
-          <span class="quick-chip" onclick="quickLoadPatient('5555 6666 7777')">Rajesh Verma</span>
-          <span class="quick-chip" onclick="quickLoadPatient('4444 3333 2222')">Ananya Patel</span>
-          <span class="quick-chip" onclick="quickLoadPatient('9999 8888 7777')">Meera Iyer</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('2345 6789 0123')">Priya Sharma</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('1111 2222 3333')">Arjun Kapoor</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('5555 6666 7777')">Rajesh Verma</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('4444 3333 2222')">Ananya Patel</span>
+          <span class="demo-chip-btn" onclick="quickLoadPatient('9999 8888 7777')">Meera Iyer</span>
         </div>
       </div>
 
-      <!-- Result Container -->
+      <!-- Patient Record Content -->
       <div id="ehr-result-container" style="display:none">
         
-        <!-- Break Glass Emergency Protocol -->
-        <div class="break-glass-card">
-          <div class="break-glass-info">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <!-- Emergency Break-Glass Bar -->
+        <div class="break-glass-bar">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             <div>
-              <div class="break-glass-title">EMERGENCY BREAK-GLASS OVERRIDE PROTOCOL</div>
-              <div class="break-glass-sub">Instant clinical snapshot for ER physicians & trauma surgeons. Creates an immutable audit trace.</div>
+              <div style="font-weight:700; color:var(--danger); font-size:0.9rem;">EMERGENCY BREAK-GLASS OVERRIDE PROTOCOL</div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">Instant critical info snapshot for ER physicians. Creates an audited log record.</div>
             </div>
           </div>
-          <button class="btn btn-danger btn-sm" onclick="triggerBreakGlassModal()">
-            <span>Execute Break-Glass View</span>
-          </button>
+          <button class="btn btn-danger btn-sm" onclick="triggerBreakGlassModal()">Execute Break-Glass</button>
         </div>
 
         <!-- Patient Header Banner -->
-        <div class="patient-hero-banner" id="patient-banner"></div>
+        <div class="patient-summary-box" id="patient-banner"></div>
 
-        <!-- EHR Subtabs Navigation -->
-        <div class="ehr-subtabs">
-          <button class="ehr-subtab-btn active" onclick="switchEhrSubTab('timeline')">
-            Clinical Timeline (<span id="subtab-encounter-count">0</span>)
+        <!-- Sub Tabs -->
+        <div class="ehr-subnav">
+          <button class="ehr-tab-btn active" onclick="switchEhrSubTab('timeline')">
+            Clinical History (<span id="subtab-encounter-count">0</span>)
           </button>
-          <button class="ehr-subtab-btn" onclick="switchEhrSubTab('vitals')">
-            Vitals & Trends
-          </button>
-          <button class="ehr-subtab-btn" onclick="switchEhrSubTab('labs')">
+          <button class="ehr-tab-btn" onclick="switchEhrSubTab('vitals')">Vitals & Trends</button>
+          <button class="ehr-tab-btn" onclick="switchEhrSubTab('labs')">
             Diagnostic Lab Reports (<span id="subtab-labs-count">0</span>)
           </button>
-          <button class="ehr-subtab-btn" onclick="switchEhrSubTab('abha')">
-            ABHA Digital Card
-          </button>
+          <button class="ehr-tab-btn" onclick="switchEhrSubTab('abha')">ABHA Health Card</button>
         </div>
 
-        <!-- Subtab 1: Medical Timeline -->
+        <!-- Subtab 1: Timeline -->
         <div id="ehr-tab-timeline">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
-            <div style="font-weight:700; font-size:1rem; color:var(--text)">Encounter History Across Hospital Network</div>
-            <div style="display:flex; gap:8px;">
-              <select id="timeline-filter-type" class="form-control" style="padding:5px 10px; font-size:0.8rem;" onchange="renderEhrTimeline()">
-                <option value="ALL">All Encounter Types</option>
+            <div style="font-weight:700; font-size:0.95rem;">Lifelong Consultations & Admissions</div>
+            <div style="display:flex; gap:6px;">
+              <select id="timeline-filter-type" class="form-control" style="padding:4px 8px; font-size:0.8rem;" onchange="renderEhrTimeline()">
+                <option value="ALL">All Encounters</option>
                 <option value="OPD Consultation">OPD Consultations</option>
                 <option value="Emergency">Emergency</option>
                 <option value="Surgery">Surgery</option>
@@ -1743,24 +1518,21 @@
               <button class="btn btn-secondary btn-sm" onclick="openNewVisitForCurrent()">+ Add Visit</button>
             </div>
           </div>
-          <div class="timeline-container" id="patient-timeline-list"></div>
+          <div class="timeline-wrap" id="patient-timeline-list"></div>
         </div>
 
-        <!-- Subtab 2: Vitals & Trends -->
+        <!-- Subtab 2: Vitals -->
         <div id="ehr-tab-vitals" style="display:none">
-          <div class="vitals-grid" id="vitals-summary-cards"></div>
+          <div class="vitals-cards-grid" id="vitals-summary-cards"></div>
           <div class="card">
-            <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem; display:flex; justify-content:space-between;">
-              <span>Longitudinal Blood Pressure & Heart Rate Trend</span>
-              <span class="badge badge-primary">Trend Graph</span>
-            </div>
-            <div style="height: 260px; position: relative;">
+            <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Blood Pressure & Heart Rate Longitudinal Trend</div>
+            <div style="height: 250px; position: relative;">
               <canvas id="vitalsChart"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Subtab 3: Diagnostic Lab Reports -->
+        <!-- Subtab 3: Diagnostic Labs -->
         <div id="ehr-tab-labs" style="display:none">
           <div class="table-container">
             <table class="data-table">
@@ -1768,10 +1540,10 @@
                 <tr>
                   <th>Test Name</th>
                   <th>Observed Result</th>
-                  <th>Reference Normal Interval</th>
+                  <th>Reference Range</th>
                   <th>Status</th>
-                  <th>Report Date</th>
-                  <th>Facility</th>
+                  <th>Date</th>
+                  <th>Hospital</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -1780,62 +1552,57 @@
           </div>
         </div>
 
-        <!-- Subtab 4: Digital ABHA Health Card -->
+        <!-- Subtab 4: ABHA Digital Health Card -->
         <div id="ehr-tab-abha" style="display:none">
-          <div class="abha-card-wrap">
-            <div class="abha-smart-card" id="abha-printable-card">
-              <div class="card-top-row">
-                <div style="font-weight:700; font-size:1rem; letter-spacing:0.5px">Ayushman Bharat / MediLink</div>
-                <div class="card-gold-chip"></div>
+          <div class="abha-box" id="abha-printable-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; border-bottom:1px solid var(--border); padding-bottom:6px;">
+              <div>
+                <div style="font-weight:800; font-size:0.92rem; color:var(--primary);">National Health Authority (NHA)</div>
+                <div style="font-size:0.68rem; color:var(--text-muted); text-transform:uppercase;">Ayushman Bharat Digital Health Card</div>
               </div>
-
-              <div class="card-body-row">
-                <div class="card-photo">👤</div>
-                <div>
-                  <div class="card-pat-name" id="abha-name">Priya Sharma</div>
-                  <div class="card-aadhaar-num" id="abha-aadhaar">2345 6789 0123</div>
-                  <div style="font-size:0.75rem; color:#94a3b8" id="abha-dob-gender">DOB: 14/05/1990 • Female</div>
-                  <div style="font-size:0.75rem; color:#94a3b8" id="abha-address">Noida, Uttar Pradesh</div>
-                </div>
+              <div style="display:flex; align-items:center; gap:4px;">
+                <span style="font-size:0.7rem; font-weight:700; color:var(--success); background:var(--success-light); padding:2px 6px; border-radius:var(--radius-sm);">VERIFIED</span>
               </div>
-
-              <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(255,255,255,0.15); padding-top:10px;">
-                <div>
-                  <div style="font-size:0.65rem; color:#94a3b8; text-transform:uppercase;">Blood Group</div>
-                  <div style="font-size:1.1rem; font-weight:800; color:#38bdf8" id="abha-blood">B+</div>
-                </div>
-                <div style="text-align:right;">
-                  <div style="font-size:0.65rem; color:#94a3b8">ABDM VERIFIED QR</div>
-                  <div style="display:flex; justify-content:flex-end; margin-top:3px;">
-                    <svg width="38" height="38" viewBox="0 0 24 24" fill="white">
-                      <rect x="2" y="2" width="7" height="7"/><rect x="15" y="2" width="7" height="7"/><rect x="2" y="15" width="7" height="7"/><rect x="15" y="15" width="3" height="3"/><rect x="19" y="19" width="3" height="3"/><rect x="15" y="19" width="2" height="2"/><rect x="11" y="2" width="2" height="6"/><rect x="2" y="11" width="6" height="2"/><rect x="11" y="11" width="4" height="4"/><rect x="11" y="17" width="2" height="5"/>
-                    </svg>
-                  </div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:center; margin-bottom:0.85rem;">
+              <div style="width:60px; height:70px; background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; font-size:1.8rem;">👤</div>
+              <div>
+                <div style="font-weight:700; font-size:1.15rem; color:var(--text);" id="abha-name">Priya Sharma</div>
+                <div style="font-family:var(--font-mono); color:var(--primary); font-size:0.95rem; font-weight:700; margin:2px 0;" id="abha-aadhaar">2345 6789 0123</div>
+                <div style="font-size:0.76rem; color:var(--text-muted);" id="abha-dob-gender">DOB: 14/05/1990 • Female</div>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--border); padding-top:8px;">
+              <div>
+                <div style="font-size:0.68rem; font-weight:700; color:var(--text-muted);">BLOOD GROUP</div>
+                <div style="font-size:1.2rem; font-weight:800; color:var(--danger);" id="abha-blood">B+</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.68rem; font-weight:700; color:var(--text-muted);">ABHA QR CODE</div>
+                <div style="display:flex; justify-content:flex-end; margin-top:2px; color:var(--text);">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="2" y="2" width="7" height="7"/><rect x="15" y="2" width="7" height="7"/><rect x="2" y="15" width="7" height="7"/><rect x="15" y="15" width="3" height="3"/><rect x="19" y="19" width="3" height="3"/><rect x="15" y="19" width="2" height="2"/><rect x="11" y="2" width="2" height="6"/><rect x="2" y="11" width="6" height="2"/><rect x="11" y="11" width="4" height="4"/><rect x="11" y="17" width="2" height="5"/>
+                  </svg>
                 </div>
               </div>
             </div>
-
-            <div style="display:flex; justify-content:center; gap:10px; margin-top:1.25rem;">
-              <button class="btn btn-secondary btn-sm" onclick="printElement('abha-printable-card')">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                <span>Print Health Card</span>
-              </button>
-            </div>
+          </div>
+          <div style="text-align:center; margin-top:1rem;">
+            <button class="btn btn-secondary btn-sm" onclick="printElement('abha-printable-card')">Print ABHA Card</button>
           </div>
         </div>
 
       </div>
 
-      <!-- No Result Placeholder -->
-      <div id="ehr-no-result" style="display:none; text-align:center; padding:4rem 1rem;">
-        <div style="font-size:2.5rem; margin-bottom:0.75rem; color:var(--text-muted)">🔍</div>
-        <div style="font-family:var(--font-heading); font-size:1.2rem; font-weight:700; margin-bottom:0.5rem">No Matching Patient Records</div>
-        <div style="color:var(--text-muted); max-width:420px; margin:0 auto 1.25rem; font-size:0.85rem">
-          No records match this Aadhaar UID or mobile number. Enroll this patient profile to start logging visits.
+      <!-- No Result Box -->
+      <div id="ehr-no-result" style="display:none; text-align:center; padding:3.5rem 1rem;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem; color:var(--text-muted)">🔍</div>
+        <div style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:0.25rem">No Matching Patient Records</div>
+        <div style="color:var(--text-muted); max-width:400px; margin:0 auto 1rem; font-size:0.85rem">
+          No records found for this Aadhaar UID. Enroll this patient profile to start logging visits.
         </div>
-        <button class="btn btn-primary" onclick="showPage('register')">+ Enroll Patient Profile</button>
+        <button class="btn btn-primary btn-sm" onclick="showPage('register')">+ Enroll Patient</button>
       </div>
-
     </div>
 
     <!-- ========================================================================
@@ -1844,15 +1611,12 @@
     <div id="page-register" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-            Enroll New Patient Profile
-          </h1>
-          <div class="page-sub">Create verified medical record linked to 12-digit Aadhaar UID</div>
+          <h1 class="page-title">Enroll New Patient Profile</h1>
+          <div class="page-sub">Generate verified patient health record linked to 12-digit Aadhaar UID</div>
         </div>
       </div>
 
-      <div class="card" style="max-width: 820px; margin: 0 auto;">
+      <div class="card" style="max-width: 800px; margin: 0 auto;">
         <form id="patient-enroll-form" onsubmit="event.preventDefault(); submitPatientRegistration();">
           <div class="form-grid">
             <div class="form-group full">
@@ -1918,54 +1682,46 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">CHRONIC ILLNESSES / COMORBIDITIES</label>
+              <label class="form-label">CHRONIC CONDITIONS / COMORBIDITIES</label>
               <input type="text" id="reg-chronic" class="form-control" placeholder="e.g. Hypertension, Type 2 Diabetes, Asthma" />
             </div>
 
             <div class="form-group">
-              <label class="form-label">EMERGENCY CONTACT & RELATIONSHIP</label>
+              <label class="form-label">EMERGENCY CONTACT & PHONE</label>
               <input type="text" id="reg-emergency" class="form-control" placeholder="Name (Relationship): Phone Number" />
             </div>
           </div>
 
-          <div style="margin-top: 1.5rem; display: flex; gap: 10px; justify-content: flex-end;">
-            <button type="reset" class="btn btn-secondary">Reset</button>
-            <button type="submit" class="btn btn-primary btn-lg">
-              <span>Enroll Patient in Network</span>
-            </button>
+          <div style="margin-top: 1.25rem; display: flex; gap: 8px; justify-content: flex-end;">
+            <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
+            <button type="submit" class="btn btn-primary">Enroll Patient</button>
           </div>
         </form>
       </div>
     </div>
 
     <!-- ========================================================================
-         PAGE 4: ADD VISIT & PRESCRIPTION WRITER
+         PAGE 4: CONSULTATION & PRESCRIPTION WRITER
          ======================================================================== -->
     <div id="page-add" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            Clinical Consultation & Prescription Writer
-          </h1>
-          <div class="page-sub">Physician encounter module with real-time allergy cross-reactivity and drug interaction check</div>
+          <h1 class="page-title">Clinical Consultation & Prescription Writer</h1>
+          <div class="page-sub">Physician encounter recorder with real-time allergy safety checks</div>
         </div>
       </div>
 
-      <!-- Real-Time Drug/Allergy Conflict Alert Banner -->
-      <div id="cdss-live-alert" class="cdss-alert-banner">
-        <div class="cdss-alert-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <!-- Live Allergy Conflict Alert -->
+      <div id="cdss-live-alert" class="allergy-alert-card">
+        <div class="allergy-alert-title">
           <span>CONTRAINDICATION WARNING DETECTED</span>
         </div>
-        <div class="cdss-alert-desc" id="cdss-alert-text"></div>
+        <div id="cdss-alert-text" style="font-size:0.82rem; color:var(--text); margin-top:3px;"></div>
       </div>
 
-      <div class="card" style="max-width: 900px; margin: 0 auto;">
+      <div class="card" style="max-width: 860px; margin: 0 auto;">
         <form id="consultation-form" onsubmit="event.preventDefault(); submitClinicalEncounter();">
           <div class="form-grid">
-
-            <!-- Patient Aadhaar Lookup -->
             <div class="form-group full">
               <label class="form-label">
                 <span>PATIENT AADHAAR NUMBER *</span>
@@ -1977,7 +1733,6 @@
               </div>
             </div>
 
-            <!-- Hospital & Doctor -->
             <div class="form-group">
               <label class="form-label">HOSPITAL FACILITY *</label>
               <select id="visit-hospital" class="form-control" required>
@@ -2028,63 +1783,54 @@
             </div>
 
             <!-- Vitals Grid -->
-            <div class="form-group full" style="border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; background: var(--bg-alt);">
-              <label class="form-label" style="margin-bottom: 0.5rem;">
+            <div class="form-group full" style="border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.9rem; background: var(--bg-alt);">
+              <label class="form-label" style="margin-bottom: 0.4rem;">
                 <span>ENCOUNTER VITALS</span>
                 <span id="vitals-alert-badge" class="badge badge-success">Vitals Normal</span>
               </label>
-              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px;">
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px;">
                 <div>
-                  <span style="font-size:0.72rem; color:var(--text-muted)">BP Systolic</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted)">BP Systolic</span>
                   <input type="number" id="vital-sbp" class="form-control" placeholder="120" oninput="evalVitalsOnFly()" />
                 </div>
                 <div>
-                  <span style="font-size:0.72rem; color:var(--text-muted)">BP Diastolic</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted)">BP Diastolic</span>
                   <input type="number" id="vital-dbp" class="form-control" placeholder="80" oninput="evalVitalsOnFly()" />
                 </div>
                 <div>
-                  <span style="font-size:0.72rem; color:var(--text-muted)">Heart Rate</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted)">Heart Rate</span>
                   <input type="number" id="vital-hr" class="form-control" placeholder="72" oninput="evalVitalsOnFly()" />
                 </div>
                 <div>
-                  <span style="font-size:0.72rem; color:var(--text-muted)">SpO2 (%)</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted)">SpO2 (%)</span>
                   <input type="number" id="vital-spo2" class="form-control" placeholder="98" oninput="evalVitalsOnFly()" />
                 </div>
                 <div>
-                  <span style="font-size:0.72rem; color:var(--text-muted)">Temp (°F)</span>
+                  <span style="font-size:0.7rem; color:var(--text-muted)">Temp (°F)</span>
                   <input type="number" step="0.1" id="vital-temp" class="form-control" placeholder="98.6" oninput="evalVitalsOnFly()" />
                 </div>
               </div>
             </div>
 
-            <!-- Notes with Speech Dictation -->
             <div class="form-group full">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <label class="form-label">CHIEF COMPLAINTS & CLINICAL OBSERVATIONS</label>
-                <button type="button" class="dictate-btn" id="btn-dictate-notes" onclick="toggleSpeechDictation('visit-notes')">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-                  <span id="dictate-notes-label">Dictate</span>
-                </button>
-              </div>
-              <textarea id="visit-notes" class="form-control" placeholder="Clinical notes, duration of symptoms, physical examination findings..."></textarea>
+              <label class="form-label">CHIEF COMPLAINTS & CLINICAL OBSERVATIONS</label>
+              <textarea id="visit-notes" class="form-control" placeholder="Symptoms, duration, physical examination findings..."></textarea>
             </div>
 
-            <!-- Diagnosis with ICD-10 Autocomplete -->
-            <div class="form-group full autocomplete-box">
+            <div class="form-group full autocomplete-wrap">
               <label class="form-label">
                 <span>PRIMARY DIAGNOSIS & ICD-10 CODE *</span>
                 <span style="font-size:0.7rem; color:var(--primary)">Type to auto-suggest ICD-10</span>
               </label>
               <input type="text" id="visit-diagnosis" class="form-control" placeholder="e.g. Essential Hypertension, Type 2 Diabetes, Acute Appendicitis..." oninput="suggestIcd10(this.value)" autocomplete="off" required />
-              <div id="icd10-suggestions" class="suggestions-list"></div>
+              <div id="icd10-suggestions" class="autocomplete-dropdown"></div>
             </div>
 
-            <!-- Prescription Writer -->
             <div class="form-group full">
               <label class="form-label" style="color:var(--primary)">
-                <span>PRESCRIPTION & MEDICATIONS (AUTO-SCANNED FOR ALLERGIES)</span>
+                <span>PRESCRIPTION MEDICATIONS (SCANNED FOR ALLERGIES)</span>
               </label>
-              <textarea id="visit-rx" class="form-control" placeholder="Tab Amlodipine 5mg OD x 30 days&#10;Tab Paracetamol 650mg TDS PRN" oninput="scanPrescriptionForSafety(this.value)" style="min-height:90px; font-family:var(--font-mono); font-size:0.86rem;"></textarea>
+              <textarea id="visit-rx" class="form-control" placeholder="Tab Amlodipine 5mg OD x 30 days&#10;Tab Paracetamol 650mg TDS PRN" oninput="scanPrescriptionForSafety(this.value)" style="min-height:85px; font-family:var(--font-mono); font-size:0.85rem;"></textarea>
             </div>
 
             <div class="form-group">
@@ -2093,38 +1839,32 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">RECOMMENDED FOLLOW-UP</label>
+              <label class="form-label">FOLLOW-UP DATE</label>
               <input type="date" id="visit-followup" class="form-control" />
             </div>
           </div>
 
-          <div style="margin-top: 1.5rem; display: flex; gap: 10px; justify-content: flex-end;">
-            <button type="submit" class="btn btn-primary btn-lg">
-              <span>Save Encounter to Ledger</span>
-            </button>
+          <div style="margin-top: 1.25rem; display: flex; gap: 8px; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">Save Encounter Record</button>
           </div>
         </form>
       </div>
     </div>
 
     <!-- ========================================================================
-         PAGE 5: EMERGENCY SEVERITY TRIAGE (ESI 1-5)
+         PAGE 5: EMERGENCY TRIAGE (ESI 1-5)
          ======================================================================== -->
     <div id="page-triage" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Emergency Severity Index (ESI) Triage
-          </h1>
-          <div class="page-sub">Clinical 5-tier triage scoring system for emergency acuity classification</div>
+          <h1 class="page-title">Emergency Severity Index (ESI) Triage</h1>
+          <div class="page-sub">Evidence-based clinical acuity prioritization tool</div>
         </div>
       </div>
 
-      <div class="triage-layout">
-        <!-- Input Form -->
+      <div class="triage-grid">
         <div class="card">
-          <div style="font-weight:700; font-size:1rem; margin-bottom:1rem;">Triage Criteria Checklist</div>
+          <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Acuity Assessment Checklist</div>
           
           <div class="form-group" style="margin-bottom:0.75rem;">
             <label class="form-label">1. Immediate Life-Saving Intervention Required?</label>
@@ -2143,55 +1883,50 @@
           </div>
 
           <div class="form-group" style="margin-bottom:0.75rem;">
-            <label class="form-label">3. Anticipated Diagnostic / Therapeutic Resources</label>
+            <label class="form-label">3. Expected Resources (Labs, IV, ECG, CT/X-Ray)</label>
             <select id="esi-q3" class="form-control" onchange="calculateEsiScore()">
-              <option value="many">Two or more resources (Labs, ECG, IV Fluids, CT/X-Ray)</option>
-              <option value="one">One resource (Simple X-Ray, Single Suture)</option>
-              <option value="none">Zero resources (Exam only, Rx refill)</option>
+              <option value="many">Two or more resources</option>
+              <option value="one">One resource (e.g. Suture, Simple X-Ray)</option>
+              <option value="none">Zero resources (Routine exam)</option>
             </select>
           </div>
 
-          <div style="font-weight:700; font-size:0.8rem; color:var(--text-muted); margin: 1rem 0 0.5rem;">
-            VITAL SIGNS DANGER THRESHOLDS
+          <div style="font-weight:700; font-size:0.78rem; color:var(--text-muted); margin: 0.85rem 0 0.4rem;">
+            DANGER ZONE VITALS
           </div>
           <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
             <div>
-              <span style="font-size:0.72rem; color:var(--text-muted)">Heart Rate (bpm)</span>
+              <span style="font-size:0.7rem; color:var(--text-muted)">Heart Rate (bpm)</span>
               <input type="number" id="esi-hr" class="form-control" value="84" oninput="calculateEsiScore()" />
             </div>
             <div>
-              <span style="font-size:0.72rem; color:var(--text-muted)">Respiratory Rate (/min)</span>
+              <span style="font-size:0.7rem; color:var(--text-muted)">Respiratory Rate (/min)</span>
               <input type="number" id="esi-rr" class="form-control" value="18" oninput="calculateEsiScore()" />
             </div>
             <div>
-              <span style="font-size:0.72rem; color:var(--text-muted)">Oxygen Saturation (%)</span>
+              <span style="font-size:0.7rem; color:var(--text-muted)">Oxygen Saturation (%)</span>
               <input type="number" id="esi-spo2" class="form-control" value="98" oninput="calculateEsiScore()" />
             </div>
             <div>
-              <span style="font-size:0.72rem; color:var(--text-muted)">Pain Score (1-10)</span>
+              <span style="font-size:0.7rem; color:var(--text-muted)">Pain Score (1-10)</span>
               <input type="number" id="esi-pain" class="form-control" value="4" min="0" max="10" oninput="calculateEsiScore()" />
             </div>
           </div>
         </div>
 
-        <!-- Output Card -->
-        <div class="triage-score-card" id="triage-output-card">
+        <div class="triage-score-box" id="triage-output-card">
           <div class="badge badge-warning" id="esi-badge">TRIAGE SCORE</div>
-          <div class="triage-level-num" id="esi-num" style="color:var(--warning)">ESI 3</div>
-          <div class="triage-level-name" id="esi-name" style="color:var(--warning)">URGENT (2+ Resources)</div>
+          <div class="triage-score-num" id="esi-num" style="color:var(--warning)">ESI 3</div>
+          <div style="font-weight:700; text-transform:uppercase;" id="esi-name">URGENT (2+ Resources)</div>
           
-          <div class="triage-action-box" id="esi-action-box" style="background:var(--warning-light); color:var(--text)">
-            <div style="font-weight:700; margin-bottom:4px;">Clinical Disposition:</div>
+          <div style="margin-top:1rem; padding:0.75rem; border-radius:6px; background:var(--warning-light); font-size:0.84rem; text-align:left;" id="esi-action-box">
+            <div style="font-weight:700; margin-bottom:3px;">Clinical Disposition:</div>
             <div>Direct to Observation Ward or Monitored Cubicle. Initiate IV line, blood labs, and diagnostic workup.</div>
           </div>
 
           <div style="margin-top:1.25rem; display:flex; gap:8px; justify-content:center;">
-            <button class="btn btn-primary" onclick="showPage('beds')">
-              <span>Allocate Bed</span>
-            </button>
-            <button class="btn btn-secondary" onclick="showPage('add')">
-              <span>Log Encounter</span>
-            </button>
+            <button class="btn btn-primary btn-sm" onclick="showPage('beds')">Allocate Bed</button>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('add')">Log Encounter</button>
           </div>
         </div>
       </div>
@@ -2203,27 +1938,23 @@
     <div id="page-beds" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-            Hospital Ward & Bed Management
-          </h1>
-          <div class="page-sub">Live occupancy tracker across Emergency Bays, Intensive Care (ICU), and Wards</div>
+          <h1 class="page-title">Hospital Ward & Bed Management</h1>
+          <div class="page-sub">Live occupancy board across Emergency Trauma Bays, ICU, and Inpatient Wards</div>
         </div>
-        <div class="btn-row">
+        <div>
           <button class="btn btn-primary btn-sm" onclick="openBedAdmitModal()">+ Admit Patient to Bed</button>
         </div>
       </div>
 
-      <!-- Ward Filter Tabs -->
-      <div class="ward-tabs">
-        <button class="ward-tab-btn active" onclick="filterBedsByWard('ALL')">All Units (<span id="count-all-beds">12</span>)</button>
-        <button class="ward-tab-btn" onclick="filterBedsByWard('Emergency Trauma Bay')">Emergency Trauma Bay</button>
-        <button class="ward-tab-btn" onclick="filterBedsByWard('Intensive Care Unit')">ICU</button>
-        <button class="ward-tab-btn" onclick="filterBedsByWard('Cardiac HDU')">Cardiac HDU</button>
-        <button class="ward-tab-btn" onclick="filterBedsByWard('Surgical Post-Op Ward')">Surgical Post-Op</button>
+      <div class="ward-pill-bar">
+        <button class="ward-pill active" onclick="filterBedsByWard('ALL')">All Units (<span id="count-all-beds">12</span>)</button>
+        <button class="ward-pill" onclick="filterBedsByWard('Emergency Trauma Bay')">Emergency Trauma Bay</button>
+        <button class="ward-pill" onclick="filterBedsByWard('Intensive Care Unit')">ICU</button>
+        <button class="ward-pill" onclick="filterBedsByWard('Cardiac HDU')">Cardiac HDU</button>
+        <button class="ward-pill" onclick="filterBedsByWard('Surgical Post-Op Ward')">Surgical Post-Op</button>
       </div>
 
-      <div class="bed-grid" id="beds-container"></div>
+      <div class="bed-matrix-grid" id="beds-container"></div>
     </div>
 
     <!-- ========================================================================
@@ -2232,26 +1963,20 @@
     <div id="page-queue" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            OPD Live Consultation Queue
-          </h1>
-          <div class="page-sub">Public waiting room display and reception token coordinator</div>
+          <h1 class="page-title">OPD Live Consultation Queue</h1>
+          <div class="page-sub">Waiting room display and token coordination</div>
         </div>
-        <div class="btn-row">
+        <div>
           <button class="btn btn-primary btn-sm" onclick="openAddQueueModal()">+ Issue Token</button>
         </div>
       </div>
 
-      <div class="queue-display-box">
-        <div class="now-serving-badge">● CONSULTATION ROOM 102</div>
-        <div class="token-number-hero" id="active-token-num">TOKEN A-104</div>
-        <div class="token-patient-name" id="active-token-pat">Priya Sharma — Dr. Ramesh Gupta</div>
-        <div style="margin-top:1.25rem; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
-          <button class="btn btn-primary" onclick="callNextToken()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>Call Next (Chime)</span>
-          </button>
+      <div class="token-display-box">
+        <div class="now-calling-tag">● CONSULTATION ROOM 102 (CARDIOLOGY)</div>
+        <div class="token-big-num" id="active-token-num">TOKEN A-104</div>
+        <div style="font-size:1.1rem; font-weight:700;" id="active-token-pat">Priya Sharma — Dr. Ramesh Gupta</div>
+        <div style="margin-top:1rem; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="callNextToken()">Call Next (Chime)</button>
           <button class="btn btn-secondary" onclick="recallCurrentToken()">Recall</button>
           <button class="btn btn-secondary" onclick="markTokenCompleted()">Mark Completed</button>
         </div>
@@ -2266,7 +1991,7 @@
               <th>Aadhaar UID</th>
               <th>Doctor & Department</th>
               <th>Status</th>
-              <th>Issued Time</th>
+              <th>Issued</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -2276,36 +2001,30 @@
     </div>
 
     <!-- ========================================================================
-         PAGE 8: HOSPITAL NETWORK ANALYTICS
+         PAGE 8: CLINICAL ANALYTICS
          ======================================================================== -->
     <div id="page-analytics" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-            Hospital Network Analytics
-          </h1>
-          <div class="page-sub">Encounter volume and specialty utilization across medical facilities</div>
+          <h1 class="page-title">Clinical Network Analytics</h1>
+          <div class="page-sub">Department volume and cross-hospital consultation distribution</div>
         </div>
-        <div class="btn-row">
-          <button class="btn btn-secondary btn-sm" onclick="exportDataToCsv()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span>Export CSV</span>
-          </button>
+        <div>
+          <button class="btn btn-secondary btn-sm" onclick="exportDataToCsv()">Export CSV</button>
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
         <div class="card">
-          <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Department Consultation Volume</div>
-          <div style="height: 240px; position:relative;">
+          <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.75rem;">Department Patient Volume</div>
+          <div style="height: 230px; position:relative;">
             <canvas id="deptChart"></canvas>
           </div>
         </div>
 
         <div class="card">
-          <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Hospital Encounters Comparison</div>
-          <div style="height: 240px; position:relative;">
+          <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.75rem;">Facility Encounters Comparison</div>
+          <div style="height: 230px; position:relative;">
             <canvas id="hospitalChart"></canvas>
           </div>
         </div>
@@ -2313,8 +2032,8 @@
 
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
-          <div style="font-weight:700; font-size:0.95rem;">All Network Encounters</div>
-          <input type="text" id="analytics-filter-input" class="form-control" placeholder="Filter diagnosis or facility..." style="width:240px; padding:5px 10px; font-size:0.82rem;" oninput="renderAnalyticsTable(this.value)" />
+          <div style="font-weight:700; font-size:0.92rem;">Encounter Records Ledger</div>
+          <input type="text" id="analytics-filter-input" class="form-control" placeholder="Search diagnosis or facility..." style="width:230px; padding:4px 8px; font-size:0.8rem;" oninput="renderAnalyticsTable(this.value)" />
         </div>
         <div class="table-container">
           <table class="data-table">
@@ -2325,7 +2044,7 @@
                 <th>Facility</th>
                 <th>Department</th>
                 <th>Type</th>
-                <th>Primary Diagnosis</th>
+                <th>Diagnosis</th>
                 <th>Date</th>
               </tr>
             </thead>
@@ -2336,16 +2055,13 @@
     </div>
 
     <!-- ========================================================================
-         PAGE 9: AUDIT TRAIL LOGS
+         PAGE 9: AUDIT LOGS
          ======================================================================== -->
     <div id="page-audit" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Interoperability Audit Trail
-          </h1>
-          <div class="page-sub">Security log tracking all cross-hospital patient record queries</div>
+          <h1 class="page-title">Interoperability Audit Trail</h1>
+          <div class="page-sub">DISHA / HIPAA compliant security logs for cross-hospital records access</div>
         </div>
       </div>
 
@@ -2355,8 +2071,8 @@
             <tr>
               <th>Log ID</th>
               <th>Timestamp</th>
-              <th>Patient Aadhaar</th>
-              <th>Accessing Clinician & Node</th>
+              <th>Patient UID</th>
+              <th>Accessing Clinician & Facility</th>
               <th>Clinical Purpose</th>
               <th>IP Address</th>
               <th>Status</th>
@@ -2368,101 +2084,40 @@
     </div>
 
     <!-- ========================================================================
-         PAGE 10: SQL WORKBENCH & SCHEMA
+         PAGE 10: SQL SCHEMA & EVALUATION QUERIES
          ======================================================================== -->
     <div id="page-er" class="page">
       <div class="page-header">
         <div>
-          <h1 class="page-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
-            Database Schema & SQL Query Runner
-          </h1>
-          <div class="page-sub">Normalized relational DBMS schema and live course evaluation query runner</div>
+          <h1 class="page-title">Relational Schema & SQL Query Runner</h1>
+          <div class="page-sub">DBMS schema documentation and live course evaluation query execution</div>
         </div>
       </div>
 
-      <div class="card" style="margin-bottom:1.5rem;">
+      <div class="card" style="margin-bottom:1.25rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
-          <div style="font-weight:700; font-size:0.95rem;">DBMS Evaluation SQL Queries (Q1–Q5)</div>
+          <div style="font-weight:700; font-size:0.92rem;">Evaluation Queries (Q1–Q5)</div>
           <div style="display:flex; gap:6px;">
-            <select id="sql-query-select" class="form-control" style="font-size:0.82rem; padding:5px 10px;" onchange="loadSqlTemplate(this.value)">
-              <option value="q1">Q1: Patient Medical History by Aadhaar</option>
+            <select id="sql-query-select" class="form-control" style="font-size:0.8rem; padding:4px 8px;" onchange="loadSqlTemplate(this.value)">
+              <option value="q1">Q1: Patient History by Aadhaar UID</option>
               <option value="q2">Q2: Patient Profile with Visit Statistics</option>
               <option value="q3">Q3: All Abnormal Lab Reports Across Facilities</option>
               <option value="q4">Q4: Hospital-Wise Consultation Volume</option>
               <option value="q5">Q5: Emergency Admissions in Last 90 Days</option>
             </select>
-            <button class="btn btn-primary btn-sm" onclick="executeActiveSqlQuery()">
-              <span>Execute SQL</span>
-            </button>
+            <button class="btn btn-primary btn-sm" onclick="executeActiveSqlQuery()">Execute SQL</button>
           </div>
         </div>
 
-        <pre class="sql-code-block" id="sql-query-display"></pre>
+        <pre class="sql-snippet" id="sql-query-display"></pre>
 
         <div id="sql-results-wrap">
-          <div style="font-size:0.75rem; font-family:var(--font-mono); color:var(--success); margin-bottom:6px;" id="sql-exec-stat"></div>
+          <div style="font-size:0.74rem; font-family:var(--font-mono); color:var(--success); margin-bottom:5px;" id="sql-exec-stat"></div>
           <div class="table-container">
             <table class="data-table">
               <thead id="sql-output-thead"></thead>
               <tbody id="sql-output-tbody"></tbody>
             </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- Relational Schema Cards -->
-      <div class="card">
-        <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Relational Database Tables (MySQL)</div>
-        <div class="er-grid-modern">
-          <div class="er-card">
-            <div class="er-header" style="background:var(--primary-light); color:var(--primary);">
-              <span>PATIENT</span>
-              <span class="badge badge-primary">PK: Aadhaar</span>
-            </div>
-            <div class="er-row pk"><span>PK aadhaar_number</span><span>CHAR(12)</span></div>
-            <div class="er-row"><span>full_name</span><span>VARCHAR(100)</span></div>
-            <div class="er-row"><span>date_of_birth</span><span>DATE</span></div>
-            <div class="er-row"><span>blood_group</span><span>VARCHAR(5)</span></div>
-            <div class="er-row"><span>allergies</span><span>TEXT</span></div>
-            <div class="er-row"><span>chronic_conditions</span><span>TEXT</span></div>
-          </div>
-
-          <div class="er-card">
-            <div class="er-header" style="background:var(--indigo-light); color:var(--indigo);">
-              <span>HOSPITAL</span>
-              <span class="badge badge-indigo">FACILITY</span>
-            </div>
-            <div class="er-row pk"><span>PK hospital_id</span><span>INT AUTO</span></div>
-            <div class="er-row"><span>hospital_name</span><span>VARCHAR(100)</span></div>
-            <div class="er-row"><span>registration_no</span><span>VARCHAR(50)</span></div>
-            <div class="er-row"><span>hospital_type</span><span>ENUM</span></div>
-            <div class="er-row"><span>city</span><span>VARCHAR(50)</span></div>
-          </div>
-
-          <div class="er-card">
-            <div class="er-header" style="background:var(--warning-light); color:var(--warning);">
-              <span>DOCTOR</span>
-              <span class="badge badge-warning">STAFF</span>
-            </div>
-            <div class="er-row pk"><span>PK doctor_id</span><span>INT AUTO</span></div>
-            <div class="er-row fk"><span>FK hospital_id</span><span>→ HOSPITAL</span></div>
-            <div class="er-row"><span>doctor_name</span><span>VARCHAR(100)</span></div>
-            <div class="er-row"><span>specialization</span><span>VARCHAR(50)</span></div>
-          </div>
-
-          <div class="er-card">
-            <div class="er-header" style="background:var(--danger-light); color:var(--danger);">
-              <span>MEDICAL_RECORD</span>
-              <span class="badge badge-danger">FACT</span>
-            </div>
-            <div class="er-row pk"><span>PK record_id</span><span>INT AUTO</span></div>
-            <div class="er-row fk"><span>FK aadhaar_number</span><span>→ PATIENT</span></div>
-            <div class="er-row fk"><span>FK hospital_id</span><span>→ HOSPITAL</span></div>
-            <div class="er-row fk"><span>FK doctor_id</span><span>→ DOCTOR</span></div>
-            <div class="er-row"><span>visit_date</span><span>DATE</span></div>
-            <div class="er-row"><span>diagnosis</span><span>TEXT</span></div>
-            <div class="er-row"><span>prescription</span><span>TEXT</span></div>
           </div>
         </div>
       </div>
@@ -2474,51 +2129,43 @@
        MODAL 1: BREAK-GLASS EMERGENCY OVERLAY
        ========================================================================== -->
   <div id="modal-break-glass" class="modal-backdrop">
-    <div class="modal-window">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.75rem;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <div>
-            <div style="font-size:1.1rem; font-weight:700; color:var(--danger)">Emergency Clinical Overview</div>
-            <div style="font-size:0.74rem; color:var(--text-muted)">AUDIT ID: <span id="bg-audit-id" style="font-family:var(--font-mono)"></span></div>
-          </div>
-        </div>
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.6rem;">
+        <div style="font-size:1.05rem; font-weight:700; color:var(--danger)">Emergency Clinical Snapshot</div>
         <button class="btn-icon" onclick="closeModal('modal-break-glass')">✕</button>
       </div>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom:1rem;">
-        <div class="card" style="padding:0.85rem;">
-          <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">PATIENT DETAILS</div>
-          <div style="font-size:1.05rem; font-weight:700; margin:3px 0" id="bg-pat-name">Priya Sharma</div>
-          <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--primary)" id="bg-pat-aadhaar">2345 6789 0123</div>
-          <div style="font-size:0.78rem; color:var(--text-muted)" id="bg-pat-age-gender">Age: 34 • Female</div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom:0.75rem;">
+        <div class="card" style="padding:0.75rem;">
+          <div style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">PATIENT DETAILS</div>
+          <div style="font-size:1rem; font-weight:700; margin:2px 0" id="bg-pat-name">Priya Sharma</div>
+          <div style="font-family:var(--font-mono); font-size:0.82rem; color:var(--primary)" id="bg-pat-aadhaar">2345 6789 0123</div>
+          <div style="font-size:0.75rem; color:var(--text-muted)" id="bg-pat-age-gender">Age: 34 • Female</div>
         </div>
 
-        <div class="card" style="background:var(--danger-light); border-color:var(--danger); padding:0.85rem;">
-          <div style="font-size:0.72rem; color:var(--danger); font-weight:700;">DOCUMENTED ALLERGIES</div>
-          <div style="font-size:1.05rem; font-weight:800; color:var(--danger); margin:3px 0" id="bg-pat-allergies">Penicillin, Amoxicillin</div>
-          <div style="font-size:0.72rem; color:var(--danger)">Do NOT administer beta-lactam antibiotics.</div>
+        <div class="card" style="background:var(--danger-light); border-color:var(--danger); padding:0.75rem;">
+          <div style="font-size:0.7rem; color:var(--danger); font-weight:700;">DOCUMENTED ALLERGIES</div>
+          <div style="font-size:1rem; font-weight:800; color:var(--danger); margin:2px 0" id="bg-pat-allergies">Penicillin, Amoxicillin</div>
+          <div style="font-size:0.7rem; color:var(--danger)">Do NOT administer beta-lactams.</div>
         </div>
       </div>
 
-      <div class="card" style="padding:0.85rem; margin-bottom:1rem;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-          <span style="font-size:0.72rem; font-weight:700; color:var(--text-muted)">BLOOD GROUP & EMERGENCY CONTACT</span>
+      <div class="card" style="padding:0.75rem; margin-bottom:0.75rem;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+          <span style="font-size:0.7rem; font-weight:700; color:var(--text-muted)">BLOOD GROUP & RESUSCITATION CONTACT</span>
           <span class="badge badge-primary" id="bg-pat-blood">B+</span>
         </div>
-        <div style="font-size:0.85rem; font-weight:600;" id="bg-pat-emergency">Sunil Sharma (Husband): +91 98765 43219</div>
-        <div style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;" id="bg-pat-chronic">Chronic Conditions: Hypertension (Grade 1)</div>
+        <div style="font-size:0.82rem; font-weight:600;" id="bg-pat-emergency">Sunil Sharma: +91 98765 43219</div>
+        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="bg-pat-chronic">Chronic Conditions: Hypertension (Grade 1)</div>
       </div>
 
-      <div style="font-size:0.8rem; font-weight:700; margin-bottom:6px;">ACTIVE ONGOING MEDICATIONS</div>
-      <div class="card" style="background:var(--bg-alt); font-family:var(--font-mono); font-size:0.82rem; padding:0.85rem; margin-bottom:1rem;" id="bg-pat-meds">
-        Tab Amlodipine 5mg OD morning
-      </div>
+      <div style="font-size:0.78rem; font-weight:700; margin-bottom:4px;">ACTIVE MEDICATIONS</div>
+      <div class="card" style="background:var(--bg-alt); font-family:var(--font-mono); font-size:0.8rem; padding:0.75rem; margin-bottom:0.85rem;" id="bg-pat-meds"></div>
 
-      <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <div style="display:flex; justify-content:flex-end; gap:6px;">
         <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-break-glass')">Close</button>
         <button class="btn btn-danger btn-sm" onclick="showPage('triage'); closeModal('modal-break-glass');">
-          <span>Go to Emergency Triage</span>
+          Go to Triage
         </button>
       </div>
     </div>
@@ -2528,71 +2175,62 @@
        MODAL 2: PRINTABLE PRESCRIPTION SLIP
        ========================================================================== -->
   <div id="modal-rx-slip" class="modal-backdrop">
-    <div class="modal-window" style="max-width: 760px; background:#ffffff; color:#0f172a;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid #cbd5e1; padding-bottom:0.5rem;" class="no-print">
-        <div style="font-weight:700; font-size:1rem; color:#0f172a;">Official Clinical Encounter Slip</div>
+    <div class="modal-box" style="max-width: 740px; background:#ffffff; color:#0f172a;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; border-bottom:1px solid #cbd5e1; padding-bottom:0.5rem;" class="no-print">
+        <div style="font-weight:700; font-size:0.95rem;">Encounter Slip & Prescription</div>
         <div style="display:flex; gap:6px;">
-          <button class="btn btn-primary btn-sm" onclick="printElement('printable-prescription-slip')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            <span>Print PDF</span>
-          </button>
+          <button class="btn btn-primary btn-sm" onclick="printElement('printable-prescription-slip')">Print Slip</button>
           <button class="btn-icon" style="background:#f1f5f9; color:#0f172a" onclick="closeModal('modal-rx-slip')">✕</button>
         </div>
       </div>
 
-      <div id="printable-prescription-slip" class="print-slip-container">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #0284c7; padding-bottom:0.75rem; margin-bottom:1rem;">
+      <div id="printable-prescription-slip" class="print-slip" style="padding:1.5rem; background:#ffffff; font-family:var(--font-body);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #007799; padding-bottom:0.75rem; margin-bottom:0.75rem;">
           <div>
-            <div style="font-family:var(--font-heading); font-size:1.4rem; font-weight:800; color:#0284c7;" id="slip-hospital-name">AIIMS New Delhi</div>
-            <div style="font-size:0.78rem; color:#64748b;">NABH & NABL Accredited Healthcare Facility</div>
+            <div style="font-family:var(--font-heading); font-size:1.3rem; font-weight:800; color:#007799;" id="slip-hospital-name">AIIMS New Delhi</div>
+            <div style="font-size:0.75rem; color:#64748b;">NABH Accredited Multi-Speciality Network</div>
           </div>
           <div style="text-align:right;">
-            <div style="font-size:0.72rem; font-weight:700; color:#0284c7;">ENCOUNTER SLIP</div>
-            <div style="font-family:var(--font-mono); font-size:0.85rem; font-weight:700;" id="slip-record-id">REC-2024-001</div>
-            <div style="font-size:0.75rem; color:#64748b;" id="slip-date">Date: 10 Jan 2024</div>
+            <div style="font-size:0.7rem; font-weight:700; color:#007799;">CLINICAL ENCOUNTER</div>
+            <div style="font-family:var(--font-mono); font-size:0.82rem; font-weight:700;" id="slip-record-id">REC-2024-001</div>
+            <div style="font-size:0.72rem; color:#64748b;" id="slip-date">Date: 10 Jan 2024</div>
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:1rem; font-size:0.82rem;">
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px; padding:8px; margin-bottom:0.75rem; font-size:0.8rem;">
           <div>
-            <div style="color:#64748b; font-size:0.7rem; text-transform:uppercase;">Patient Name</div>
+            <div style="color:#64748b; font-size:0.68rem; text-transform:uppercase;">Patient Name</div>
             <div style="font-weight:700;" id="slip-pat-name">Priya Sharma</div>
           </div>
           <div>
-            <div style="color:#64748b; font-size:0.7rem; text-transform:uppercase;">Aadhaar UID</div>
+            <div style="color:#64748b; font-size:0.68rem; text-transform:uppercase;">Aadhaar UID</div>
             <div style="font-family:var(--font-mono); font-weight:700;" id="slip-pat-aadhaar">2345 6789 0123</div>
           </div>
           <div>
-            <div style="color:#64748b; font-size:0.7rem; text-transform:uppercase;">Age / Gender / Blood</div>
+            <div style="color:#64748b; font-size:0.68rem; text-transform:uppercase;">Demographics</div>
             <div style="font-weight:700;" id="slip-pat-demog">34Y / Female / B+</div>
           </div>
           <div>
-            <div style="color:#64748b; font-size:0.7rem; text-transform:uppercase;">Attending Doctor</div>
+            <div style="color:#64748b; font-size:0.68rem; text-transform:uppercase;">Attending Doctor</div>
             <div style="font-weight:700;" id="slip-doc-name">Dr. Ramesh Gupta</div>
           </div>
         </div>
 
-        <div style="margin-bottom:1rem; font-size:0.84rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.75rem;">
-          <div style="margin-bottom:4px;">
-            <strong>VITALS: </strong><span id="slip-vitals" style="font-family:var(--font-mono); color:#0284c7;">BP: 145/95 mmHg • Pulse: 82 bpm • SpO2: 98%</span>
-          </div>
-          <div style="margin-top:4px;">
-            <strong>CLINICAL DIAGNOSIS: </strong><span id="slip-diagnosis" style="font-weight:700; color:#0284c7;">Essential Hypertension (Grade 1) [I10]</span>
-          </div>
+        <div style="margin-bottom:0.75rem; font-size:0.82rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">
+          <div><strong>DIAGNOSIS: </strong><span id="slip-diagnosis" style="font-weight:700; color:#007799;">Essential Hypertension [I10]</span></div>
+          <div style="margin-top:3px;"><strong>VITALS: </strong><span id="slip-vitals" style="font-family:var(--font-mono); color:#475569;">BP: 145/95 mmHg • Pulse: 82 bpm • SpO2: 98%</span></div>
         </div>
 
         <div style="margin-bottom:1.5rem;">
-          <div style="font-family:var(--font-heading); font-size:1.2rem; font-weight:800; color:#0284c7; margin-bottom:6px;">℞ PRESCRIPTION</div>
-          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; font-family:var(--font-mono); font-size:0.85rem; line-height:1.6; white-space:pre-wrap;" id="slip-prescription"></div>
+          <div style="font-family:var(--font-heading); font-size:1.1rem; font-weight:800; color:#007799; margin-bottom:4px;">℞ PRESCRIPTION</div>
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px; padding:8px; font-family:var(--font-mono); font-size:0.82rem; line-height:1.55; white-space:pre-wrap;" id="slip-prescription"></div>
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid #e2e8f0; padding-top:1rem;">
-          <div>
-            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#64748b;">*MEDILINK VERIFIED EMR*</div>
-          </div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid #e2e8f0; padding-top:0.75rem;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:#64748b;">*MEDILINK VERIFIED HEALTH RECORD*</div>
           <div style="text-align:center;">
-            <div style="font-size:0.95rem; font-weight:700; color:#0284c7;" id="slip-sig-text">Dr. Ramesh Gupta, MD</div>
-            <div style="border-top:1px dashed #94a3b8; padding-top:2px; font-size:0.72rem; color:#64748b;">Doctor Signature</div>
+            <div style="font-size:0.9rem; font-weight:700; color:#007799;" id="slip-sig-text">Dr. Ramesh Gupta, MD</div>
+            <div style="border-top:1px dashed #94a3b8; padding-top:2px; font-size:0.68rem; color:#64748b;">Doctor Signature</div>
           </div>
         </div>
       </div>
@@ -2603,9 +2241,9 @@
        MODAL 3: ADMIT PATIENT TO BED
        ========================================================================== -->
   <div id="modal-bed-admit" class="modal-backdrop">
-    <div class="modal-window">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-        <div style="font-size:1.15rem; font-weight:700;">Admit Patient to Bed</div>
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div style="font-size:1.1rem; font-weight:700;">Admit Patient to Bed</div>
         <button class="btn-icon" onclick="closeModal('modal-bed-admit')">✕</button>
       </div>
 
@@ -2619,12 +2257,12 @@
         <select id="admit-patient-select" class="form-control" required></select>
       </div>
 
-      <div class="form-group" style="margin-bottom:1.25rem;">
-        <label class="form-label">ADMISSION REASON / DIAGNOSIS</label>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label class="form-label">ADMISSION REASON</label>
         <input type="text" id="admit-reason" class="form-control" placeholder="e.g. Acute Coronary Syndrome, Post-Op Care" />
       </div>
 
-      <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <div style="display:flex; justify-content:flex-end; gap:6px;">
         <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-bed-admit')">Cancel</button>
         <button class="btn btn-primary btn-sm" onclick="confirmBedAdmission()">Confirm Admission</button>
       </div>
@@ -2635,9 +2273,9 @@
        MODAL 4: ISSUE OPD QUEUE TOKEN
        ========================================================================== -->
   <div id="modal-add-queue" class="modal-backdrop">
-    <div class="modal-window">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-        <div style="font-size:1.15rem; font-weight:700;">Issue OPD Walk-In Token</div>
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div style="font-size:1.1rem; font-weight:700;">Issue OPD Walk-In Token</div>
         <button class="btn-icon" onclick="closeModal('modal-add-queue')">✕</button>
       </div>
 
@@ -2646,7 +2284,7 @@
         <select id="queue-patient-select" class="form-control" required></select>
       </div>
 
-      <div class="form-group" style="margin-bottom:1.25rem;">
+      <div class="form-group" style="margin-bottom:1rem;">
         <label class="form-label">CONSULTING DOCTOR *</label>
         <select id="queue-doctor-select" class="form-control" required>
           <option value="Dr. Ramesh Gupta (Cardiology)">Dr. Ramesh Gupta — Cardiology</option>
@@ -2656,7 +2294,7 @@
         </select>
       </div>
 
-      <div style="display:flex; justify-content:flex-end; gap:8px;">
+      <div style="display:flex; justify-content:flex-end; gap:6px;">
         <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-add-queue')">Cancel</button>
         <button class="btn btn-primary btn-sm" onclick="confirmIssueToken()">Issue Token</button>
       </div>
@@ -2667,34 +2305,27 @@
        MODAL 5: DATABASE BACKUP & RESTORE
        ========================================================================== -->
   <div id="modal-database" class="modal-backdrop">
-    <div class="modal-window">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
-        <div style="font-size:1.15rem; font-weight:700;">Database & Persistence</div>
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div style="font-size:1.1rem; font-weight:700;">Database & Persistence</div>
         <button class="btn-icon" onclick="closeModal('modal-database')">✕</button>
       </div>
 
-      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:1.25rem;">
-        All records and admissions are stored persistently in your local browser storage. You can backup your database, restore from file, or reset to sample demo data.
+      <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:1rem;">
+        State is saved in your browser localStorage. You can export JSON backups, restore existing backups, or reset to factory demo seed data.
       </p>
 
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <button class="btn btn-primary" onclick="exportDatabaseJson()">
-          <span>Export Database JSON Backup</span>
-        </button>
-
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <button class="btn btn-primary" onclick="exportDatabaseJson()">Export Database JSON Backup</button>
         <label class="btn btn-secondary" style="cursor:pointer;">
           <span>Import & Restore JSON Backup</span>
           <input type="file" id="db-file-input" accept=".json" style="display:none" onchange="importDatabaseJson(event)" />
         </label>
-
-        <button class="btn btn-outline-danger" onclick="resetToSampleData()">
-          <span>Reset to Clean Sample Data</span>
-        </button>
+        <button class="btn btn-outline-danger" onclick="resetToSampleData()">Reset to Factory Seed Data</button>
       </div>
     </div>
   </div>
 
-  <!-- TOAST CONTAINER -->
   <div id="toast-wrap"></div>
 
   <!-- ==========================================================================
@@ -2943,11 +2574,8 @@
     function initDatabaseState() {
       const stored = localStorage.getItem('medilink_db_v2');
       if (stored) {
-        try {
-          state = JSON.parse(stored);
-        } catch (e) {
-          state = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA));
-        }
+        try { state = JSON.parse(stored); }
+        catch (e) { state = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA)); }
       } else {
         state = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA));
         saveState();
@@ -3018,7 +2646,7 @@
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.drawer-nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.drawer-item').forEach(b => b.classList.remove('active'));
 
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) {
@@ -3031,11 +2659,10 @@
       const navButtons = document.querySelectorAll('.nav-btn');
       if (activeIdx !== -1 && navButtons[activeIdx]) {
         navButtons[activeIdx].classList.add('active');
-        // Ensure active tab is visible in scroll container
         navButtons[activeIdx].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
       }
 
-      const drawerButtons = document.querySelectorAll('.drawer-nav-btn');
+      const drawerButtons = document.querySelectorAll('.drawer-item');
       if (activeIdx !== -1 && drawerButtons[activeIdx]) {
         drawerButtons[activeIdx].classList.add('active');
       }
@@ -3051,15 +2678,12 @@
       }
     }
 
-    function toggleMobileDrawer() {
-      const drawer = document.getElementById('mobile-drawer');
-      const overlay = document.getElementById('drawer-overlay');
-      drawer.classList.toggle('active');
-      overlay.classList.toggle('active');
+    function toggleDrawer() {
+      document.getElementById('drawer-menu').classList.toggle('active');
+      document.getElementById('drawer-overlay').classList.toggle('active');
     }
 
     function initTheme() {
-      // Default to Light clinical theme as preferred by user
       const saved = localStorage.getItem('medilink_theme') || 'light';
       document.documentElement.setAttribute('data-theme', saved);
     }
@@ -3068,7 +2692,7 @@
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('medilink_theme', next);
-      toast(`Theme set to ${next.toUpperCase()}`);
+      toast(`Switched to ${next === 'dark' ? 'Night Shift Dark' : 'Clinical Light'} theme`);
     }
 
     function cycleRole() {
@@ -3078,9 +2702,9 @@
       toast(`Active Role: ${role}`);
     }
 
-    function onHospitalChange(hId) {
-      const h = state.hospitals.find(x => x.id === parseInt(hId));
-      if (h) toast(`Switched to ${h.name}`);
+    function onFacilityChange(fId) {
+      const h = state.hospitals.find(x => x.id === parseInt(fId));
+      if (h) toast(`Switched facility to ${h.name}`);
     }
 
     function toast(message, isDanger = false) {
@@ -3092,7 +2716,7 @@
       setTimeout(() => {
         t.style.opacity = '0';
         setTimeout(() => t.remove(), 200);
-      }, 3200);
+      }, 3000);
     }
 
     function openModal(id) {
@@ -3187,15 +2811,15 @@
     }
 
     function logAccessAudit(aadhaar, purpose) {
-      const hSelect = document.getElementById('active-hospital-select');
-      const hName = hSelect ? hSelect.options[hSelect.selectedIndex].text : 'AIIMS Delhi';
+      const fSelect = document.getElementById('active-facility-select');
+      const fName = fSelect ? fSelect.options[fSelect.selectedIndex].text : 'AIIMS Delhi';
       const role = document.getElementById('active-role-label').textContent;
 
       const log = {
         id: 'LOG-' + Math.floor(1000 + Math.random() * 9000),
         time: new Date().toISOString().replace('T', ' ').substring(0, 19),
         aadhaar: aadhaar,
-        accessor: `${role} (${hName})`,
+        accessor: `${role} (${fName})`,
         purpose: purpose,
         ip: '192.168.1.' + Math.floor(10 + Math.random() * 80),
         status: 'Authorized'
@@ -3210,22 +2834,22 @@
       const initials = p.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
 
       banner.innerHTML = `
-        <div class="patient-main-meta">
-          <div class="patient-avatar-box">${initials}</div>
-          <div class="patient-name-wrap">
-            <h2>
-              ${p.name}
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div class="patient-avatar">${initials}</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h2 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:800;">${p.name}</h2>
               <span class="badge badge-success">Aadhaar Verified</span>
-            </h2>
-            <div class="patient-sub-tags">
+            </div>
+            <div class="patient-tags-row">
               <span class="badge badge-primary">${p.gender} • ${age} Yrs</span>
-              <span class="badge badge-indigo">Blood: ${p.blood || 'Unknown'}</span>
-              <span class="badge">${p.records.length} Encounter(s)</span>
+              <span class="badge" style="background:var(--bg-alt); color:var(--text)">Blood: ${p.blood || 'Unknown'}</span>
+              <span class="badge" style="background:var(--bg-alt); color:var(--text)">${p.records.length} Encounters</span>
               ${p.allergies && p.allergies !== 'None' ? `<span class="badge badge-danger">Allergy: ${p.allergies}</span>` : ''}
               ${p.chronic && p.chronic !== 'None' ? `<span class="badge badge-warning">${p.chronic}</span>` : ''}
             </div>
-            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:5px; font-family:var(--font-mono)">
-              UID: ${p.aadhaar} • Contact: ${p.mobile || 'N/A'} • Address: ${p.address || 'N/A'}
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px; font-family:var(--font-mono)">
+              UID: ${p.aadhaar} • Contact: ${p.mobile || 'N/A'} • Location: ${p.address || 'N/A'}
             </div>
           </div>
         </div>
@@ -3245,8 +2869,8 @@
         if (el) el.style.display = (t === tabName) ? 'block' : 'none';
       });
 
-      document.querySelectorAll('.ehr-subtab-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = event.currentTarget || document.querySelector(`.ehr-subtab-btn[onclick*="${tabName}"]`);
+      document.querySelectorAll('.ehr-tab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = event.currentTarget || document.querySelector(`.ehr-tab-btn[onclick*="${tabName}"]`);
       if (activeBtn) activeBtn.classList.add('active');
 
       if (tabName === 'vitals' && currentActivePatient) {
@@ -3263,48 +2887,46 @@
       if (filterType !== 'ALL') records = records.filter(r => r.type === filterType);
 
       if (records.length === 0) {
-        list.innerHTML = `<div style="color:var(--text-muted); padding:1.5rem 0;">No encounter records matching filter.</div>`;
+        list.innerHTML = `<div style="color:var(--text-muted); padding:1.25rem 0;">No encounter records match filter.</div>`;
         return;
       }
 
       list.innerHTML = records.map((r, idx) => {
         const isEmergency = r.type === 'Emergency';
         const isSurgery = r.type === 'Surgery';
-        const dotClass = isEmergency ? 'emergency' : (isSurgery ? 'surgery' : 'checkup');
+        const bulletClass = isEmergency ? 'danger' : (isSurgery ? 'warning' : '');
 
         return `
-          <div class="timeline-card">
-            <div class="timeline-dot ${dotClass}"></div>
-            <div class="tl-header">
+          <div class="timeline-node">
+            <div class="timeline-bullet ${bulletClass}"></div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
               <div>
-                <div class="tl-diag-title">${r.diagnosis}</div>
-                <div class="tl-meta-strip">
+                <div style="font-family:var(--font-heading); font-size:1rem; font-weight:700;">${r.diagnosis}</div>
+                <div style="display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--text-muted); margin-top:2px;">
                   <span>🏥 <strong>${r.hospital}</strong></span>
                   <span>👨‍⚕️ ${r.doctor || 'Physician'}</span>
                   <span>🏷️ ${r.dept || 'General'}</span>
                   <span class="badge ${isEmergency ? 'badge-danger' : (isSurgery ? 'badge-warning' : 'badge-primary')}">${r.type}</span>
-                  ${r.icd10 ? `<span class="badge badge-indigo">ICD-10: ${r.icd10}</span>` : ''}
+                  ${r.icd10 ? `<span class="badge" style="background:var(--bg-alt); color:var(--text);">ICD-10: ${r.icd10}</span>` : ''}
                 </div>
               </div>
               <div style="text-align:right;">
-                <div style="font-weight:700; font-size:0.84rem;">${r.date}</div>
-                <button class="btn btn-secondary btn-sm" style="margin-top:4px; padding:3px 8px; font-size:0.75rem;" onclick="openPrescriptionSlip(${idx})">
-                  Print Slip
-                </button>
+                <div style="font-weight:700; font-size:0.82rem;">${r.date}</div>
+                <button class="btn btn-secondary btn-sm" style="margin-top:3px; padding:3px 8px; font-size:0.74rem;" onclick="openPrescriptionSlip(${idx})">Print Slip</button>
               </div>
             </div>
 
-            ${r.vitals ? `<div style="background:var(--bg-alt); padding:6px 10px; border-radius:4px; font-size:0.78rem; font-family:var(--font-mono); color:var(--primary); margin-bottom:8px;">Vitals: ${r.vitals}</div>` : ''}
+            ${r.vitals ? `<div style="background:var(--bg-alt); padding:5px 8px; border-radius:4px; font-size:0.76rem; font-family:var(--font-mono); color:var(--primary); margin-bottom:6px;">Vitals: ${r.vitals}</div>` : ''}
 
-            ${r.notes ? `<div style="font-size:0.84rem; color:var(--text-muted); margin-bottom:8px; line-height:1.5;">${r.notes}</div>` : ''}
+            ${r.notes ? `<div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:6px; line-height:1.45;">${r.notes}</div>` : ''}
 
             ${r.prescription ? `
-              <div style="background:var(--bg-alt); border-left:3px solid var(--primary); padding:8px 12px; font-family:var(--font-mono); font-size:0.82rem; white-space:pre-wrap;">
-                <div style="font-weight:700; font-size:0.72rem; text-transform:uppercase; color:var(--primary); margin-bottom:2px;">Prescription:</div>${r.prescription}
+              <div style="background:var(--bg-alt); border-left:3px solid var(--primary); padding:6px 10px; font-family:var(--font-mono); font-size:0.8rem; white-space:pre-wrap;">
+                <div style="font-weight:700; font-size:0.7rem; text-transform:uppercase; color:var(--primary);">Rx Prescribed:</div>${r.prescription}
               </div>
             ` : ''}
 
-            ${r.followup ? `<div style="font-size:0.74rem; color:var(--warning); margin-top:6px;">Follow-up: ${r.followup}</div>` : ''}
+            ${r.followup ? `<div style="font-size:0.74rem; color:var(--warning); margin-top:5px;">Follow-up Date: ${r.followup}</div>` : ''}
           </div>
         `;
       }).join('');
@@ -3313,25 +2935,25 @@
     function renderVitalsSection(p) {
       const container = document.getElementById('vitals-summary-cards');
       container.innerHTML = `
-        <div class="vital-stat-box">
-          <div class="vital-title">Resting Blood Pressure</div>
-          <div class="vital-val" style="color:var(--primary)">145/95</div>
-          <div class="vital-status" style="color:var(--danger)">Stage 1 Hypertension</div>
+        <div class="vital-item">
+          <div class="vital-item-title">Resting BP</div>
+          <div class="vital-item-val" style="color:var(--primary)">145/95</div>
+          <div style="font-size:0.72rem; color:var(--danger); font-weight:600;">Stage 1 Hypertension</div>
         </div>
-        <div class="vital-stat-box">
-          <div class="vital-title">Resting Heart Rate</div>
-          <div class="vital-val" style="color:var(--success)">82 <span style="font-size:0.85rem">bpm</span></div>
-          <div class="vital-status" style="color:var(--success)">Normal Rhythm</div>
+        <div class="vital-item">
+          <div class="vital-item-title">Heart Rate</div>
+          <div class="vital-item-val" style="color:var(--success)">82 <span style="font-size:0.8rem">bpm</span></div>
+          <div style="font-size:0.72rem; color:var(--success); font-weight:600;">Normal Sinus</div>
         </div>
-        <div class="vital-stat-box">
-          <div class="vital-title">Oxygen Saturation</div>
-          <div class="vital-val" style="color:var(--success)">98 <span style="font-size:0.85rem">%</span></div>
-          <div class="vital-status" style="color:var(--success)">Optimal</div>
+        <div class="vital-item">
+          <div class="vital-item-title">Oxygen SpO2</div>
+          <div class="vital-item-val" style="color:var(--success)">98 <span style="font-size:0.8rem">%</span></div>
+          <div style="font-size:0.72rem; color:var(--success); font-weight:600;">Optimal</div>
         </div>
-        <div class="vital-stat-box">
-          <div class="vital-title">Body Mass Index (BMI)</div>
-          <div class="vital-val">23.4</div>
-          <div class="vital-status" style="color:var(--success)">Normal Weight</div>
+        <div class="vital-item">
+          <div class="vital-item-title">BMI Ratio</div>
+          <div class="vital-item-val">23.4</div>
+          <div style="font-size:0.72rem; color:var(--success); font-weight:600;">Normal Weight</div>
         </div>
       `;
     }
@@ -3341,7 +2963,7 @@
       const labs = p.labs || [];
 
       if (labs.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:1.5rem;">No diagnostic lab reports recorded.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:1.25rem;">No lab reports recorded.</td></tr>`;
         return;
       }
 
@@ -3350,16 +2972,10 @@
           <td><strong>${l.test}</strong></td>
           <td style="font-family:var(--font-mono); font-weight:700; ${l.isAbnormal ? 'color:var(--danger)' : ''}">${l.result} ${l.unit}</td>
           <td style="font-family:var(--font-mono); color:var(--text-muted)">${l.range} ${l.unit}</td>
-          <td>
-            <span class="badge ${l.isAbnormal ? 'badge-danger' : 'badge-success'}">
-              ${l.isAbnormal ? 'Abnormal' : 'Normal'}
-            </span>
-          </td>
+          <td><span class="badge ${l.isAbnormal ? 'badge-danger' : 'badge-success'}">${l.isAbnormal ? 'Abnormal' : 'Normal'}</span></td>
           <td>${l.date}</td>
           <td>${l.hospital}</td>
-          <td>
-            <button class="btn btn-secondary btn-sm" onclick="toast('Downloading certified PDF lab report')">PDF</button>
-          </td>
+          <td><button class="btn btn-secondary btn-sm" onclick="toast('Downloading certified PDF lab report')">PDF</button></td>
         </tr>
       `).join('');
     }
@@ -3369,7 +2985,6 @@
       document.getElementById('abha-aadhaar').textContent = p.aadhaar;
       const age = new Date().getFullYear() - new Date(p.dob).getFullYear();
       document.getElementById('abha-dob-gender').textContent = `DOB: ${p.dob} • ${p.gender} (${age} Yrs)`;
-      document.getElementById('abha-address').textContent = p.address ? p.address.split(',')[p.address.split(',').length - 1].trim() : 'India';
       document.getElementById('abha-blood').textContent = p.blood || 'O+';
     }
 
@@ -3566,9 +3181,9 @@
       }
 
       box.innerHTML = matches.map(m => `
-        <div class="suggestion-item" onclick="applyIcd10('${m.code}', '${m.desc.replace(/'/g, "\\'")}')">
+        <div class="dropdown-row" onclick="applyIcd10('${m.code}', '${m.desc.replace(/'/g, "\\'")}')">
           <span><strong>${m.code}</strong> — ${m.desc}</span>
-          <span style="font-size:0.75rem; color:var(--primary)">Apply</span>
+          <span style="font-size:0.75rem; color:var(--primary)">Select</span>
         </div>
       `).join('');
       box.style.display = 'block';
@@ -3584,60 +3199,6 @@
         rxBox.value = item.rx;
         scanPrescriptionForSafety(item.rx);
       }
-    }
-
-    let recognition = null;
-    let isListening = false;
-    function toggleSpeechDictation(targetTextareaId) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const btn = document.getElementById('btn-dictate-notes');
-      const label = document.getElementById('dictate-notes-label');
-
-      if (!SpeechRecognition) {
-        toast('Speech dictation not supported in this browser.', true);
-        return;
-      }
-
-      if (isListening && recognition) {
-        recognition.stop();
-        isListening = false;
-        btn.classList.remove('listening');
-        label.textContent = 'Dictate';
-        return;
-      }
-
-      recognition = new SpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = 'en-US';
-
-      recognition.onstart = () => {
-        isListening = true;
-        btn.classList.add('listening');
-        label.textContent = 'Listening...';
-        toast('Microphone listening: speak notes');
-      };
-
-      recognition.onresult = (e) => {
-        let transcript = '';
-        for (let i = e.resultIndex; i < e.results.length; ++i) transcript += e.results[i][0].transcript;
-        const area = document.getElementById(targetTextareaId);
-        area.value = area.value ? area.value + ' ' + transcript : transcript;
-      };
-
-      recognition.onerror = () => {
-        isListening = false;
-        btn.classList.remove('listening');
-        label.textContent = 'Dictate';
-      };
-
-      recognition.onend = () => {
-        isListening = false;
-        btn.classList.remove('listening');
-        label.textContent = 'Dictate';
-      };
-
-      recognition.start();
     }
 
     function submitClinicalEncounter() {
@@ -3673,7 +3234,7 @@
       p.records.unshift(newRecord);
       saveState();
 
-      toast('Clinical encounter saved to patient record');
+      toast('Clinical encounter saved to patient ledger');
       document.getElementById('consultation-form').reset();
       quickLoadPatient(a);
     }
@@ -3694,8 +3255,8 @@
 
       let level = 5;
       let levelName = 'NON-URGENT (Level 5)';
-      let levelColor = '#0284c7';
-      let actionText = 'Standard OPD consultation or medication renewal.';
+      let levelColor = '#007799';
+      let actionText = 'Standard OPD consultation or routine prescription renewal.';
 
       if (q1 === 'yes' || spo2 < 85) {
         level = 1;
@@ -3726,13 +3287,13 @@
       cardEl.style.borderColor = levelColor;
 
       boxEl.innerHTML = `
-        <div style="font-weight:700; margin-bottom:4px; color:${levelColor}">Clinical Disposition:</div>
+        <div style="font-weight:700; margin-bottom:2px; color:${levelColor}">Clinical Disposition:</div>
         <div>${actionText}</div>
       `;
     }
 
     function filterBedsByWard(wardName) {
-      document.querySelectorAll('.ward-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.ward-pill').forEach(b => b.classList.remove('active'));
       if (event && event.currentTarget) event.currentTarget.classList.add('active');
       renderBedMatrix(wardName);
     }
@@ -3750,34 +3311,27 @@
         const cardClass = isOccupied ? 'occupied' : (isVacant ? 'vacant' : 'cleaning');
 
         return `
-          <div class="bed-card ${cardClass}">
+          <div class="bed-item ${cardClass}">
             <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span style="font-family:var(--font-mono); font-weight:700; font-size:1.05rem;">${b.bedNum}</span>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-family:var(--font-mono); font-weight:700; font-size:1rem;">${b.bedNum}</span>
                 <span class="badge ${isOccupied ? 'badge-danger' : (isVacant ? 'badge-success' : 'badge-warning')}">${b.status}</span>
               </div>
-              <div style="font-size:0.75rem; color:var(--text-muted);">${b.ward}</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">${b.ward}</div>
             </div>
 
             ${isOccupied ? `
-              <div style="background:var(--bg-alt); padding:8px; border-radius:4px; font-size:0.8rem;">
+              <div style="background:var(--bg-alt); padding:6px 8px; border-radius:4px; font-size:0.78rem;">
                 <div style="font-weight:700;">${b.patName}</div>
-                <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--primary)">UID: ${b.aadhaar}</div>
-                <div style="font-size:0.72rem; color:var(--text-muted);">Doctor: ${b.doctor}</div>
+                <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary)">UID: ${b.aadhaar}</div>
               </div>
-              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="dischargeBed(${b.id})">
-                Discharge Bed
-              </button>
+              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="dischargeBed(${b.id})">Discharge</button>
             ` : (isVacant ? `
-              <div style="font-size:0.78rem; color:var(--success);">● Available for Admission</div>
-              <button class="btn btn-primary btn-sm" style="width:100%" onclick="openBedAdmitModalWithBed('${b.bedNum}')">
-                Admit Patient
-              </button>
+              <div style="font-size:0.76rem; color:var(--success);">● Vacant & Ready</div>
+              <button class="btn btn-primary btn-sm" style="width:100%" onclick="openBedAdmitModalWithBed('${b.bedNum}')">Admit</button>
             ` : `
-              <div style="font-size:0.78rem; color:var(--warning);">Sanitizing in Progress</div>
-              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="markBedVacant(${b.id})">
-                Mark Cleaned
-              </button>
+              <div style="font-size:0.76rem; color:var(--warning);">Cleaning in Progress</div>
+              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="markBedVacant(${b.id})">Mark Cleaned</button>
             `)}
           </div>
         `;
@@ -3834,7 +3388,7 @@
         bed.aadhaar = '';
         saveState();
         renderBedMatrix('ALL');
-        toast(`Bed ${bed.bedNum} marked for cleaning.`);
+        toast(`Bed ${bed.bedNum} marked for sanitization.`);
       }
     }
 
@@ -3874,7 +3428,7 @@
       const list = state.queue || [];
 
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:var(--text-muted)">No active OPD queue tokens.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.25rem; color:var(--text-muted)">No active OPD queue tokens.</td></tr>`;
         return;
       }
 
@@ -3884,15 +3438,9 @@
           <td><strong>${item.name}</strong></td>
           <td style="font-family:var(--font-mono); color:var(--text-muted)">${item.aadhaar}</td>
           <td>${item.doctor}</td>
-          <td>
-            <span class="badge ${item.status === 'Serving' ? 'badge-primary' : 'badge-warning'}">
-              ${item.status}
-            </span>
-          </td>
+          <td><span class="badge ${item.status === 'Serving' ? 'badge-primary' : 'badge-warning'}">${item.status}</span></td>
           <td>${item.time}</td>
-          <td>
-            <button class="btn btn-secondary btn-sm" onclick="setActiveServingToken(${idx})">Serve</button>
-          </td>
+          <td><button class="btn btn-secondary btn-sm" onclick="setActiveServingToken(${idx})">Serve</button></td>
         </tr>
       `).join('');
     }
@@ -3908,7 +3456,7 @@
       playQueueChime();
       saveState();
       renderQueueTable();
-      toast(`Now calling Token ${item.token}`);
+      toast(`Calling Token ${item.token}`);
     }
 
     function callNextToken() {
@@ -3997,7 +3545,7 @@
             labels: Object.keys(deptCounts),
             datasets: [{
               data: Object.values(deptCounts),
-              backgroundColor: ['#0284c7', '#4f46e5', '#059669', '#d97706', '#dc2626', '#7c3aed', '#db2777'],
+              backgroundColor: ['#004b87', '#007799', '#059669', '#f59e0b', '#dc2626', '#6366f1', '#0284c7'],
               borderWidth: 2
             }]
           },
@@ -4005,7 +3553,7 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'right', labels: { boxWidth: 12, font: { family: 'Inter', size: 11 } } }
+              legend: { position: 'right', labels: { boxWidth: 10, font: { family: 'Inter', size: 11 } } }
             }
           }
         });
@@ -4021,7 +3569,7 @@
             datasets: [{
               label: 'Encounters',
               data: Object.values(hospitalCounts),
-              backgroundColor: '#0284c7',
+              backgroundColor: '#004b87',
               borderRadius: 4
             }]
           },
@@ -4054,8 +3602,8 @@
               label: 'Systolic BP (mmHg)',
               data: [130, 128, 138, 145, 142],
               borderColor: '#dc2626',
-              backgroundColor: 'rgba(220, 38, 38, 0.08)',
-              tension: 0.3,
+              backgroundColor: 'rgba(220, 38, 38, 0.06)',
+              tension: 0.25,
               fill: true
             },
             {
@@ -4063,14 +3611,14 @@
               data: [85, 84, 90, 95, 92],
               borderColor: '#d97706',
               backgroundColor: 'transparent',
-              tension: 0.3
+              tension: 0.25
             },
             {
               label: 'Heart Rate (bpm)',
               data: [76, 74, 80, 82, 80],
-              borderColor: '#0284c7',
+              borderColor: '#004b87',
               backgroundColor: 'transparent',
-              tension: 0.3
+              tension: 0.25
             }
           ]
         },
@@ -4082,7 +3630,7 @@
             x: { grid: { display: false } }
           },
           plugins: {
-            legend: { labels: { boxWidth: 12, font: { family: 'Inter', size: 11 } } }
+            legend: { labels: { boxWidth: 10, font: { family: 'Inter', size: 11 } } }
           }
         }
       });
@@ -4106,7 +3654,7 @@
       );
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:var(--text-muted)">No matching records.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.25rem; color:var(--text-muted)">No matching records.</td></tr>`;
         return;
       }
 
@@ -4295,7 +3843,7 @@ ORDER BY mr.visit_date DESC;`,
 
       if (rows.length === 0) {
         thead.innerHTML = '';
-        tbody.innerHTML = `<tr><td style="text-align:center; padding:1.25rem; color:var(--text-muted)">0 rows returned.</td></tr>`;
+        tbody.innerHTML = `<tr><td style="text-align:center; padding:1rem; color:var(--text-muted)">0 rows returned.</td></tr>`;
         return;
       }
 
