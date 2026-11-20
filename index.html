@@ -1158,10 +1158,149 @@
     .toast-msg.success { border-left: 4px solid var(--success); }
     .toast-msg.danger  { border-left: 4px solid var(--danger); }
 
+    /* ==========================================================================
+       HOSPITAL FOOTER (APOLLO & MANIPAL NETWORK STYLE)
+       ========================================================================== */
+    footer.app-footer {
+      background: #002b49;
+      color: #cbd5e1;
+      border-top: 3px solid var(--accent);
+      margin-top: 3.5rem;
+      font-size: 0.84rem;
+    }
+    [data-theme="dark"] footer.app-footer {
+      background: #080f1a;
+      border-top-color: var(--accent);
+      border-bottom: 1px solid #1a283c;
+    }
+    .footer-top-strip {
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.85rem 1.25rem;
+    }
+    .footer-top-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+    .footer-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      color: #e2e8f0;
+    }
+    .footer-body {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 2.75rem 1.25rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .footer-col a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+    .footer-emergency-box {
+      background: rgba(220, 38, 38, 0.12);
+      border: 1px solid rgba(220, 38, 38, 0.35);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      margin-top: 1rem;
+    }
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.25rem;
+      background: rgba(0, 0, 0, 0.25);
+    }
+    .footer-bottom-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom-links a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+    .footer-bottom-links a:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-body {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .footer-body {
+        grid-template-columns: 1fr;
+      }
+      .footer-top-inner, .footer-bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
     /* Print Styles */
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
-      .utility-bar, header.app-header, nav.app-nav, .no-print, #toast-wrap, .btn-row, .btn { display: none !important; }
+      .utility-bar, header.app-header, nav.app-nav, .no-print, #toast-wrap, .btn-row, .btn, footer.app-footer { display: none !important; }
       main.app-main { padding: 0 !important; max-width: 100% !important; }
       .print-slip { display: block !important; padding: 2rem !important; }
     }
@@ -2124,6 +2263,137 @@
     </div>
 
   </main>
+
+  <!-- ==========================================================================
+       HOSPITAL FOOTER (APOLLO & MANIPAL CLINICAL NETWORK)
+       ========================================================================== -->
+  <footer class="app-footer no-print">
+    <!-- Accreditation & Rapid Response Strip -->
+    <div class="footer-top-strip">
+      <div class="footer-top-inner">
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <span style="font-weight:700; color:#fed7aa; display:inline-flex; align-items:center; gap:6px;">
+            🚨 24x7 Emergency Trauma Response:
+          </span>
+          <span style="font-weight:800; color:#ffffff; font-size:0.95rem;">Tel: 1066 / 102 (Ambulance)</span>
+          <span style="opacity:0.4;">|</span>
+          <span style="color:#cbd5e1;">NABH &amp; NABL Accredited Healthcare Network</span>
+        </div>
+        <div class="footer-badges">
+          <span class="footer-badge-pill">🛡️ ABDM HIP/HIU Certified</span>
+          <span class="footer-badge-pill">📋 ISO 9001:2015 Quality</span>
+          <span class="footer-badge-pill">🔒 Data Protection (HIPAA &amp; DPDP)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer Directory -->
+    <div class="footer-body">
+      <!-- Col 1: Brand & Emergency -->
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.75rem;">
+          <div style="width:34px; height:34px; background:var(--primary); color:#ffffff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem;">M</div>
+          <div>
+            <div style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; color:#ffffff; line-height:1.1;">Medi<span style="color:#f59e0b;">Link</span></div>
+            <div style="font-size:0.68rem; font-weight:600; color:#94a3b8; letter-spacing:0.3px; text-transform:uppercase;">Hospital Information System</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem; color:#94a3b8; line-height:1.55; margin-bottom:1rem;">
+          Interoperable Electronic Medical Record (EMR) exchange connecting leading hospital groups. Empowering physicians with instant patient longitudinal history, drug-allergy safety checks, and acute triage management.
+        </p>
+
+        <div class="footer-emergency-box">
+          <div style="font-size:0.75rem; font-weight:700; color:#fca5a5; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+            <span style="width:8px; height:8px; border-radius:50%; background:#ef4444; display:inline-block;"></span>
+            24x7 TRAUMA &amp; EMERGENCY BAY
+          </div>
+          <div style="font-size:0.85rem; font-weight:700; color:#ffffff;">Apollo-Manipal Emergency Desk: 1066</div>
+          <div style="font-size:0.72rem; color:#fecaca; margin-top:2px;">Zero-Delay Clinical Triage Protocol Active</div>
+        </div>
+      </div>
+
+      <!-- Col 2: Clinical Modules -->
+      <div class="footer-col">
+        <h4><span>🩺</span> Clinical Modules</h4>
+        <ul>
+          <li><a onclick="showPage('search'); window.scrollTo({top:0, behavior:'smooth'});">Patient 360° Health Records</a></li>
+          <li><a onclick="showPage('add'); window.scrollTo({top:0, behavior:'smooth'});">Doctor Consultation &amp; Rx</a></li>
+          <li><a onclick="showPage('triage'); window.scrollTo({top:0, behavior:'smooth'});">Emergency Triage (ESI 1–5)</a></li>
+          <li><a onclick="showPage('beds'); window.scrollTo({top:0, behavior:'smooth'});">Ward &amp; ICU Bed Allocation</a></li>
+          <li><a onclick="showPage('queue'); window.scrollTo({top:0, behavior:'smooth'});">OPD Live Queue Coordinator</a></li>
+          <li><a onclick="showPage('analytics'); window.scrollTo({top:0, behavior:'smooth'});">Clinical Visual Analytics</a></li>
+          <li><a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">National Exchange Audit Trail</a></li>
+          <li><a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">SQL Relational Query Runner</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Key Specialties -->
+      <div class="footer-col">
+        <h4><span>🏥</span> Specialties</h4>
+        <ul>
+          <li><a onclick="quickLoadPatient('5555 6666 7777'); window.scrollTo({top:0, behavior:'smooth'});">Cardiology &amp; Cardiac ICU</a></li>
+          <li><a onclick="quickLoadPatient('1111 2222 3333'); window.scrollTo({top:0, behavior:'smooth'});">Orthopedics &amp; Joint Replacement</a></li>
+          <li><a onclick="quickLoadPatient('2345 6789 0123'); window.scrollTo({top:0, behavior:'smooth'});">Internal Medicine &amp; CDSS</a></li>
+          <li><a onclick="quickLoadPatient('4444 3333 2222'); window.scrollTo({top:0, behavior:'smooth'});">Pediatric Pulmonology</a></li>
+          <li><a onclick="quickLoadPatient('9999 8888 7777'); window.scrollTo({top:0, behavior:'smooth'});">Endocrinology &amp; Diabetes</a></li>
+          <li><a onclick="showPage('triage'); window.scrollTo({top:0, behavior:'smooth'});">Emergency &amp; Critical Care</a></li>
+          <li><a onclick="showPage('beds'); window.scrollTo({top:0, behavior:'smooth'});">Surgical Post-Op Care</a></li>
+          <li><a onclick="showPage('search'); window.scrollTo({top:0, behavior:'smooth'});">Diagnostic Pathology Lab</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Network Hospitals -->
+      <div class="footer-col">
+        <h4><span>📍</span> Network Facilities</h4>
+        <ul>
+          <li><a onclick="switchFacilityInHeader('1')">AIIMS New Delhi (Ansari Nagar)</a></li>
+          <li><a onclick="switchFacilityInHeader('2')">Apollo Multi-Speciality (Delhi)</a></li>
+          <li><a onclick="switchFacilityInHeader('6')">Manipal Hospital (Bengaluru)</a></li>
+          <li><a onclick="switchFacilityInHeader('3')">Fortis Healthcare (Gurugram)</a></li>
+          <li><a onclick="switchFacilityInHeader('4')">Max Super Speciality (Saket)</a></li>
+          <li><a onclick="switchFacilityInHeader('5')">PGIMER (Chandigarh)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Governance & Standards -->
+      <div class="footer-col">
+        <h4><span>⚖️</span> Compliance</h4>
+        <ul>
+          <li><a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">ABDM Consent Architecture</a></li>
+          <li><a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">Relational Schema &amp; Audit Logs</a></li>
+          <li><a onclick="showBreakGlassModal()">Emergency Break-Glass Policy</a></li>
+          <li><a onclick="openDatabaseModal()">Database Backup &amp; JSON Export</a></li>
+          <li><a onclick="toast('NABH Safe-I Infection Control Guidelines: Compliant')">NABH Safety Protocols</a></li>
+          <li><a onclick="toast('Pharmacovigilance Programme of India (PvPI): Active')">Pharmacovigilance Guidelines</a></li>
+          <li><a onclick="toast('Patient Charter of Rights & Responsibilities: Enforced')">Patient Rights Charter</a></li>
+          <li><a onclick="toast('Bio-Medical Waste Management Rules (2016): Certified')">Bio-Medical Waste Standard</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Node Bar -->
+    <div class="footer-bottom-bar">
+      <div class="footer-bottom-inner">
+        <div>
+          © 2026 MediLink Unified Hospital Management System. All rights reserved.
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:#10b981; display:inline-block;"></span>
+          <span>Node: <strong>DL-AIIMS-01</strong></span>
+          <span>•</span>
+          <span>Version: <strong>v2.4.2 Enterprise HIS</strong></span>
+          <span>•</span>
+          <span style="color:#10b981;">Gateway Uptime: 99.98%</span>
+        </div>
+        <div class="footer-bottom-links">
+          <a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">Audit Logs</a>
+          <a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">Course Queries Q1–Q5</a>
+          <a onclick="toggleTheme()">Theme Toggle</a>
+          <a onclick="openDatabaseModal()">Data Management</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- ==========================================================================
        MODAL 1: BREAK-GLASS EMERGENCY OVERLAY
@@ -3916,6 +4186,15 @@ ORDER BY mr.visit_date DESC;`,
         const inp = document.getElementById('ehr-search-input');
         if (inp) inp.focus();
       }, 80);
+    }
+
+    function switchFacilityInHeader(facId) {
+      const sel = document.getElementById('active-facility-select');
+      if (sel) {
+        sel.value = facId;
+        onFacilityChange(facId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   </script>
 </body>
