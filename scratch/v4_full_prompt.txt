@@ -1,0 +1,575 @@
+<USER_REQUEST>
+# MEDILINK ENTERPRISE v4.0 — PREMIUM REDESIGN, FUNCTIONAL REPAIR & USER EXPERIENCE UPGRADE
+
+Act as a senior full-stack engineer, professional UI/UX designer, FastAPI developer, and software quality assurance engineer.
+
+I have an existing hospital management application named MediLink Enterprise v3.0.
+
+The application already contains a FastAPI backend, SQLAlchemy models, MySQL/SQLite database support, patient records, hospital operations, authentication, staff profiles, and multiple functional modules.
+
+I want to upgrade the existing application into **MediLink Enterprise v4.0**.
+
+MY MAIN GOALS:
+
+1. Make the entire website significantly more beautiful, modern, and attractive.
+2. Create a consistent premium design across all pages.
+3. Fix broken, incomplete, or unreliable features.
+4. Improve application speed, responsiveness, and usability.
+5. Make each navigation item, button, and form perform its intended action.
+6. Preserve the existing backend, database, and working functionality.
+
+IMPORTANT: DO NOT JUST WRITE A PLAN OR REPORT. IMPLEMENT ACTUAL CODE CHANGES AND VERIFY THE APPLICATION IN A RUNNING BROWSER.
+
+## PHASE 1 — INSPECT THE PROJECT FIRST
+
+Before making changes:
+
+- Inspect the actual source code.
+- Identify the current frontend architecture.
+- Inspect FastAPI routes and database models.
+- Review existing automated tests.
+- Check frontend/backend API compatibility.
+- Identify duplicate or unused code.
+- Inspect session management, navigation, and state handling.
+- Identify features that are incomplete, simulated, or broken.
+
+Create a non-destructive backup or Git checkpoint.
+
+Do not assume all previously reported fixes work. Verify them independently.
+
+Preserve existing database records and API contracts.
+
+## PHASE 2 — CREATE A PREMIUM VISUAL DESIGN SYSTEM
+
+Build a distinctive, professional healthcare SaaS design.
+
+### Visual identity
+
+Brand: MediLink
+
+Design style: Modern, clean, minimal, elegant, premium, trustworthy.
+
+Use these colors:
+
+- Primary: #2563EB
+- Dark Navy: #0F172A
+- Teal: #0D9488
+- Background: #F8FAFC
+- White Surface: #FFFFFF
+- Border: #E2E8F0
+- Secondary Text: #64748B
+
+Use Inter or Plus Jakarta Sans typography.
+
+Use Lucide icons consistently.
+
+Implement:
+
+- Reusable buttons.
+- Consistent form fields.
+- Beautiful data tables.
+- Standardized cards.
+- Modern dialog boxes.
+- Accessible dropdowns.
+- Toast notifications.
+- Loading skeletons.
+- Empty states.
+- Error states.
+- Consistent spacing and typography.
+- Light and dark themes.
+
+Use subtle shadows, tasteful animations, smooth hover states, and elegant transitions.
+
+Avoid excessive gradients, overcrowded pages, inconsistent icons, and unnecessary decorative elements.
+
+## PHASE 3 — REDESIGN THE HOMEPAGE
+
+Create a professional landing page.
+
+### Header
+
+Include:
+
+- MediLink logo.
+- Home.
+- Features.
+- How It Works.
+- About.
+- Contact.
+- Sign In.
+- Get Started.
+
+### Hero section
+
+Heading:
+
+"Smarter Healthcare. Seamlessly Connected."
+
+Subheading:
+
+"Manage patients, appointments, medical records, and hospital operations through one unified healthcare platform."
+
+Add:
+
+- Get Started button.
+- Explore Features button.
+- Beautiful dashboard preview.
+- Tasteful blue and teal visual accents.
+
+Use real application capabilities for feature descriptions.
+
+Do not display invented hospital performance statistics or unsupported security certifications.
+
+### Feature showcase
+
+Create visually appealing cards for:
+
+- Patient Management.
+- Electronic Medical Records.
+- Appointment Scheduling.
+- Digital Prescriptions.
+- Doctor Management.
+- OPD Queue.
+- Bed Management.
+- Laboratory Reports.
+- Hospital Analytics.
+- Secure Staff Access.
+
+### Other homepage sections
+
+Include:
+
+- How MediLink Works.
+- Platform Benefits.
+- Dashboard Preview.
+- Call to Action.
+- Footer.
+
+Ensure all homepage navigation and action buttons work correctly.
+
+## PHASE 4 — BUILD A BEAUTIFUL LOGIN EXPERIENCE
+
+Create a premium two-column login page.
+
+Left side:
+
+- MediLink branding.
+- Healthcare-themed SVG illustration.
+- Product tagline.
+- Subtle visual effects.
+
+Right side:
+
+- Clean login card.
+- Username.
+- Password.
+- Show/hide password.
+- Sign In button.
+- Validation errors.
+- Return to Homepage.
+
+Support Administrator, Doctor, Receptionist, and Emergency Staff accounts.
+
+Keep demo credentials restricted to explicit demonstration mode.
+
+After successful login, navigate to the correct authenticated dashboard.
+
+Never show a blank screen.
+
+## PHASE 5 — REDESIGN THE HOSPITAL DASHBOARD
+
+Make the dashboard the most impressive part of the application.
+
+### Sidebar
+
+Create a collapsible sidebar containing:
+
+- Dashboard.
+- Patient Directory.
+- EHR Viewer.
+- Register Patient.
+- Doctor Consultation.
+- Appointments.
+- Doctor Availability.
+- Beds & Wards.
+- OPD Queue.
+- Laboratory Reports.
+- Emergency.
+- Analytics.
+- Audit Logs.
+- SQL Workbench.
+- My Profile.
+- Settings.
+
+Use clear active states and role-based visibility.
+
+### Topbar
+
+Include:
+
+- Current page heading.
+- Breadcrumbs.
+- Global search.
+- Facility selector.
+- Notification bell.
+- Theme toggle.
+- Staff avatar and profile dropdown.
+
+### Dashboard overview
+
+Create cards showing:
+
+- Total Patients.
+- Today's Appointments.
+- Active Consultations.
+- Available Beds.
+- Waiting OPD Patients.
+- Completed Consultations.
+
+Add:
+
+- Patient Visit Trends.
+- Bed Occupancy Chart.
+- Department Activity.
+- Upcoming Appointments.
+- Recent Medical Encounters.
+- Recent Hospital Activity.
+- Quick Actions.
+
+All live metrics must come from the real backend.
+
+Use loading skeletons while requesting data.
+
+If an API fails, show a meaningful error and a Retry button instead of hiding the entire page.
+
+## PHASE 6 — FIX AND IMPROVE ALL EXISTING FEATURES
+
+Test every feature against the actual database.
+
+### 1. Patient Management
+
+Ensure:
+
+- Register Patient works.
+- Patient details save correctly.
+- Records persist after refresh.
+- Search works.
+- Filters and pagination work.
+- Edit Patient works for authorized users.
+- Duplicate registration is handled correctly.
+- Patient profile opens reliably.
+- Sensitive identifiers are masked.
+
+Redesign the patient directory with professional data tables and beautiful patient profile screens.
+
+### 2. Electronic Health Records
+
+Ensure:
+
+- Patient records load correctly.
+- Medical history is accurate.
+- Encounter timelines are ordered correctly.
+- Vitals display actual saved measurements.
+- Prescriptions open the correct encounter.
+- Authorized records can be printed.
+- Missing measurements are clearly shown.
+
+Create a polished, readable EHR interface.
+
+### 3. Doctor Consultations
+
+Improve consultation forms with:
+
+- Patient selection.
+- Doctor selection.
+- Chief complaint.
+- Clinical notes.
+- Vitals.
+- Diagnosis.
+- Prescription.
+- Follow-up date.
+- Save and validation feedback.
+
+Prevent accidental duplicate submissions.
+
+Never automatically prescribe medication or present unvalidated decision-support rules as clinical recommendations.
+
+### 4. Appointments
+
+Fix:
+
+- Appointment creation.
+- Doctor availability.
+- Date selection.
+- Time-slot selection.
+- Conflict detection.
+- Rescheduling.
+- Cancellation.
+- Appointment status.
+- Calendar synchronization with database records.
+
+Create a beautiful scheduling interface with calendar and list views.
+
+### 5. Doctors
+
+Improve the doctor directory.
+
+Display:
+
+- Doctor name.
+- Specialization.
+- Department.
+- Assigned hospital.
+- Availability.
+- Scheduled appointments.
+
+Ensure all displayed details come from saved records.
+
+### 6. Bed Management
+
+Create a visual ward matrix.
+
+Support:
+
+- Available beds.
+- Occupied beds.
+- Reserved beds.
+- Cleaning beds.
+- Admission.
+- Transfer.
+- Discharge.
+- Cleaning completion.
+
+Prevent duplicate assignments and invalid state transitions.
+
+### 7. OPD Queue
+
+Ensure:
+
+- Token creation works.
+- Tokens are unique.
+- Waiting queue loads.
+- Calling the next patient works.
+- Completing consultations updates queue status.
+- Cancelled tokens are handled.
+- Queue information persists.
+- Multiple users cannot issue conflicting tokens.
+
+Build a modern OPD management screen with prominent token cards.
+
+### 8. Laboratory Reports
+
+Fix:
+
+- Uploading reports.
+- Viewing records.
+- Associating reports with the correct patient.
+- Authorized downloads.
+- Upload validation.
+- File errors and retry handling.
+
+Improve the lab reports page with clean cards and tables.
+
+### 9. Emergency Module
+
+Verify that emergency patient lookup, record access, authorization, and audit logging operate correctly.
+
+Clearly label any educational triage simulation and require clinician review for real clinical decisions.
+
+### 10. Analytics
+
+Ensure graphs load actual backend data.
+
+Fix:
+
+- Incorrect counts.
+- Empty chart behavior.
+- Broken date filtering.
+- CSV downloads.
+- Department statistics.
+- Hospital selection filtering.
+
+Create a professional analytics dashboard.
+
+### 11. Notifications
+
+Verify:
+
+- Notification bell opens.
+- Unread count is correct.
+- Notifications load.
+- Mark as Read works.
+- Mark All Read works.
+- Notification changes persist.
+
+### 12. SQL Workbench
+
+Ensure approved read-only queries execute against the real database.
+
+Display proper results, execution time, and errors.
+
+Never expose unrestricted database query execution to ordinary users.
+
+## PHASE 7 — REPAIR PROFILE AND LOGOUT
+
+Preserve and verify the profile features added previously.
+
+The staff avatar dropdown must contain:
+
+- View Profile.
+- Account Settings.
+- Change Password.
+- Theme Preference.
+- Sign Out.
+
+The profile page must display actual authenticated staff information.
+
+Ensure:
+
+- Profile update works.
+- Data persists.
+- Change Password verifies the current password.
+- Staff cannot change their own permissions.
+- Logout invalidates the session.
+- Browser Back cannot restore unauthorized content.
+- Page refresh correctly restores a valid session.
+- Invalid sessions redirect to login.
+
+Keep both sidebar and header logout buttons functional.
+
+## PHASE 8 — ADD QUALITY-OF-LIFE FEATURES
+
+Only after existing features pass testing, implement useful improvements:
+
+**A. Global Search**
+
+Search authorized patients, appointments, doctors, and relevant records.
+
+Add keyboard shortcut Ctrl+K.
+
+**B. Recent Activity**
+
+Show recent hospital operations relevant to the authenticated role.
+
+**C. Quick Actions**
+
+Provide shortcuts to frequently used activities.
+
+**D. Better Filters**
+
+Add useful sorting, pagination, and date filtering to major tables.
+
+**E. Unsaved Changes Warning**
+
+Warn users before leaving consultation or registration forms containing unsaved changes.
+
+**F. Better Feedback**
+
+Every important operation should display a clear success, error, or loading state.
+
+**G. Mobile Layout**
+
+Support responsive navigation and tables on phones and tablets.
+
+Do not introduce new complex modules unless they can be fully implemented and tested.
+
+## PHASE 9 — PERFORMANCE, ACCESSIBILITY AND SECURITY
+
+Improve:
+
+- Application initialization.
+- API request handling.
+- Error boundaries and fallback screens.
+- Efficient list rendering.
+- Chart initialization.
+- Duplicate event listener prevention.
+- Debounced search.
+- Pagination.
+- Keyboard accessibility.
+- Screen reader labels.
+- Contrast ratios.
+- Focus indicators.
+- Reduced-motion accessibility.
+
+Verify backend authorization, not just frontend role visibility.
+
+Avoid exposing sensitive patient information in logs, browser storage, URLs, and unauthorized exports.
+
+Ensure database connection errors are visible. Never silently switch to a different production database.
+
+Keep the existing technology stack unless a framework migration is genuinely necessary.
+
+## PHASE 10 — COMPLETE END-TO-END TESTING
+
+Run the application and test real workflows.
+
+Verify:
+
+1. Homepage.
+2. Login.
+3. Role-based dashboard.
+4. Sidebar navigation.
+5. Patient registration.
+6. Patient searching.
+7. Patient profile.
+8. Consultation creation.
+9. Prescription retrieval.
+10. Appointment booking.
+11. Appointment cancellation.
+12. Doctor availability.
+13. Bed admission and discharge.
+14. OPD tokens.
+15. Lab report upload and download.
+16. Analytics and reports.
+17. Notifications.
+18. Staff profile.
+19. Password change.
+20. Logout and session restoration.
+
+Test all supported roles.
+
+Run:
+
+`python -m pytest backend/tests/ -v`
+
+Also run JavaScript syntax checks, Python type checking, and browser end-to-end tests.
+
+Inspect the browser console and network requests.
+
+Verify mobile, tablet, and desktop layouts.
+
+Do not suppress errors to manufacture a passing report.
+
+## FINAL REQUIREMENTS
+
+- Preserve all working MediLink features.
+- Do not delete existing database records.
+- Do not overwrite user data with demo data.
+- Do not introduce fake API responses.
+- Do not create nonfunctional buttons.
+- Do not introduce unnecessary dependencies.
+- Do not claim tests passed without running them.
+- Do not stop after making visual changes.
+
+At completion, provide:
+
+1. Files modified.
+2. Before/after UI screenshots, if supported.
+3. Bugs found and fixed.
+4. Features verified.
+5. Features added.
+6. Tests executed and results.
+7. Remaining limitations.
+8. Startup instructions.
+
+**FINAL GOAL: Transform MediLink Enterprise v3.0 into a beautiful, fast, responsive, feature-complete MediLink Enterprise v4.0 while preserving backend compatibility and existing database records.**
+
+Start with a complete functional audit. Fix broken functionality first, then implement the premium design system, redesign the homepage and dashboard, polish every module, and perform final browser testing.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-21T12:38:26+05:30.
+
+The user's current state is as follows:
+Active Document: c:\Users\akshi\Downloads\Hospital_Management-master\schema.sql (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1
+</ADDITIONAL_METADATA>
