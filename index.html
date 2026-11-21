@@ -1215,6 +1215,221 @@
       .patient-summary-box { flex-direction: column; align-items: flex-start; }
       .services-grid { grid-template-columns: 1fr; }
     }
+
+    /* ==========================================================================
+       SECTION: HOSPITAL HOME PAGE / CLINICAL DASHBOARD
+       ========================================================================== */
+    .home-welcome-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .home-welcome-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #0284c7, var(--success));
+    }
+    .home-welcome-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .home-welcome-title {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .home-welcome-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      line-height: 1.5;
+    }
+
+    .home-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .home-kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .home-kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .home-kpi-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .home-kpi-value {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .home-kpi-foot {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .home-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 1.5rem 0 0.85rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .home-action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .home-action-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .home-action-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .home-action-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .home-action-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .home-action-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .home-action-link {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .home-dept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .home-dept-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .home-dept-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .home-dept-lead {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .home-dept-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .home-emergency-strip {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(239, 68, 68, 0.03));
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .home-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .home-dept-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .home-kpi-grid { grid-template-columns: 1fr; }
+      .home-dept-grid { grid-template-columns: 1fr; }
+      .home-welcome-card { padding: 1.25rem 1rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -1248,7 +1463,7 @@
           </svg>
         </button>
 
-        <div class="brand-group" onclick="showPage('search')">
+        <div class="brand-group" onclick="showPage('home')">
           <div class="brand-symbol">M</div>
           <div class="brand-text-block">
             <div class="brand-title">Medi<span>Link</span></div>
@@ -1306,7 +1521,11 @@
        ========================================================================== -->
   <nav class="app-nav">
     <div class="nav-inner" id="nav-tabs-bar">
-      <button class="nav-btn active" onclick="showPage('search')">
+      <button class="nav-btn active" onclick="showPage('home')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" onclick="showPage('search')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span>Patients &amp; EHR</span>
         <span class="nav-badge" id="nav-patient-count">5</span>
@@ -1338,7 +1557,8 @@
       <div class="brand-title">Medi<span>Link</span></div>
       <button class="btn-icon" onclick="toggleDrawer()">✕</button>
     </div>
-    <button class="drawer-item active" onclick="showPage('search'); toggleDrawer();">🔍 Patients &amp; EHR</button>
+    <button class="drawer-item active" onclick="showPage('home'); toggleDrawer();">🏠 Hospital Home</button>
+    <button class="drawer-item" onclick="showPage('search'); toggleDrawer();">🔍 Patients &amp; EHR</button>
     <button class="drawer-item" onclick="showPage('add'); toggleDrawer();">📋 New Consultation</button>
     <button class="drawer-item" onclick="showPage('register'); toggleDrawer();">➕ Register Patient</button>
     <button class="drawer-item" onclick="showPage('beds'); toggleDrawer();">🛏️ Ward Bed Matrix</button>
@@ -1350,8 +1570,257 @@
        ========================================================================== -->
   <main class="app-main">
 
+    <!-- ==========================================================================
+         PAGE 1: HOSPITAL HOME & CLINICAL DASHBOARD
+         ========================================================================== -->
+    <div id="page-home" class="page active">
+      <!-- Welcome Clinical Banner -->
+      <div class="home-welcome-card">
+        <div class="home-welcome-header">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="badge badge-success">● Network Active</span>
+              <span style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">ABDM Federated Node: AIIMS-DEL-01</span>
+            </div>
+            <h1 class="home-welcome-title">Hospital Operations &amp; Clinical Care Portal</h1>
+            <div class="home-welcome-sub">
+              Access federated electronic health records, record physician consultations with live drug-allergy safety checks, manage ward bed allocation, and run relational hospital audits.
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-secondary btn-sm" onclick="showPage('register')">+ Register Patient</button>
+            <button class="btn btn-primary btn-sm" onclick="showPage('add')">+ New Consultation</button>
+          </div>
+        </div>
 
-    <div id="page-search" class="page active">
+        <!-- Quick Patient Lookup on Home -->
+        <div style="background:var(--bg-alt); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border);">
+          <div style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">Instant Patient EHR Lookup</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+            <input type="text" id="home-aadhaar-input" class="form-control aadhaar-input" style="flex:1; min-width:260px;" placeholder="Enter 12-digit Aadhaar UID, Mobile Number, or Patient Name" maxlength="24" onkeydown="if(event.key==='Enter') executeHomeSearch()" />
+            <button class="btn btn-primary" onclick="executeHomeSearch()">Look Up Patient</button>
+          </div>
+          <div class="demo-chips-strip">
+            <span>Quick Profiles:</span>
+            <span class="demo-chip-btn" onclick="quickLoadPatient('2345 6789 0123')">Priya Sharma</span>
+            <span class="demo-chip-btn" onclick="quickLoadPatient('1111 2222 3333')">Arjun Kapoor</span>
+            <span class="demo-chip-btn" onclick="quickLoadPatient('5555 6666 7777')">Rajesh Verma</span>
+            <span class="demo-chip-btn" onclick="quickLoadPatient('4444 3333 2222')">Ananya Patel</span>
+            <span class="demo-chip-btn" onclick="quickLoadPatient('9999 8888 7777')">Meera Iyer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operational KPIs -->
+      <div class="home-kpi-grid">
+        <div class="home-kpi-card" onclick="showPage('search')" style="cursor:pointer;" title="View Patient Directory">
+          <div class="home-kpi-label">Enrolled Patients</div>
+          <div class="home-kpi-value" id="home-kpi-patients">5</div>
+          <div class="home-kpi-foot">
+            <span class="badge badge-primary">Aadhaar Linked</span>
+            <span>View directory →</span>
+          </div>
+        </div>
+        <div class="home-kpi-card" onclick="showPage('search')" style="cursor:pointer;" title="View Clinical Encounters">
+          <div class="home-kpi-label">Clinical Encounters</div>
+          <div class="home-kpi-value" id="home-kpi-records">7</div>
+          <div class="home-kpi-foot">
+            <span class="badge badge-success">Synchronized</span>
+            <span>Across 6 facilities</span>
+          </div>
+        </div>
+        <div class="home-kpi-card" onclick="showPage('beds')" style="cursor:pointer;" title="View Ward Bed Matrix">
+          <div class="home-kpi-label">Ward Bed Occupancy</div>
+          <div class="home-kpi-value" id="home-kpi-beds">67%</div>
+          <div class="home-kpi-foot">
+            <span class="badge badge-warning" id="home-kpi-bed-detail">8 of 12 Occupied</span>
+            <span>Manage beds →</span>
+          </div>
+        </div>
+        <div class="home-kpi-card" onclick="showPage('er')" style="cursor:pointer;" title="View Hospital Network">
+          <div class="home-kpi-label">Federated Network</div>
+          <div class="home-kpi-value">6</div>
+          <div class="home-kpi-foot">
+            <span class="badge badge-primary">Accredited</span>
+            <span>AIIMS, Apollo, Fortis...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Workflows -->
+      <div class="home-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Hospital Clinical Workflows</span>
+      </div>
+      <div class="home-action-grid">
+        <div class="home-action-card" onclick="showPage('search')">
+          <div>
+            <div class="home-action-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="home-action-title">Patients &amp; EHR Directory</div>
+            <div class="home-action-desc">
+              Search by Aadhaar UID to review unified longitudinal health histories, laboratory test results, vitals trends, and ABHA cards.
+            </div>
+          </div>
+          <div class="home-action-link">Open Patient Records <span>→</span></div>
+        </div>
+
+        <div class="home-action-card" onclick="showPage('add')">
+          <div>
+            <div class="home-action-icon-wrap" style="background:var(--success-light); color:var(--success);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <div class="home-action-title">Doctor Consultation &amp; Rx</div>
+            <div class="home-action-desc">
+              Record doctor consultations with automatic ICD-10 diagnosis picker, vitals evaluation, and real-time CDSS drug-allergy contraindication alerts.
+            </div>
+          </div>
+          <div class="home-action-link">Start Consultation <span>→</span></div>
+        </div>
+
+        <div class="home-action-card" onclick="showPage('register')">
+          <div>
+            <div class="home-action-icon-wrap" style="background:rgba(99, 102, 241, 0.12); color:#6366f1;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+            </div>
+            <div class="home-action-title">Patient Registration</div>
+            <div class="home-action-desc">
+              Enroll new patients into the hospital registry linked with verified 12-digit Aadhaar UID, demographic data, blood group, and emergency contacts.
+            </div>
+          </div>
+          <div class="home-action-link">Register Patient <span>→</span></div>
+        </div>
+
+        <div class="home-action-card" onclick="showPage('beds')">
+          <div>
+            <div class="home-action-icon-wrap" style="background:rgba(234, 88, 12, 0.12); color:#ea580c;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+            </div>
+            <div class="home-action-title">Ward Bed Management</div>
+            <div class="home-action-desc">
+              Monitor live bed occupancy across Emergency Bays, Intensive Care (ICU), Post-Op Recovery, and HDU with 1-click admission and discharge.
+            </div>
+          </div>
+          <div class="home-action-link">Manage Beds <span>→</span></div>
+        </div>
+
+        <div class="home-action-card" onclick="showPage('er')">
+          <div>
+            <div class="home-action-icon-wrap" style="background:rgba(14, 165, 233, 0.12); color:#0ea5e9;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            </div>
+            <div class="home-action-title">Reports &amp; SQL Queries</div>
+            <div class="home-action-desc">
+              Run coursework queries Q1 through Q5, analyze multi-hospital patient histories, evaluate bed occupancy, and export CSV audit logs.
+            </div>
+          </div>
+          <div class="home-action-link">Run Queries &amp; Export <span>→</span></div>
+        </div>
+
+        <div class="home-action-card" onclick="openDatabaseModal()">
+          <div>
+            <div class="home-action-icon-wrap" style="background:rgba(16, 185, 129, 0.12); color:#10b981;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div class="home-action-title">Database Backup &amp; Sync</div>
+            <div class="home-action-desc">
+              Export full hospital state as portable JSON backup, restore existing records, or reset sample data across all facilities with zero data loss.
+            </div>
+          </div>
+          <div class="home-action-link">Database Tools <span>→</span></div>
+        </div>
+      </div>
+
+      <!-- Clinical Departments Directory -->
+      <div class="home-section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Clinical Departments &amp; Specialities</span>
+      </div>
+      <div class="home-dept-grid">
+        <div class="home-dept-card">
+          <div class="home-dept-name">Cardiology</div>
+          <div class="home-dept-lead">Lead: Dr. Ramesh Gupta • MD, DM</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Hypertension, ECG, Post-MI rehabilitation, coronary evaluation.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-primary">OPD Wing A</span>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('add')" style="padding:2px 8px; font-size:0.74rem;">Consult</button>
+          </div>
+        </div>
+
+        <div class="home-dept-card">
+          <div class="home-dept-name">General Medicine</div>
+          <div class="home-dept-lead">Lead: Dr. Anita Verma • MD</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Diabetes, metabolic syndrome, asthma, fever, routine care.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-primary">OPD Wing B</span>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('add')" style="padding:2px 8px; font-size:0.74rem;">Consult</button>
+          </div>
+        </div>
+
+        <div class="home-dept-card">
+          <div class="home-dept-name">Pathology &amp; Diagnostics</div>
+          <div class="home-dept-lead">Lead: Dr. Sanjay Mehta • MD (Pathology)</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Complete Blood Count, Lipid Profile, HbA1c, automated lab results.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-primary">Central Lab</span>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('search')" style="padding:2px 8px; font-size:0.74rem;">Lab Reports</button>
+          </div>
+        </div>
+
+        <div class="home-dept-card">
+          <div class="home-dept-name">Orthopaedics &amp; Trauma</div>
+          <div class="home-dept-lead">Lead: Dr. Vikram Singh • MS (Ortho)</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Fracture stabilization, joint replacement, meniscus tear repair.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-primary">Surgical Block</span>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('add')" style="padding:2px 8px; font-size:0.74rem;">Consult</button>
+          </div>
+        </div>
+
+        <div class="home-dept-card">
+          <div class="home-dept-name">Neurology</div>
+          <div class="home-dept-lead">Lead: Dr. Priya Nair • DM (Neuro)</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Migraine, stroke recovery, neuro-intensive monitoring, EEG.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-primary">Neuro ICU</span>
+            <button class="btn btn-secondary btn-sm" onclick="showPage('add')" style="padding:2px 8px; font-size:0.74rem;">Consult</button>
+          </div>
+        </div>
+
+        <div class="home-dept-card">
+          <div class="home-dept-name">Emergency &amp; Resuscitation</div>
+          <div class="home-dept-lead">Lead: Dr. Rajesh Kulkarni • MD (EM)</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">24x7 trauma bays, acute stroke, cardiac arrest, emergency admissions.</div>
+          <div class="home-dept-meta">
+            <span class="badge badge-danger">Ground Red Zone</span>
+            <button class="btn btn-primary btn-sm" onclick="showPage('beds')" style="padding:2px 8px; font-size:0.74rem;">Trauma Bays</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Helpline & Accredited Network Banner -->
+      <div class="home-emergency-strip">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-size:1.8rem;">🚨</div>
+          <div>
+            <div style="font-weight:800; font-size:0.98rem; color:var(--danger);">24x7 Emergency Trauma &amp; Resuscitation Response</div>
+            <div style="font-size:0.82rem; color:var(--text-muted);">
+              Direct Hospital Hotlines: <strong>1066</strong> / <strong>102</strong> (Ambulance) • Blood Bank Desk: <strong>+91 11 2658 8500</strong>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-outline-danger btn-sm" onclick="triggerBreakGlassModal()">Emergency Snapshot</button>
+          <button class="btn btn-danger btn-sm" onclick="showPage('beds')">View Available Beds</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 2: PATIENT EHR 360° & DIRECTORY
+         ========================================================================== -->
+    <div id="page-search" class="page">
       <div class="page-header">
         <div>
           <h1 class="page-title">
@@ -2347,7 +2816,7 @@
       renderPatientDirectoryTable();
       renderBedMatrix('ALL');
       loadSqlTemplate('q1');
-      showPage('search');
+      showPage('home');
 
       const today = new Date().toISOString().split('T')[0];
       const visitDateEl = document.getElementById('visit-date');
@@ -2365,7 +2834,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      const tabOrder = ['search', 'add', 'register', 'beds', 'er'];
+      const tabOrder = ['home', 'search', 'add', 'register', 'beds', 'er'];
       const activeIdx = tabOrder.indexOf(pageId);
       const navButtons = document.querySelectorAll('.nav-btn');
       if (activeIdx !== -1 && navButtons[activeIdx]) {
@@ -2459,6 +2928,27 @@
       if (bedStatEl) bedStatEl.textContent = `${occupiedBeds}/${totalBeds}`;
       const bedOccEl = document.getElementById('stat-bed-occupancy');
       if (bedOccEl) bedOccEl.textContent = `${bedPct}%`;
+
+      // Update Home KPI cards
+      const homePat = document.getElementById('home-kpi-patients');
+      if (homePat) homePat.textContent = patCount;
+      const homeRec = document.getElementById('home-kpi-records');
+      if (homeRec) homeRec.textContent = totalRecords;
+      const homeBeds = document.getElementById('home-kpi-beds');
+      if (homeBeds) homeBeds.textContent = `${bedPct}%`;
+      const homeBedDetail = document.getElementById('home-kpi-bed-detail');
+      if (homeBedDetail) homeBedDetail.textContent = `${occupiedBeds} of ${totalBeds} Occupied`;
+    }
+
+    function executeHomeSearch() {
+      const input = (document.getElementById('home-aadhaar-input') ? document.getElementById('home-aadhaar-input').value : '').trim();
+      if (!input) {
+        toast('Please enter an Aadhaar UID, Mobile, or Patient Name', true);
+        return;
+      }
+      showPage('search');
+      document.getElementById('ehr-search-input').value = input;
+      executeEhrSearch();
     }
 
     function executeHeroSearch() {
