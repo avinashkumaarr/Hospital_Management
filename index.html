@@ -1580,7 +1580,7 @@
           <div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
               <span class="badge badge-success">● Network Active</span>
-              <span style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">ABDM Federated Node: AIIMS-DEL-01</span>
+              <span style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);" id="home-facility-node-tag">ABDM Federated Node: AIIMS-DEL-01 • AIIMS New Delhi</span>
             </div>
             <h1 class="home-welcome-title">Hospital Operations &amp; Clinical Care Portal</h1>
             <div class="home-welcome-sub">
@@ -2135,7 +2135,7 @@
 
             <div class="form-group">
               <label class="form-label">HOSPITAL FACILITY *</label>
-              <select id="visit-hospital" class="form-control" required>
+              <select id="visit-hospital" class="form-control" onchange="onConsultationHospitalChange(this.value)" required>
                 <option value="AIIMS Delhi">AIIMS Delhi</option>
                 <option value="Apollo Hospitals">Apollo Hospitals</option>
                 <option value="Fortis Healthcare">Fortis Healthcare</option>
@@ -2256,19 +2256,15 @@
       <div class="page-header">
         <div>
           <h1 class="page-title">Hospital Ward & Bed Management</h1>
-          <div class="page-sub">Live occupancy board across Emergency Trauma Bays, ICU, and Inpatient Wards</div>
+          <div class="page-sub" id="beds-page-subtitle">Live occupancy board across Emergency Trauma Bays, ICU, and Inpatient Wards</div>
         </div>
         <div>
           <button class="btn btn-primary btn-sm" onclick="openBedAdmitModal()">+ Admit Patient to Bed</button>
         </div>
       </div>
 
-      <div class="ward-pill-bar">
-        <button class="ward-pill active" onclick="filterBedsByWard('ALL')">All Units (<span id="count-all-beds">12</span>)</button>
-        <button class="ward-pill" onclick="filterBedsByWard('Emergency Trauma Bay')">Emergency Trauma Bay</button>
-        <button class="ward-pill" onclick="filterBedsByWard('Intensive Care Unit')">ICU</button>
-        <button class="ward-pill" onclick="filterBedsByWard('Cardiac HDU')">Cardiac HDU</button>
-        <button class="ward-pill" onclick="filterBedsByWard('Surgical Post-Op Ward')">Surgical Post-Op</button>
+      <div class="ward-pill-bar" id="ward-pill-bar">
+        <!-- Rendered dynamically for active hospital -->
       </div>
 
       <div class="bed-matrix-grid" id="beds-container"></div>
@@ -2456,6 +2452,7 @@
     <div class="modal-box">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
         <div style="font-size:1.1rem; font-weight:700;">Admit Patient to Bed</div>
+        <div style="font-size:0.78rem; color:var(--primary); font-weight:600; margin-top:2px;" id="admit-modal-hospital-label">Facility: AIIMS Delhi</div>
         <button class="btn-icon" onclick="closeModal('modal-bed-admit')">✕</button>
       </div>
 
@@ -2479,8 +2476,6 @@
         <button class="btn btn-primary btn-sm" onclick="confirmBedAdmission()">Confirm Admission</button>
       </div>
     </div>
-  </div>
-
   </div>
 
   <!-- ==========================================================================
@@ -2523,13 +2518,19 @@
         { id: 5, name: 'PGIMER Chandigarh', reg: 'REG-PGI-005', type: 'Government', city: 'Chandigarh', state: 'Chandigarh' },
         { id: 6, name: 'Manipal Hospital', reg: 'REG-MAN-006', type: 'Private', city: 'Bengaluru', state: 'Karnataka' }
       ],
-      doctors: [
+            doctors: [
         { id: 1, hospitalId: 1, name: 'Dr. Ramesh Gupta', spec: 'Cardiology', qual: 'MBBS, MD, DM' },
-        { id: 2, hospitalId: 2, name: 'Dr. Anita Verma', spec: 'General Medicine', qual: 'MBBS, MD' },
-        { id: 3, hospitalId: 3, name: 'Dr. Sanjay Mehta', spec: 'Pathology', qual: 'MBBS, MD' },
-        { id: 4, hospitalId: 4, name: 'Dr. Vikram Singh', spec: 'Orthopaedics', qual: 'MBBS, MS' },
-        { id: 5, hospitalId: 5, name: 'Dr. Priya Nair', spec: 'Neurology', qual: 'MBBS, MD, DM' },
-        { id: 6, hospitalId: 6, name: 'Dr. Rajesh Kulkarni', spec: 'Emergency Medicine', qual: 'MBBS, MD' }
+        { id: 2, hospitalId: 1, name: 'Dr. Suniti Rao', spec: 'Emergency Medicine', qual: 'MBBS, MD' },
+        { id: 3, hospitalId: 2, name: 'Dr. Anita Verma', spec: 'General Medicine', qual: 'MBBS, MD' },
+        { id: 4, hospitalId: 2, name: 'Dr. Pradeep Chawla', spec: 'Cardiology', qual: 'MBBS, MD, DM' },
+        { id: 5, hospitalId: 3, name: 'Dr. Sanjay Mehta', spec: 'Pathology & Lab Medicine', qual: 'MBBS, MD' },
+        { id: 6, hospitalId: 3, name: 'Dr. Alok Bhargava', spec: 'Internal Medicine', qual: 'MBBS, MD' },
+        { id: 7, hospitalId: 4, name: 'Dr. Vikram Singh', spec: 'Orthopaedics & Joint Surgery', qual: 'MBBS, MS' },
+        { id: 8, hospitalId: 4, name: 'Dr. Meenakshi Joshi', spec: 'General Surgery', qual: 'MBBS, MS' },
+        { id: 9, hospitalId: 5, name: 'Dr. Priya Nair', spec: 'Neurology', qual: 'MBBS, MD, DM' },
+        { id: 10, hospitalId: 5, name: 'Dr. Gurpreet Gill', spec: 'Pulmonology', qual: 'MBBS, MD' },
+        { id: 11, hospitalId: 6, name: 'Dr. Rajesh Kulkarni', spec: 'Emergency Medicine', qual: 'MBBS, MD' },
+        { id: 12, hospitalId: 6, name: 'Dr. Shalini Hegde', spec: 'Cardiology', qual: 'MBBS, MD' }
       ],
       patients: [
         {
@@ -2724,19 +2725,47 @@
           labs: []
         }
       ],
-      beds: [
-        { id: 1, ward: 'Emergency Trauma Bay', bedNum: 'ER-101', status: 'Occupied', patName: 'Rajesh Verma', aadhaar: '5555 6666 7777', doctor: 'Dr. Ramesh Gupta', admitDate: '2024-02-14' },
-        { id: 2, ward: 'Emergency Trauma Bay', bedNum: 'ER-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
-        { id: 3, ward: 'Emergency Trauma Bay', bedNum: 'ER-103', status: 'Occupied', patName: 'Arjun Kapoor', aadhaar: '1111 2222 3333', doctor: 'Dr. Rajesh Kulkarni', admitDate: '2023-12-01' },
-        { id: 4, ward: 'Emergency Trauma Bay', bedNum: 'ER-104', status: 'Cleaning', patName: '', aadhaar: '', doctor: '', admitDate: '' },
-        { id: 5, ward: 'Intensive Care Unit', bedNum: 'ICU-201', status: 'Occupied', patName: 'Rajesh Verma', aadhaar: '5555 6666 7777', doctor: 'Dr. Ramesh Gupta', admitDate: '2024-02-14' },
-        { id: 6, ward: 'Intensive Care Unit', bedNum: 'ICU-202', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
-        { id: 7, ward: 'Intensive Care Unit', bedNum: 'ICU-203', status: 'Occupied', patName: 'Priya Sharma', aadhaar: '2345 6789 0123', doctor: 'Dr. Anita Verma', admitDate: '2024-01-10' },
-        { id: 8, ward: 'Intensive Care Unit', bedNum: 'ICU-204', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
-        { id: 9, ward: 'Cardiac HDU', bedNum: 'HDU-301', status: 'Occupied', patName: 'Priya Sharma', aadhaar: '2345 6789 0123', doctor: 'Dr. Ramesh Gupta', admitDate: '2024-01-10' },
-        { id: 10, ward: 'Cardiac HDU', bedNum: 'HDU-302', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
-        { id: 11, ward: 'Surgical Post-Op Ward', bedNum: 'SPW-401', status: 'Occupied', patName: 'Arjun Kapoor', aadhaar: '1111 2222 3333', doctor: 'Dr. Vikram Singh', admitDate: '2024-03-18' },
-        { id: 12, ward: 'Surgical Post-Op Ward', bedNum: 'SPW-402', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' }
+            beds: [
+        /* Facility 1: AIIMS New Delhi (Government) */
+        { id: 1, hospitalId: 1, ward: 'Emergency Trauma Bay', bedNum: 'AIIMS-ER-101', status: 'Occupied', patName: 'Rajesh Verma', aadhaar: '5555 6666 7777', doctor: 'Dr. Ramesh Gupta', admitDate: '2024-02-14' },
+        { id: 2, hospitalId: 1, ward: 'Emergency Trauma Bay', bedNum: 'AIIMS-ER-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 3, hospitalId: 1, ward: 'Intensive Care Unit', bedNum: 'AIIMS-ICU-201', status: 'Occupied', patName: 'Rajesh Verma', aadhaar: '5555 6666 7777', doctor: 'Dr. Ramesh Gupta', admitDate: '2024-02-14' },
+        { id: 4, hospitalId: 1, ward: 'Intensive Care Unit', bedNum: 'AIIMS-ICU-202', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 5, hospitalId: 1, ward: 'General Medicine Ward', bedNum: 'AIIMS-GMW-301', status: 'Occupied', patName: 'Priya Sharma', aadhaar: '2345 6789 0123', doctor: 'Dr. Suniti Rao', admitDate: '2024-01-10' },
+        { id: 6, hospitalId: 1, ward: 'General Medicine Ward', bedNum: 'AIIMS-GMW-302', status: 'Cleaning', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+
+        /* Facility 2: Apollo Hospitals (Private) */
+        { id: 7, hospitalId: 2, ward: 'Cardiac HDU', bedNum: 'APL-HDU-301', status: 'Occupied', patName: 'Priya Sharma', aadhaar: '2345 6789 0123', doctor: 'Dr. Anita Verma', admitDate: '2024-01-10' },
+        { id: 8, hospitalId: 2, ward: 'Cardiac HDU', bedNum: 'APL-HDU-302', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 9, hospitalId: 2, ward: 'Cardiac ICU', bedNum: 'APL-CICU-101', status: 'Occupied', patName: 'Arjun Kapoor', aadhaar: '1111 2222 3333', doctor: 'Dr. Pradeep Chawla', admitDate: '2023-12-01' },
+        { id: 10, hospitalId: 2, ward: 'Cardiac ICU', bedNum: 'APL-CICU-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 11, hospitalId: 2, ward: 'Executive Deluxe Suite', bedNum: 'APL-DLX-501', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+
+        /* Facility 3: Fortis Healthcare (Private) */
+        { id: 12, hospitalId: 3, ward: 'Pathology Day Care', bedNum: 'FRT-DC-101', status: 'Occupied', patName: 'Ananya Patel', aadhaar: '4444 3333 2222', doctor: 'Dr. Sanjay Mehta', admitDate: '2024-01-28' },
+        { id: 13, hospitalId: 3, ward: 'Pathology Day Care', bedNum: 'FRT-DC-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 14, hospitalId: 3, ward: 'Oncology Observation', bedNum: 'FRT-ONCO-201', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 15, hospitalId: 3, ward: 'Oncology Observation', bedNum: 'FRT-ONCO-202', status: 'Cleaning', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+
+        /* Facility 4: Max Super Speciality (Private) */
+        { id: 16, hospitalId: 4, ward: 'Surgical Post-Op Ward', bedNum: 'MAX-SPW-401', status: 'Occupied', patName: 'Arjun Kapoor', aadhaar: '1111 2222 3333', doctor: 'Dr. Vikram Singh', admitDate: '2024-03-18' },
+        { id: 17, hospitalId: 4, ward: 'Surgical Post-Op Ward', bedNum: 'MAX-SPW-402', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 18, hospitalId: 4, ward: 'Surgical Post-Op Ward', bedNum: 'MAX-SPW-403', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 19, hospitalId: 4, ward: 'Orthopaedic Recovery Bay', bedNum: 'MAX-ORTHO-101', status: 'Occupied', patName: 'Meera Iyer', aadhaar: '9999 8888 7777', doctor: 'Dr. Vikram Singh', admitDate: '2024-02-20' },
+        { id: 20, hospitalId: 4, ward: 'Orthopaedic Recovery Bay', bedNum: 'MAX-ORTHO-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+
+        /* Facility 5: PGIMER Chandigarh (Government) */
+        { id: 21, hospitalId: 5, ward: 'Neuro ICU', bedNum: 'PGI-NICU-201', status: 'Occupied', patName: 'Ananya Patel', aadhaar: '4444 3333 2222', doctor: 'Dr. Priya Nair', admitDate: '2024-01-28' },
+        { id: 22, hospitalId: 5, ward: 'Neuro ICU', bedNum: 'PGI-NICU-202', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 23, hospitalId: 5, ward: 'Pulmonology Step-Down', bedNum: 'PGI-PULM-101', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 24, hospitalId: 5, ward: 'Pulmonology Step-Down', bedNum: 'PGI-PULM-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+
+        /* Facility 6: Manipal Hospital (Private) */
+        { id: 25, hospitalId: 6, ward: 'Emergency Trauma Bay', bedNum: 'MAN-ER-101', status: 'Occupied', patName: 'Rajesh Verma', aadhaar: '5555 6666 7777', doctor: 'Dr. Rajesh Kulkarni', admitDate: '2024-02-14' },
+        { id: 26, hospitalId: 6, ward: 'Emergency Trauma Bay', bedNum: 'MAN-ER-102', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 27, hospitalId: 6, ward: 'High Dependency Unit', bedNum: 'MAN-HDU-201', status: 'Occupied', patName: 'Meera Iyer', aadhaar: '9999 8888 7777', doctor: 'Dr. Shalini Hegde', admitDate: '2024-02-20' },
+        { id: 28, hospitalId: 6, ward: 'High Dependency Unit', bedNum: 'MAN-HDU-202', status: 'Vacant', patName: '', aadhaar: '', doctor: '', admitDate: '' },
+        { id: 29, hospitalId: 6, ward: 'High Dependency Unit', bedNum: 'MAN-HDU-203', status: 'Cleaning', patName: '', aadhaar: '', doctor: '', admitDate: '' }
       ],
       queue: [
         { token: 'A-104', name: 'Priya Sharma', aadhaar: '2345 6789 0123', doctor: 'Dr. Ramesh Gupta (Cardiology)', status: 'Serving', time: '10:15 AM' },
@@ -2756,7 +2785,18 @@
     function initDatabaseState() {
       const stored = localStorage.getItem('medilink_db_v2');
       if (stored) {
-        try { state = JSON.parse(stored); }
+        try { 
+          state = JSON.parse(stored);
+          // Auto-migrate if stored beds lack hospitalId or are from old flat list
+          if (!state.beds || state.beds.length === 0 || !state.beds[0].hospitalId || state.beds.length === 12) {
+            state.beds = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA.beds));
+            saveState();
+          }
+          if (!state.doctors || state.doctors.length < DEFAULT_SEED_DATA.doctors.length) {
+            state.doctors = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA.doctors));
+            saveState();
+          }
+        }
         catch (e) { state = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA)); }
       } else {
         state = JSON.parse(JSON.stringify(DEFAULT_SEED_DATA));
@@ -2812,9 +2852,16 @@
     window.addEventListener('DOMContentLoaded', () => {
       initDatabaseState();
       initTheme();
+      
+      const savedFacility = localStorage.getItem('medilink_active_facility') || '1';
+      const facSelect = document.getElementById('active-facility-select');
+      if (facSelect) facSelect.value = savedFacility;
+
       updateNavigationBadges();
       renderPatientDirectoryTable();
       renderBedMatrix('ALL');
+      syncConsultationFacility();
+      updateHomeFacilityElements();
       loadSqlTemplate('q1');
       showPage('home');
 
@@ -2880,9 +2927,65 @@
       toast(`Active Role: ${role}`);
     }
 
+    function getActiveHospitalId() {
+      const sel = document.getElementById('active-facility-select');
+      return sel ? parseInt(sel.value) || 1 : 1;
+    }
+
+    function getActiveHospital() {
+      const hId = getActiveHospitalId();
+      return (state.hospitals || []).find(h => h.id === hId) || state.hospitals[0];
+    }
+
     function onFacilityChange(fId) {
-      const h = state.hospitals.find(x => x.id === parseInt(fId));
-      if (h) toast(`Switched facility to ${h.name}`);
+      const h = (state.hospitals || []).find(x => x.id === parseInt(fId));
+      if (!h) return;
+      localStorage.setItem('medilink_active_facility', fId);
+      updateNavigationBadges();
+      renderBedMatrix('ALL');
+      syncConsultationFacility();
+      updateHomeFacilityElements();
+      toast(`Switched active facility to ${h.name} (${h.city})`);
+    }
+
+    function updateHomeFacilityElements() {
+      const activeH = getActiveHospital();
+      const nodeTag = document.getElementById('home-facility-node-tag');
+      if (nodeTag) {
+        nodeTag.textContent = `ABDM Federated Node: ${activeH.reg} • ${activeH.name} (${activeH.city})`;
+      }
+    }
+
+    function syncConsultationFacility() {
+      const activeH = getActiveHospital();
+      const hospSelect = document.getElementById('visit-hospital');
+      if (hospSelect) {
+        hospSelect.value = activeH.name;
+      }
+      const docSelect = document.getElementById('visit-doctor');
+      if (docSelect) {
+        const activeDocs = (state.doctors || []).filter(d => d.hospitalId === activeH.id);
+        if (activeDocs.length > 0) {
+          docSelect.innerHTML = activeDocs.map(d => `<option value="${d.name} (${d.spec})">${d.name} — ${d.spec}</option>`).join('');
+        } else {
+          docSelect.innerHTML = `<option value="Dr. On Duty (${activeH.name})">Dr. On Duty (${activeH.name})</option>`;
+        }
+      }
+    }
+
+    function onConsultationHospitalChange(hospName) {
+      const h = (state.hospitals || []).find(x => x.name === hospName);
+      if (h) {
+        const docSelect = document.getElementById('visit-doctor');
+        if (docSelect) {
+          const activeDocs = (state.doctors || []).filter(d => d.hospitalId === h.id);
+          if (activeDocs.length > 0) {
+            docSelect.innerHTML = activeDocs.map(d => `<option value="${d.name} (${d.spec})">${d.name} — ${d.spec}</option>`).join('');
+          } else {
+            docSelect.innerHTML = `<option value="Dr. On Duty (${h.name})">Dr. On Duty (${h.name})</option>`;
+          }
+        }
+      }
     }
 
     function toast(message, isDanger = false) {
@@ -2912,18 +3015,23 @@
     }
 
     function updateNavigationBadges() {
-      const patCount = state.patients.length;
-      document.getElementById('nav-patient-count').textContent = patCount;
+      const patCount = (state.patients || []).length;
+      const patEl = document.getElementById('nav-patient-count');
+      if (patEl) patEl.textContent = patCount;
       const statPat = document.getElementById('stat-patient-count');
       if (statPat) statPat.textContent = patCount;
 
-      const totalRecords = state.patients.reduce((acc, p) => acc + (p.records ? p.records.length : 0), 0);
+      const totalRecords = (state.patients || []).reduce((acc, p) => acc + (p.records ? p.records.length : 0), 0);
       const statRec = document.getElementById('stat-record-count');
       if (statRec) statRec.textContent = totalRecords;
 
-      const occupiedBeds = state.beds.filter(b => b.status === 'Occupied').length;
-      const totalBeds = state.beds.length;
-      const bedPct = Math.round((occupiedBeds / totalBeds) * 100);
+      // Hospital-specific bed occupancy calculation
+      const activeH = getActiveHospital();
+      const hospitalBeds = (state.beds || []).filter(b => b.hospitalId === activeH.id);
+      const occupiedBeds = hospitalBeds.filter(b => b.status === 'Occupied').length;
+      const totalBeds = hospitalBeds.length;
+      const bedPct = totalBeds > 0 ? Math.round((occupiedBeds / totalBeds) * 100) : 0;
+
       const bedStatEl = document.getElementById('nav-bed-stat');
       if (bedStatEl) bedStatEl.textContent = `${occupiedBeds}/${totalBeds}`;
       const bedOccEl = document.getElementById('stat-bed-occupancy');
@@ -2937,7 +3045,7 @@
       const homeBeds = document.getElementById('home-kpi-beds');
       if (homeBeds) homeBeds.textContent = `${bedPct}%`;
       const homeBedDetail = document.getElementById('home-kpi-bed-detail');
-      if (homeBedDetail) homeBedDetail.textContent = `${occupiedBeds} of ${totalBeds} Occupied`;
+      if (homeBedDetail) homeBedDetail.textContent = `${occupiedBeds} of ${totalBeds} Occupied (${activeH.name})`;
     }
 
     function executeHomeSearch() {
@@ -3510,18 +3618,54 @@
       quickLoadPatient(a);
     }
 
+    let currentActiveWardFilter = 'ALL';
+
     function filterBedsByWard(wardName) {
-      document.querySelectorAll('.ward-pill').forEach(b => b.classList.remove('active'));
-      if (event && event.currentTarget) event.currentTarget.classList.add('active');
+      currentActiveWardFilter = wardName;
       renderBedMatrix(wardName);
+    }
+
+    function renderWardPills(hospitalBeds, currentFilter = 'ALL') {
+      const pillBar = document.getElementById('ward-pill-bar');
+      if (!pillBar) return;
+      const wards = [...new Set(hospitalBeds.map(b => b.ward))];
+      
+      let html = `<button class="ward-pill ${currentFilter === 'ALL' ? 'active' : ''}" onclick="filterBedsByWard('ALL')">All Units (${hospitalBeds.length})</button>`;
+      wards.forEach(w => {
+        const count = hospitalBeds.filter(b => b.ward === w).length;
+        const isAct = (currentFilter === w) ? 'active' : '';
+        html += `<button class="ward-pill ${isAct}" onclick="filterBedsByWard('${w.replace(/'/g, "\\'")}')">${w} (${count})</button>`;
+      });
+      pillBar.innerHTML = html;
     }
 
     function renderBedMatrix(wardFilter = 'ALL') {
       const container = document.getElementById('beds-container');
-      const allBeds = state.beds || [];
-      const filtered = (wardFilter === 'ALL') ? allBeds : allBeds.filter(b => b.ward === wardFilter);
+      if (!container) return;
+      const activeH = getActiveHospital();
+      const allHospitalBeds = (state.beds || []).filter(b => b.hospitalId === activeH.id);
 
-      document.getElementById('count-all-beds').textContent = allBeds.length;
+      // Update subtitle to highlight the active hospital facility
+      const subEl = document.getElementById('beds-page-subtitle');
+      if (subEl) {
+        subEl.innerHTML = `Live occupancy board for <strong>${activeH.name} (${activeH.city}, ${activeH.type})</strong> across Emergency Bays, ICU, and Inpatient Wards`;
+      }
+
+      // Dynamically render the ward filters for this hospital
+      renderWardPills(allHospitalBeds, wardFilter);
+
+      const filtered = (wardFilter === 'ALL') ? allHospitalBeds : allHospitalBeds.filter(b => b.ward === wardFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="card" style="grid-column: 1/-1; text-align:center; padding:2.5rem; color:var(--text-muted);">
+            <div style="font-size:1.6rem; margin-bottom:8px;">🛏️</div>
+            <div style="font-weight:700; font-size:1rem; color:var(--text); margin-bottom:4px;">No beds configured for this unit in ${activeH.name}</div>
+            <div style="font-size:0.84rem;">Select "All Units" above or click "+ Admit Patient to Bed" to allocate a bed in ${activeH.name}.</div>
+          </div>
+        `;
+        return;
+      }
 
       container.innerHTML = filtered.map(b => {
         const isOccupied = b.status === 'Occupied';
@@ -3532,24 +3676,25 @@
           <div class="bed-item ${cardClass}">
             <div>
               <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-family:var(--font-mono); font-weight:700; font-size:1rem;">${b.bedNum}</span>
+                <span style="font-family:var(--font-mono); font-weight:700; font-size:0.95rem;">${b.bedNum}</span>
                 <span class="badge ${isOccupied ? 'badge-danger' : (isVacant ? 'badge-success' : 'badge-warning')}">${b.status}</span>
               </div>
-              <div style="font-size:0.72rem; color:var(--text-muted);">${b.ward}</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">${b.ward}</div>
             </div>
 
             ${isOccupied ? `
               <div style="background:var(--bg-alt); padding:6px 8px; border-radius:4px; font-size:0.78rem;">
                 <div style="font-weight:700;">${b.patName}</div>
                 <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--primary)">UID: ${b.aadhaar}</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">👨‍⚕️ ${b.doctor || 'Consultant'}</div>
               </div>
-              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="dischargeBed(${b.id})">Discharge</button>
+              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="dischargeBed(${b.id})">Discharge Patient</button>
             ` : (isVacant ? `
               <div style="font-size:0.76rem; color:var(--success);">● Vacant & Ready</div>
-              <button class="btn btn-primary btn-sm" style="width:100%" onclick="openBedAdmitModalWithBed('${b.bedNum}')">Admit</button>
+              <button class="btn btn-primary btn-sm" style="width:100%" onclick="openBedAdmitModalWithBed('${b.bedNum}')">Admit Patient</button>
             ` : `
               <div style="font-size:0.76rem; color:var(--warning);">Cleaning in Progress</div>
-              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="markBedVacant(${b.id})">Mark Cleaned</button>
+              <button class="btn btn-secondary btn-sm" style="width:100%" onclick="markBedVacant(${b.id})">Mark Clean & Vacant</button>
             `)}
           </div>
         `;
@@ -3559,63 +3704,80 @@
     function openBedAdmitModal() {
       populateBedSelectOptions();
       populatePatientSelectOptions();
+      const activeH = getActiveHospital();
+      const label = document.getElementById('admit-modal-hospital-label');
+      if (label) label.textContent = `Facility: ${activeH.name} (${activeH.city})`;
       openModal('modal-bed-admit');
     }
 
     function openBedAdmitModalWithBed(bedNum) {
       openBedAdmitModal();
-      document.getElementById('admit-bed-select').value = bedNum;
+      const sel = document.getElementById('admit-bed-select');
+      if (sel) sel.value = bedNum;
     }
 
     function populateBedSelectOptions() {
       const select = document.getElementById('admit-bed-select');
-      const vacants = state.beds.filter(b => b.status === 'Vacant');
-      select.innerHTML = vacants.map(b => `<option value="${b.bedNum}">${b.bedNum} (${b.ward})</option>`).join('');
+      const activeH = getActiveHospital();
+      const vacants = (state.beds || []).filter(b => b.hospitalId === activeH.id && b.status === 'Vacant');
+      if (vacants.length === 0) {
+        select.innerHTML = `<option value="">No vacant beds in ${activeH.name}</option>`;
+      } else {
+        select.innerHTML = vacants.map(b => `<option value="${b.bedNum}">${b.bedNum} (${b.ward})</option>`).join('');
+      }
     }
 
     function populatePatientSelectOptions() {
       const select = document.getElementById('admit-patient-select');
-      select.innerHTML = state.patients.map(p => `<option value="${p.aadhaar}">${p.name} (${p.aadhaar})</option>`).join('');
+      select.innerHTML = (state.patients || []).map(p => `<option value="${p.aadhaar}">${p.name} (${p.aadhaar})</option>`).join('');
     }
 
     function confirmBedAdmission() {
       const bedNum = document.getElementById('admit-bed-select').value;
       const aadhaar = document.getElementById('admit-patient-select').value;
+      if (!bedNum) {
+        toast('Please select a vacant bed', true);
+        return;
+      }
       const p = state.patients.find(x => x.aadhaar === aadhaar);
       const bed = state.beds.find(b => b.bedNum === bedNum);
 
       if (!bed || !p) return;
 
+      const activeH = getActiveHospital();
+      const activeDocs = (state.doctors || []).filter(d => d.hospitalId === activeH.id);
+      const docName = activeDocs.length > 0 ? activeDocs[0].name : 'Dr. Consultant On Duty';
+
       bed.status = 'Occupied';
       bed.patName = p.name;
       bed.aadhaar = p.aadhaar;
-      bed.doctor = 'Dr. Consultant On Duty';
+      bed.doctor = docName;
       bed.admitDate = new Date().toISOString().split('T')[0];
 
       saveState();
       closeModal('modal-bed-admit');
-      renderBedMatrix('ALL');
-      toast(`Patient ${p.name} admitted to ${bedNum}`);
+      renderBedMatrix(currentActiveWardFilter);
+      toast(`Patient ${p.name} admitted to ${bedNum} at ${activeH.name}`);
     }
 
     function dischargeBed(bedId) {
-      const bed = state.beds.find(b => b.id === bedId);
+      const bed = (state.beds || []).find(b => b.id === bedId);
       if (bed) {
         bed.status = 'Cleaning';
         bed.patName = '';
         bed.aadhaar = '';
         saveState();
-        renderBedMatrix('ALL');
+        renderBedMatrix(currentActiveWardFilter);
         toast(`Bed ${bed.bedNum} marked for sanitization.`);
       }
     }
 
     function markBedVacant(bedId) {
-      const bed = state.beds.find(b => b.id === bedId);
+      const bed = (state.beds || []).find(b => b.id === bedId);
       if (bed) {
         bed.status = 'Vacant';
         saveState();
-        renderBedMatrix('ALL');
+        renderBedMatrix(currentActiveWardFilter);
         toast(`Bed ${bed.bedNum} is now Vacant.`);
       }
     }
