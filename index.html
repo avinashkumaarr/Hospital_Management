@@ -1062,29 +1062,6 @@
     }
 
     /* ==========================================================================
-       SECTION 4: EMERGENCY TRIAGE (ESI 1-5)
-       ========================================================================== */
-    .triage-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-    .triage-score-box {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .triage-score-num {
-      font-family: var(--font-heading);
-      font-size: 3.2rem;
-      font-weight: 800;
-      line-height: 1;
-      margin: 6px 0;
-    }
-
-    /* ==========================================================================
        SECTION 5: BED & WARD OPERATIONS
        ========================================================================== */
     .ward-pill-bar {
@@ -1127,32 +1104,6 @@
     .bed-item.occupied { border-left: 4px solid var(--danger); }
     .bed-item.vacant   { border-left: 4px solid var(--success); }
     .bed-item.cleaning { border-left: 4px solid var(--warning); }
-
-    /* ==========================================================================
-       SECTION 6: OPD TOKEN QUEUE
-       ========================================================================== */
-    .token-display-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.75rem 1rem;
-      text-align: center;
-      margin-bottom: 1.25rem;
-    }
-    .now-calling-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .token-big-num {
-      font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      color: var(--primary);
-      margin: 4px 0;
-    }
 
     /* ==========================================================================
        SECTION 7: SQL SCHEMA & QUERY RUNNER
@@ -1224,143 +1175,23 @@
     .toast-msg.success { border-left: 4px solid var(--success); }
     .toast-msg.danger  { border-left: 4px solid var(--danger); }
 
-    /* ==========================================================================
-       HOSPITAL FOOTER (APOLLO & MANIPAL NETWORK STYLE)
-       ========================================================================== */
+    /* Clean Minimal Enterprise Footer */
     footer.app-footer {
-      background: #002b49;
-      color: #cbd5e1;
-      border-top: 3px solid var(--accent);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.25rem;
       margin-top: 3.5rem;
-      font-size: 0.84rem;
-    }
-    [data-theme="dark"] footer.app-footer {
-      background: #080f1a;
-      border-top-color: var(--accent);
-      border-bottom: 1px solid #1a283c;
-    }
-    .footer-top-strip {
-      background: rgba(0, 0, 0, 0.2);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.85rem 1.25rem;
-    }
-    .footer-top-inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-badges {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #94a3b8;
-    }
-    .footer-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      color: #e2e8f0;
-    }
-    .footer-body {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 2.75rem 1.25rem 2.25rem;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
-      gap: 2rem;
-    }
-    .footer-col h4 {
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .footer-col a {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-block;
       font-size: 0.82rem;
-      cursor: pointer;
+      color: var(--text-muted);
     }
-    .footer-col a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-    .footer-emergency-box {
-      background: rgba(220, 38, 38, 0.12);
-      border: 1px solid rgba(220, 38, 38, 0.35);
-      border-radius: var(--radius-md);
-      padding: 0.85rem;
-      margin-top: 1rem;
-    }
-    .footer-bottom-bar {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 1.25rem;
-      background: rgba(0, 0, 0, 0.25);
-    }
-    .footer-bottom-inner {
+    .footer-inner {
       max-width: 1440px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.78rem;
-      color: #64748b;
-    }
-    .footer-bottom-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .footer-bottom-links a {
-      color: #94a3b8;
-      text-decoration: none;
-    }
-    .footer-bottom-links a:hover {
-      color: #ffffff;
-    }
-
-    @media (max-width: 1024px) {
-      .footer-body {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .footer-body {
-        grid-template-columns: 1fr;
-      }
-      .footer-top-inner, .footer-bottom-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      gap: 10px;
     }
 
     /* Print Styles */
@@ -1375,7 +1206,7 @@
     @media (max-width: 1024px) {
       .btn-hamburger { display: flex; }
       .facility-selector { display: none; }
-      .triage-grid { grid-template-columns: 1fr; }
+      
     }
     @media (max-width: 768px) {
       .form-grid { grid-template-columns: 1fr; }
@@ -1417,7 +1248,7 @@
           </svg>
         </button>
 
-        <div class="brand-group" onclick="showPage('home')">
+        <div class="brand-group" onclick="showPage('search')">
           <div class="brand-symbol">M</div>
           <div class="brand-text-block">
             <div class="brand-title">Medi<span>Link</span></div>
@@ -1471,24 +1302,32 @@
   </header>
 
   <!-- ==========================================================================
-       SUB-NAVIGATION TAB STRIP (APOLLO & MANIPAL HIS HEADER)
+       PRIMARY CLINICAL NAVIGATION (5 CLEAN ESSENTIAL WORKFLOWS)
        ========================================================================== -->
   <nav class="app-nav">
     <div class="nav-inner" id="nav-tabs-bar">
-      <button class="nav-btn active" onclick="showPage('home')">Dashboard</button>
-      <button class="nav-btn" onclick="showPage('search')">
-        Patient EHR <span class="nav-badge" id="nav-patient-count">5</span>
+      <button class="nav-btn active" onclick="showPage('search')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Patients &amp; EHR</span>
+        <span class="nav-badge" id="nav-patient-count">5</span>
       </button>
-      <button class="nav-btn" onclick="showPage('register')">Enroll Patient</button>
-      <button class="nav-btn" onclick="showPage('add')">Consultation &amp; Rx</button>
-      <button class="nav-btn" onclick="showPage('triage')">Emergency Triage</button>
+      <button class="nav-btn" onclick="showPage('add')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <span>New Consultation</span>
+      </button>
+      <button class="nav-btn" onclick="showPage('register')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <span>Register Patient</span>
+      </button>
       <button class="nav-btn" onclick="showPage('beds')">
-        Beds &amp; Wards <span class="nav-badge" id="nav-bed-stat">8/12</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+        <span>Ward Beds</span>
+        <span class="nav-badge" id="nav-bed-stat">8/12</span>
       </button>
-      <button class="nav-btn" onclick="showPage('queue')">OPD Queue</button>
-      <button class="nav-btn" onclick="showPage('analytics')">Analytics</button>
-      <button class="nav-btn" onclick="showPage('audit')">Audit Trail</button>
-      <button class="nav-btn" onclick="showPage('er')">SQL Schema</button>
+      <button class="nav-btn" onclick="showPage('er')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+        <span>Reports &amp; SQL</span>
+      </button>
     </div>
   </nav>
 
@@ -1499,16 +1338,11 @@
       <div class="brand-title">Medi<span>Link</span></div>
       <button class="btn-icon" onclick="toggleDrawer()">✕</button>
     </div>
-    <button class="drawer-item active" onclick="showPage('home'); toggleDrawer();">🏠 Hospital Dashboard</button>
-    <button class="drawer-item" onclick="showPage('search'); toggleDrawer();">🔍 Patient Health Records</button>
-    <button class="drawer-item" onclick="showPage('register'); toggleDrawer();">➕ Enroll Patient Profile</button>
-    <button class="drawer-item" onclick="showPage('add'); toggleDrawer();">📋 Consultation & Prescription</button>
-    <button class="drawer-item" onclick="showPage('triage'); toggleDrawer();">🚨 Emergency Triage (ESI)</button>
-    <button class="drawer-item" onclick="showPage('beds'); toggleDrawer();">🛏️ Bed & Ward Management</button>
-    <button class="drawer-item" onclick="showPage('queue'); toggleDrawer();">🎫 OPD Live Queue</button>
-    <button class="drawer-item" onclick="showPage('analytics'); toggleDrawer();">📊 Analytics & Reporting</button>
-    <button class="drawer-item" onclick="showPage('audit'); toggleDrawer();">🛡️ Interop Audit Trail</button>
-    <button class="drawer-item" onclick="showPage('er'); toggleDrawer();">🗄️ Relational Schema</button>
+    <button class="drawer-item active" onclick="showPage('search'); toggleDrawer();">🔍 Patients &amp; EHR</button>
+    <button class="drawer-item" onclick="showPage('add'); toggleDrawer();">📋 New Consultation</button>
+    <button class="drawer-item" onclick="showPage('register'); toggleDrawer();">➕ Register Patient</button>
+    <button class="drawer-item" onclick="showPage('beds'); toggleDrawer();">🛏️ Ward Bed Matrix</button>
+    <button class="drawer-item" onclick="showPage('er'); toggleDrawer();">🗄️ Reports &amp; SQL</button>
   </aside>
 
   <!-- ==========================================================================
@@ -1516,137 +1350,8 @@
        ========================================================================== -->
   <main class="app-main">
 
-    <!-- ========================================================================
-         PAGE 1: HOSPITAL DASHBOARD & PATIENT LOOKUP (APOLLO / MANIPAL STYLE)
-         ======================================================================== -->
-    <div id="page-home" class="page active">
-      <div class="hospital-hub-card">
-        <div style="display:inline-flex; align-items:center; gap:8px; background:var(--primary-light); color:var(--primary); padding:4px 12px; border-radius:var(--radius-full); font-size:0.75rem; font-weight:700; margin-bottom:0.85rem; border:1px solid rgba(var(--primary-rgb),0.2);">
-          <span>🏥</span> Apollo &amp; Manipal Clinical Network Hub • Integrated Health Information System (HIS)
-        </div>
-        <h1 class="hub-title">Hospital Patient Care &amp; Clinical Records Hub</h1>
-        <p class="hub-desc">
-          Unified Electronic Health Record (EHR) gateway connecting AIIMS, Apollo, Fortis, Max, PGIMER, and Manipal hospitals. Look up comprehensive patient medical histories via 12-digit Aadhaar UID, monitor live inpatient beds, and coordinate emergency triage.
-        </p>
 
-        <!-- Central Search Bar -->
-        <div class="hub-search-box">
-          <input type="text" id="hero-aadhaar-input" class="form-control aadhaar-input" placeholder="Enter Aadhaar UID (XXXX XXXX XXXX) or Patient Name" maxlength="14" oninput="formatAadhaar(this)" onkeydown="if(event.key==='Enter') executeHeroSearch()" />
-          <button class="btn btn-accent btn-lg" onclick="executeHeroSearch()" style="font-weight:700;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <span>Search Patient EMR</span>
-          </button>
-        </div>
-
-        <!-- Quick Demo Patient Profiles -->
-        <div class="demo-chips-strip">
-          <span style="font-weight:700; color:var(--text);">Quick Clinical Profiles:</span>
-          <span class="demo-chip-btn" onclick="quickLoadPatient('2345 6789 0123')">👤 Priya Sharma (Cardiac • Penicillin Allergy)</span>
-          <span class="demo-chip-btn" onclick="quickLoadPatient('1111 2222 3333')">👤 Arjun Kapoor (Orthopedics • Post-Knee Surgery)</span>
-          <span class="demo-chip-btn" onclick="quickLoadPatient('5555 6666 7777')">👤 Rajesh Verma (Emergency Trauma ICU • ESI-1)</span>
-          <span class="demo-chip-btn" onclick="quickLoadPatient('4444 3333 2222')">👤 Ananya Patel (Pediatric Pulmonology • Asthma)</span>
-          <span class="demo-chip-btn" onclick="quickLoadPatient('9999 8888 7777')">👤 Meera Iyer (Endocrinology • Type-2 Diabetes)</span>
-        </div>
-      </div>
-
-      <!-- Hospital Operational Metrics -->
-      <div class="metric-grid">
-        <div class="metric-card">
-          <div class="metric-label">Enrolled Patients</div>
-          <div class="metric-num" id="stat-patient-count">5</div>
-          <div class="metric-foot">Aadhaar Linked &amp; Verified</div>
-        </div>
-
-        <div class="metric-card success-top">
-          <div class="metric-label">Total Clinical Encounters</div>
-          <div class="metric-num" id="stat-record-count">7</div>
-          <div class="metric-foot">Cross-Hospital Network History</div>
-        </div>
-
-        <div class="metric-card accent-top">
-          <div class="metric-label">Ward Bed Occupancy</div>
-          <div class="metric-num" id="stat-bed-occupancy">67%</div>
-          <div class="metric-foot">4 Beds Currently Available</div>
-        </div>
-
-        <div class="metric-card danger-top">
-          <div class="metric-label">Emergency Cases (30D)</div>
-          <div class="metric-num" id="stat-emergency-count">2</div>
-          <div class="metric-foot">Zero-Delay Triage Protocol</div>
-        </div>
-      </div>
-
-      <!-- Core Hospital Services Grid (Apollo / Manipal 6-Card Suite) -->
-      <div style="font-family:var(--font-heading); font-size:1.05rem; font-weight:800; margin: 1.5rem 0 0.75rem;">
-        Hospital Clinical Modules &amp; Workflows
-      </div>
-      <div class="services-grid">
-        <div class="service-card" onclick="showPage('search')">
-          <div class="service-icon-box">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          </div>
-          <div>
-            <div class="service-title">Patient 360° Health Locker</div>
-            <div class="service-desc">Complete medical history, diagnostic reports, and digital ABHA health cards.</div>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="showPage('add')">
-          <div class="service-icon-box" style="background:var(--success-light); color:var(--success)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          </div>
-          <div>
-            <div class="service-title">Consultation &amp; Prescription (CDSS)</div>
-            <div class="service-desc">Log physician notes, ICD-10 diagnosis, and automatic allergy safety scanning.</div>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="showPage('triage')">
-          <div class="service-icon-box" style="background:var(--danger-light); color:var(--danger)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div>
-            <div class="service-title">Emergency Severity Index (ESI) Triage</div>
-            <div class="service-desc">Standardized 5-tier trauma acuity scoring and real-time resuscitation alarms.</div>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="showPage('beds')">
-          <div class="service-icon-box" style="background:var(--warning-light); color:var(--warning)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-          </div>
-          <div>
-            <div class="service-title">Ward &amp; Bed Management</div>
-            <div class="service-desc">Live bed allocation for ICU, Emergency Trauma Bay, HDU, and Surgical wards.</div>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="showPage('queue')">
-          <div class="service-icon-box" style="background:var(--primary-light); color:var(--primary)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <div>
-            <div class="service-title">OPD Live Queue Coordinator</div>
-            <div class="service-desc">Audio announcement chime, token calling display, and queue sequencing.</div>
-          </div>
-        </div>
-
-        <div class="service-card" onclick="showPage('analytics')">
-          <div class="service-icon-box" style="background:var(--accent-light); color:var(--accent)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <div>
-            <div class="service-title">Clinical Quality &amp; SQL Engine</div>
-            <div class="service-desc">Bed occupancy rates, departmental encounters, and interactive query runner (Q1-Q5).</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         PAGE 2: PATIENT EHR (360 HEALTH RECORDS)
-         ======================================================================== -->
-    <div id="page-search" class="page">
+    <div id="page-search" class="page active">
       <div class="page-header">
         <div>
           <h1 class="page-title">
@@ -1677,21 +1382,46 @@
         </div>
       </div>
 
+            <!-- Patient Directory Table (Default view when no patient is searched) -->
+      <div id="patient-directory-card" class="card" style="margin-bottom: 1.25rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
+          <div>
+            <div style="font-weight:700; font-size:1rem; color:var(--text);">Enrolled Patients Directory</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Select any patient to review medical history, lab reports, or record a consultation</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="showPage('register')">+ Register Patient</button>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Aadhaar UID</th>
+                <th>Age / Gender</th>
+                <th>Blood Group</th>
+                <th>Allergies Alert</th>
+                <th>Visits</th>
+                <th style="text-align:right;">Quick Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patient-directory-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- Patient Record Content -->
       <div id="ehr-result-container" style="display:none">
-        
-        <!-- Emergency Break-Glass Bar -->
-        <div class="break-glass-bar">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <div>
-              <div style="font-weight:700; color:var(--danger); font-size:0.9rem;">EMERGENCY BREAK-GLASS OVERRIDE PROTOCOL</div>
-              <div style="font-size:0.78rem; color:var(--text-muted);">Instant critical info snapshot for ER physicians. Creates an audited log record.</div>
-            </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
+          <button class="btn btn-secondary btn-sm" onclick="closePatientRecord()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Back to Patient Directory</span>
+          </button>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-outline-danger btn-sm" onclick="triggerBreakGlassModal()">Emergency Snapshot</button>
+            <button class="btn btn-primary btn-sm" onclick="startConsultationFor(currentActivePatient ? currentActivePatient.aadhaar : '')">+ New Consultation</button>
           </div>
-          <button class="btn btn-danger btn-sm" onclick="triggerBreakGlassModal()">Execute Break-Glass</button>
         </div>
-
+        
         <!-- Patient Header Banner -->
         <div class="patient-summary-box" id="patient-banner"></div>
 
@@ -1810,9 +1540,7 @@
       </div>
     </div>
 
-    <!-- ========================================================================
-         PAGE 3: REGISTER NEW PATIENT
-         ======================================================================== -->
+
     <div id="page-register" class="page">
       <div class="page-header">
         <div>
@@ -1905,9 +1633,7 @@
       </div>
     </div>
 
-    <!-- ========================================================================
-         PAGE 4: CONSULTATION & PRESCRIPTION WRITER
-         ======================================================================== -->
+
     <div id="page-add" class="page">
       <div class="page-header">
         <div>
@@ -2056,90 +1782,7 @@
       </div>
     </div>
 
-    <!-- ========================================================================
-         PAGE 5: EMERGENCY TRIAGE (ESI 1-5)
-         ======================================================================== -->
-    <div id="page-triage" class="page">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Emergency Severity Index (ESI) Triage</h1>
-          <div class="page-sub">Evidence-based clinical acuity prioritization tool</div>
-        </div>
-      </div>
 
-      <div class="triage-grid">
-        <div class="card">
-          <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.75rem;">Acuity Assessment Checklist</div>
-          
-          <div class="form-group" style="margin-bottom:0.75rem;">
-            <label class="form-label">1. Immediate Life-Saving Intervention Required?</label>
-            <select id="esi-q1" class="form-control" onchange="calculateEsiScore()">
-              <option value="no">No</option>
-              <option value="yes">YES (Apnea, Cardiac Arrest, Unresponsive, SpO2 &lt; 85%)</option>
-            </select>
-          </div>
-
-          <div class="form-group" style="margin-bottom:0.75rem;">
-            <label class="form-label">2. High-Risk Situation / Severe Pain / Confusion?</label>
-            <select id="esi-q2" class="form-control" onchange="calculateEsiScore()">
-              <option value="no">No</option>
-              <option value="yes">YES (Acute Chest Pain, Stroke, Severe Respiratory Distress)</option>
-            </select>
-          </div>
-
-          <div class="form-group" style="margin-bottom:0.75rem;">
-            <label class="form-label">3. Expected Resources (Labs, IV, ECG, CT/X-Ray)</label>
-            <select id="esi-q3" class="form-control" onchange="calculateEsiScore()">
-              <option value="many">Two or more resources</option>
-              <option value="one">One resource (e.g. Suture, Simple X-Ray)</option>
-              <option value="none">Zero resources (Routine exam)</option>
-            </select>
-          </div>
-
-          <div style="font-weight:700; font-size:0.78rem; color:var(--text-muted); margin: 0.85rem 0 0.4rem;">
-            DANGER ZONE VITALS
-          </div>
-          <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
-            <div style="min-width:0;">
-              <span style="font-size:0.7rem; color:var(--text-muted)">Heart Rate (bpm)</span>
-              <input type="number" id="esi-hr" class="form-control" value="84" oninput="calculateEsiScore()" />
-            </div>
-            <div style="min-width:0;">
-              <span style="font-size:0.7rem; color:var(--text-muted)">Respiratory Rate (/min)</span>
-              <input type="number" id="esi-rr" class="form-control" value="18" oninput="calculateEsiScore()" />
-            </div>
-            <div style="min-width:0;">
-              <span style="font-size:0.7rem; color:var(--text-muted)">Oxygen Saturation (%)</span>
-              <input type="number" id="esi-spo2" class="form-control" value="98" oninput="calculateEsiScore()" />
-            </div>
-            <div style="min-width:0;">
-              <span style="font-size:0.7rem; color:var(--text-muted)">Pain Score (1-10)</span>
-              <input type="number" id="esi-pain" class="form-control" value="4" min="0" max="10" oninput="calculateEsiScore()" />
-            </div>
-          </div>
-        </div>
-
-        <div class="triage-score-box" id="triage-output-card">
-          <div class="badge badge-warning" id="esi-badge">TRIAGE SCORE</div>
-          <div class="triage-score-num" id="esi-num" style="color:var(--warning)">ESI 3</div>
-          <div style="font-weight:700; text-transform:uppercase;" id="esi-name">URGENT (2+ Resources)</div>
-          
-          <div style="margin-top:1rem; padding:0.75rem; border-radius:6px; background:var(--warning-light); font-size:0.84rem; text-align:left;" id="esi-action-box">
-            <div style="font-weight:700; margin-bottom:3px;">Clinical Disposition:</div>
-            <div>Direct to Observation Ward or Monitored Cubicle. Initiate IV line, blood labs, and diagnostic workup.</div>
-          </div>
-
-          <div style="margin-top:1.25rem; display:flex; gap:8px; justify-content:center;">
-            <button class="btn btn-primary btn-sm" onclick="showPage('beds')">Allocate Bed</button>
-            <button class="btn btn-secondary btn-sm" onclick="showPage('add')">Log Encounter</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         PAGE 6: WARD & BED MANAGEMENT
-         ======================================================================== -->
     <div id="page-beds" class="page">
       <div class="page-header">
         <div>
@@ -2162,135 +1805,7 @@
       <div class="bed-matrix-grid" id="beds-container"></div>
     </div>
 
-    <!-- ========================================================================
-         PAGE 7: OPD LIVE TOKEN QUEUE
-         ======================================================================== -->
-    <div id="page-queue" class="page">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">OPD Live Consultation Queue</h1>
-          <div class="page-sub">Waiting room display and token coordination</div>
-        </div>
-        <div>
-          <button class="btn btn-primary btn-sm" onclick="openAddQueueModal()">+ Issue Token</button>
-        </div>
-      </div>
 
-      <div class="token-display-box">
-        <div class="now-calling-tag">● CONSULTATION ROOM 102 (CARDIOLOGY)</div>
-        <div class="token-big-num" id="active-token-num">TOKEN A-104</div>
-        <div style="font-size:1.1rem; font-weight:700;" id="active-token-pat">Priya Sharma — Dr. Ramesh Gupta</div>
-        <div style="margin-top:1rem; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
-          <button class="btn btn-primary" onclick="callNextToken()">Call Next (Chime)</button>
-          <button class="btn btn-secondary" onclick="recallCurrentToken()">Recall</button>
-          <button class="btn btn-secondary" onclick="markTokenCompleted()">Mark Completed</button>
-        </div>
-      </div>
-
-      <div class="table-container">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Token #</th>
-              <th>Patient Name</th>
-              <th>Aadhaar UID</th>
-              <th>Doctor & Department</th>
-              <th>Status</th>
-              <th>Issued</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="queue-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         PAGE 8: CLINICAL ANALYTICS
-         ======================================================================== -->
-    <div id="page-analytics" class="page">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Clinical Network Analytics</h1>
-          <div class="page-sub">Department volume and cross-hospital consultation distribution</div>
-        </div>
-        <div>
-          <button class="btn btn-secondary btn-sm" onclick="exportDataToCsv()">Export CSV</button>
-        </div>
-      </div>
-
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-        <div class="card">
-          <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.75rem;">Department Patient Volume</div>
-          <div style="height: 230px; position:relative;">
-            <canvas id="deptChart"></canvas>
-          </div>
-        </div>
-
-        <div class="card">
-          <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.75rem;">Facility Encounters Comparison</div>
-          <div style="height: 230px; position:relative;">
-            <canvas id="hospitalChart"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
-          <div style="font-weight:700; font-size:0.92rem;">Encounter Records Ledger</div>
-          <input type="text" id="analytics-filter-input" class="form-control" placeholder="Search diagnosis or facility..." style="width:230px; padding:4px 8px; font-size:0.8rem;" oninput="renderAnalyticsTable(this.value)" />
-        </div>
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Patient</th>
-                <th>Aadhaar</th>
-                <th>Facility</th>
-                <th>Department</th>
-                <th>Type</th>
-                <th>Diagnosis</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody id="analytics-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         PAGE 9: AUDIT LOGS
-         ======================================================================== -->
-    <div id="page-audit" class="page">
-      <div class="page-header">
-        <div>
-          <h1 class="page-title">Interoperability Audit Trail</h1>
-          <div class="page-sub">DISHA / HIPAA compliant security logs for cross-hospital records access</div>
-        </div>
-      </div>
-
-      <div class="table-container">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Log ID</th>
-              <th>Timestamp</th>
-              <th>Patient UID</th>
-              <th>Accessing Clinician & Facility</th>
-              <th>Clinical Purpose</th>
-              <th>IP Address</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="audit-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         PAGE 10: SQL SCHEMA & EVALUATION QUERIES
-         ======================================================================== -->
     <div id="page-er" class="page">
       <div class="page-header">
         <div>
@@ -2328,138 +1843,30 @@
       </div>
     </div>
 
+
   </main>
 
-  <!-- ==========================================================================
-       HOSPITAL FOOTER (APOLLO & MANIPAL CLINICAL NETWORK)
-       ========================================================================== -->
+  <!-- Clean Minimal Enterprise Footer -->
   <footer class="app-footer no-print">
-    <!-- Accreditation & Rapid Response Strip -->
-    <div class="footer-top-strip">
-      <div class="footer-top-inner">
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          <span style="font-weight:700; color:#fed7aa; display:inline-flex; align-items:center; gap:6px;">
-            🚨 24x7 Emergency Trauma Response:
-          </span>
-          <span style="font-weight:800; color:#ffffff; font-size:0.95rem;">Tel: 1066 / 102 (Ambulance)</span>
-          <span style="opacity:0.4;">|</span>
-          <span style="color:#cbd5e1;">NABH &amp; NABL Accredited Healthcare Network</span>
-        </div>
-        <div class="footer-badges">
-          <span class="footer-badge-pill">🛡️ ABDM HIP/HIU Certified</span>
-          <span class="footer-badge-pill">📋 ISO 9001:2015 Quality</span>
-          <span class="footer-badge-pill">🔒 Data Protection (HIPAA &amp; DPDP)</span>
-        </div>
+    <div class="footer-inner">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-weight:700; color:var(--text);">MediLink HIS</span>
+        <span style="color:var(--text-dim);">•</span>
+        <span style="font-size:0.78rem; color:var(--text-muted);">Clinical Health Records Network</span>
       </div>
-    </div>
-
-    <!-- Main Footer Directory -->
-    <div class="footer-body">
-      <!-- Col 1: Brand & Emergency -->
-      <div class="footer-col">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:0.75rem;">
-          <div style="width:34px; height:34px; background:var(--primary); color:#ffffff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem;">M</div>
-          <div>
-            <div style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; color:#ffffff; line-height:1.1;">Medi<span style="color:#f59e0b;">Link</span></div>
-            <div style="font-size:0.68rem; font-weight:600; color:#94a3b8; letter-spacing:0.3px; text-transform:uppercase;">Hospital Information System</div>
-          </div>
-        </div>
-        <p style="font-size:0.8rem; color:#94a3b8; line-height:1.55; margin-bottom:1rem;">
-          Interoperable Electronic Medical Record (EMR) exchange connecting leading hospital groups. Empowering physicians with instant patient longitudinal history, drug-allergy safety checks, and acute triage management.
-        </p>
-
-        <div class="footer-emergency-box">
-          <div style="font-size:0.75rem; font-weight:700; color:#fca5a5; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
-            <span style="width:8px; height:8px; border-radius:50%; background:#ef4444; display:inline-block;"></span>
-            24x7 TRAUMA &amp; EMERGENCY BAY
-          </div>
-          <div style="font-size:0.85rem; font-weight:700; color:#ffffff;">Apollo-Manipal Emergency Desk: 1066</div>
-          <div style="font-size:0.72rem; color:#fecaca; margin-top:2px;">Zero-Delay Clinical Triage Protocol Active</div>
-        </div>
+      <div style="display:flex; align-items:center; gap:12px; font-size:0.78rem; color:var(--text-muted);">
+        <span>🚨 Emergency: <strong>1066 / 102</strong></span>
+        <span>•</span>
+        <span>Facility: <strong id="footer-facility-label">AIIMS New Delhi</strong></span>
+        <span>•</span>
+        <span>NABH &amp; ABDM Accredited</span>
       </div>
-
-      <!-- Col 2: Clinical Modules -->
-      <div class="footer-col">
-        <h4><span>🩺</span> Clinical Modules</h4>
-        <ul>
-          <li><a onclick="showPage('search'); window.scrollTo({top:0, behavior:'smooth'});">Patient 360° Health Records</a></li>
-          <li><a onclick="showPage('add'); window.scrollTo({top:0, behavior:'smooth'});">Doctor Consultation &amp; Rx</a></li>
-          <li><a onclick="showPage('triage'); window.scrollTo({top:0, behavior:'smooth'});">Emergency Triage (ESI 1–5)</a></li>
-          <li><a onclick="showPage('beds'); window.scrollTo({top:0, behavior:'smooth'});">Ward &amp; ICU Bed Allocation</a></li>
-          <li><a onclick="showPage('queue'); window.scrollTo({top:0, behavior:'smooth'});">OPD Live Queue Coordinator</a></li>
-          <li><a onclick="showPage('analytics'); window.scrollTo({top:0, behavior:'smooth'});">Clinical Visual Analytics</a></li>
-          <li><a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">National Exchange Audit Trail</a></li>
-          <li><a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">SQL Relational Query Runner</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Key Specialties -->
-      <div class="footer-col">
-        <h4><span>🏥</span> Specialties</h4>
-        <ul>
-          <li><a onclick="quickLoadPatient('5555 6666 7777'); window.scrollTo({top:0, behavior:'smooth'});">Cardiology &amp; Cardiac ICU</a></li>
-          <li><a onclick="quickLoadPatient('1111 2222 3333'); window.scrollTo({top:0, behavior:'smooth'});">Orthopedics &amp; Joint Replacement</a></li>
-          <li><a onclick="quickLoadPatient('2345 6789 0123'); window.scrollTo({top:0, behavior:'smooth'});">Internal Medicine &amp; CDSS</a></li>
-          <li><a onclick="quickLoadPatient('4444 3333 2222'); window.scrollTo({top:0, behavior:'smooth'});">Pediatric Pulmonology</a></li>
-          <li><a onclick="quickLoadPatient('9999 8888 7777'); window.scrollTo({top:0, behavior:'smooth'});">Endocrinology &amp; Diabetes</a></li>
-          <li><a onclick="showPage('triage'); window.scrollTo({top:0, behavior:'smooth'});">Emergency &amp; Critical Care</a></li>
-          <li><a onclick="showPage('beds'); window.scrollTo({top:0, behavior:'smooth'});">Surgical Post-Op Care</a></li>
-          <li><a onclick="showPage('search'); window.scrollTo({top:0, behavior:'smooth'});">Diagnostic Pathology Lab</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Network Hospitals -->
-      <div class="footer-col">
-        <h4><span>📍</span> Network Facilities</h4>
-        <ul>
-          <li><a onclick="switchFacilityInHeader('1')">AIIMS New Delhi (Ansari Nagar)</a></li>
-          <li><a onclick="switchFacilityInHeader('2')">Apollo Multi-Speciality (Delhi)</a></li>
-          <li><a onclick="switchFacilityInHeader('6')">Manipal Hospital (Bengaluru)</a></li>
-          <li><a onclick="switchFacilityInHeader('3')">Fortis Healthcare (Gurugram)</a></li>
-          <li><a onclick="switchFacilityInHeader('4')">Max Super Speciality (Saket)</a></li>
-          <li><a onclick="switchFacilityInHeader('5')">PGIMER (Chandigarh)</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 5: Governance & Standards -->
-      <div class="footer-col">
-        <h4><span>⚖️</span> Compliance</h4>
-        <ul>
-          <li><a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">ABDM Consent Architecture</a></li>
-          <li><a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">Relational Schema &amp; Audit Logs</a></li>
-          <li><a onclick="showBreakGlassModal()">Emergency Break-Glass Policy</a></li>
-          <li><a onclick="openDatabaseModal()">Database Backup &amp; JSON Export</a></li>
-          <li><a onclick="toast('NABH Safe-I Infection Control Guidelines: Compliant')">NABH Safety Protocols</a></li>
-          <li><a onclick="toast('Pharmacovigilance Programme of India (PvPI): Active')">Pharmacovigilance Guidelines</a></li>
-          <li><a onclick="toast('Patient Charter of Rights & Responsibilities: Enforced')">Patient Rights Charter</a></li>
-          <li><a onclick="toast('Bio-Medical Waste Management Rules (2016): Certified')">Bio-Medical Waste Standard</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Bottom Copyright & Node Bar -->
-    <div class="footer-bottom-bar">
-      <div class="footer-bottom-inner">
-        <div>
-          © 2026 MediLink Unified Hospital Management System. All rights reserved.
-        </div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="width:7px; height:7px; border-radius:50%; background:#10b981; display:inline-block;"></span>
-          <span>Node: <strong>DL-AIIMS-01</strong></span>
-          <span>•</span>
-          <span>Version: <strong>v2.4.2 Enterprise HIS</strong></span>
-          <span>•</span>
-          <span style="color:#10b981;">Gateway Uptime: 99.98%</span>
-        </div>
-        <div class="footer-bottom-links">
-          <a onclick="showPage('audit'); window.scrollTo({top:0, behavior:'smooth'});">Audit Logs</a>
-          <a onclick="showPage('er'); window.scrollTo({top:0, behavior:'smooth'});">Course Queries Q1–Q5</a>
-          <a onclick="toggleTheme()">Theme Toggle</a>
-          <a onclick="openDatabaseModal()">Data Management</a>
-        </div>
+      <div style="font-size:0.76rem; color:var(--text-dim);">
+        © 2026 MediLink Unified Hospital Management System
       </div>
     </div>
   </footer>
+
 
   <!-- ==========================================================================
        MODAL 1: BREAK-GLASS EMERGENCY OVERLAY
@@ -2500,8 +1907,8 @@
 
       <div style="display:flex; justify-content:flex-end; gap:6px;">
         <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-break-glass')">Close</button>
-        <button class="btn btn-danger btn-sm" onclick="showPage('triage'); closeModal('modal-break-glass');">
-          Go to Triage
+        <button class="btn btn-primary btn-sm" onclick="startConsultationFor(currentActivePatient ? currentActivePatient.aadhaar : ''); closeModal('modal-break-glass');">
+          + Start Consultation
         </button>
       </div>
     </div>
@@ -2605,36 +2012,6 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       MODAL 4: ISSUE OPD QUEUE TOKEN
-       ========================================================================== -->
-  <div id="modal-add-queue" class="modal-backdrop">
-    <div class="modal-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-        <div style="font-size:1.1rem; font-weight:700;">Issue OPD Walk-In Token</div>
-        <button class="btn-icon" onclick="closeModal('modal-add-queue')">✕</button>
-      </div>
-
-      <div class="form-group" style="margin-bottom:0.75rem;">
-        <label class="form-label">SELECT PATIENT *</label>
-        <select id="queue-patient-select" class="form-control" required></select>
-      </div>
-
-      <div class="form-group" style="margin-bottom:1rem;">
-        <label class="form-label">CONSULTING DOCTOR *</label>
-        <select id="queue-doctor-select" class="form-control" required>
-          <option value="Dr. Ramesh Gupta (Cardiology)">Dr. Ramesh Gupta — Cardiology</option>
-          <option value="Dr. Anita Verma (General Medicine)">Dr. Anita Verma — General Medicine</option>
-          <option value="Dr. Vikram Singh (Orthopaedics)">Dr. Vikram Singh — Orthopaedics</option>
-          <option value="Dr. Priya Nair (Neurology)">Dr. Priya Nair — Neurology</option>
-        </select>
-      </div>
-
-      <div style="display:flex; justify-content:flex-end; gap:6px;">
-        <button class="btn btn-secondary btn-sm" onclick="closeModal('modal-add-queue')">Cancel</button>
-        <button class="btn btn-primary btn-sm" onclick="confirmIssueToken()">Issue Token</button>
-      </div>
-    </div>
   </div>
 
   <!-- ==========================================================================
@@ -2967,12 +2344,10 @@
       initDatabaseState();
       initTheme();
       updateNavigationBadges();
-      calculateEsiScore();
+      renderPatientDirectoryTable();
       renderBedMatrix('ALL');
-      renderQueueTable();
-      renderAuditLogs();
-      renderAnalyticsTable();
       loadSqlTemplate('q1');
+      showPage('search');
 
       const today = new Date().toISOString().split('T')[0];
       const visitDateEl = document.getElementById('visit-date');
@@ -2990,7 +2365,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      const tabOrder = ['home', 'search', 'register', 'add', 'triage', 'beds', 'queue', 'analytics', 'audit', 'er'];
+      const tabOrder = ['search', 'add', 'register', 'beds', 'er'];
       const activeIdx = tabOrder.indexOf(pageId);
       const navButtons = document.querySelectorAll('.nav-btn');
       if (activeIdx !== -1 && navButtons[activeIdx]) {
@@ -3003,14 +2378,12 @@
         drawerButtons[activeIdx].classList.add('active');
       }
 
-      if (pageId === 'analytics') {
-        setTimeout(initAnalyticsCharts, 80);
-      } else if (pageId === 'beds') {
+      if (pageId === 'beds') {
         renderBedMatrix('ALL');
-      } else if (pageId === 'queue') {
-        renderQueueTable();
-      } else if (pageId === 'audit') {
-        renderAuditLogs();
+      } else if (pageId === 'search') {
+        if (!currentActivePatient) {
+          renderPatientDirectoryTable();
+        }
       }
     }
 
@@ -3101,24 +2474,36 @@
 
     function quickLoadPatient(aadhaarStr) {
       showPage('search');
+      const dirCard = document.getElementById('patient-directory-card');
+      if (dirCard) dirCard.style.display = 'none';
       document.getElementById('ehr-search-input').value = aadhaarStr;
       executeEhrSearch();
     }
 
     function handleEhrSearchInput(el) {
-      if (el.value.length >= 14) executeEhrSearch();
+      if (el.value.trim() === '') {
+        executeEhrSearch();
+      } else if (el.value.length >= 14) {
+        executeEhrSearch();
+      }
     }
 
     function executeEhrSearch() {
       const q = document.getElementById('ehr-search-input').value.trim().toLowerCase();
       const resultBox = document.getElementById('ehr-result-container');
       const noResultBox = document.getElementById('ehr-no-result');
+      const dirCard = document.getElementById('patient-directory-card');
 
       if (!q) {
+        if (dirCard) dirCard.style.display = 'block';
         resultBox.style.display = 'none';
         noResultBox.style.display = 'none';
+        currentActivePatient = null;
+        renderPatientDirectoryTable();
         return;
       }
+
+      if (dirCard) dirCard.style.display = 'none';
 
       const cleanQ = q.replace(/\s+/g, '');
       const patient = state.patients.find(p => {
@@ -3144,6 +2529,66 @@
       renderVitalsSection(patient);
       renderLabsTable(patient);
       renderAbhaCard(patient);
+    }
+
+    function closePatientRecord() {
+      const dirCard = document.getElementById('patient-directory-card');
+      const resBox = document.getElementById('ehr-result-container');
+      const noResBox = document.getElementById('ehr-no-result');
+      const searchInput = document.getElementById('ehr-search-input');
+      if (dirCard) dirCard.style.display = 'block';
+      if (resBox) resBox.style.display = 'none';
+      if (noResBox) noResBox.style.display = 'none';
+      if (searchInput) searchInput.value = '';
+      currentActivePatient = null;
+      renderPatientDirectoryTable();
+    }
+
+    function startConsultationFor(aadhaar) {
+      if (!aadhaar) return;
+      showPage('add');
+      const input = document.getElementById('visit-aadhaar');
+      if (input) {
+        input.value = aadhaar;
+        verifyPatientForVisit();
+      }
+    }
+
+    function renderPatientDirectoryTable() {
+      const tbody = document.getElementById('patient-directory-tbody');
+      if (!tbody) return;
+      const patients = state.patients || [];
+      if (patients.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:var(--text-muted);">No enrolled patients found. Register a new patient to get started.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = patients.map(p => {
+        const age = p.dob ? (new Date().getFullYear() - new Date(p.dob).getFullYear()) : 'N/A';
+        const hasAllergy = p.allergies && p.allergies !== 'None' && p.allergies.trim() !== '';
+        const allergyBadge = hasAllergy 
+          ? `<span class="badge badge-danger" title="${p.allergies}">⚠️ ${p.allergies}</span>` 
+          : `<span class="badge badge-success">None Recorded</span>`;
+        const encounters = p.records ? p.records.length : 0;
+        return `
+          <tr>
+            <td style="font-weight:700; color:var(--text); white-space:nowrap;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="patient-avatar" style="width:28px; height:28px; font-size:0.75rem;">${p.name.substring(0, 2).toUpperCase()}</span>
+                <span>${p.name}</span>
+              </div>
+            </td>
+            <td style="font-family:var(--font-mono); font-size:0.82rem; color:var(--primary); font-weight:600; white-space:nowrap;">${p.aadhaar}</td>
+            <td>${age} yrs • ${p.gender || 'N/A'}</td>
+            <td><span class="badge badge-primary">${p.blood || 'Unknown'}</span></td>
+            <td>${allergyBadge}</td>
+            <td><span class="badge" style="background:var(--bg-alt); color:var(--text);">${encounters} visits</span></td>
+            <td style="text-align:right; white-space:nowrap;">
+              <button class="btn btn-secondary btn-sm" onclick="quickLoadPatient('${p.aadhaar}')">View Record</button>
+              <button class="btn btn-primary btn-sm" onclick="startConsultationFor('${p.aadhaar}')" style="margin-left:4px;">+ Visit</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function logAccessAudit(aadhaar, purpose) {
@@ -3575,59 +3020,6 @@
       quickLoadPatient(a);
     }
 
-    function calculateEsiScore() {
-      const q1 = document.getElementById('esi-q1').value;
-      const q2 = document.getElementById('esi-q2').value;
-      const q3 = document.getElementById('esi-q3').value;
-      const hr = parseInt(document.getElementById('esi-hr').value) || 80;
-      const rr = parseInt(document.getElementById('esi-rr').value) || 16;
-      const spo2 = parseInt(document.getElementById('esi-spo2').value) || 98;
-      const pain = parseInt(document.getElementById('esi-pain').value) || 0;
-
-      const numEl = document.getElementById('esi-num');
-      const nameEl = document.getElementById('esi-name');
-      const boxEl = document.getElementById('esi-action-box');
-      const cardEl = document.getElementById('triage-output-card');
-
-      let level = 5;
-      let levelName = 'NON-URGENT (Level 5)';
-      let levelColor = '#007799';
-      let actionText = 'Standard OPD consultation or routine prescription renewal.';
-
-      if (q1 === 'yes' || spo2 < 85) {
-        level = 1;
-        levelName = 'RESUSCITATION (Level 1)';
-        levelColor = 'var(--danger)';
-        actionText = 'IMMEDIATE RESUSCITATION REQUIRED. Direct straight to Trauma Bay 1. Mobilize Code Blue / Trauma Team.';
-      } else if (q2 === 'yes' || pain >= 8 || spo2 < 92 || hr > 120 || rr > 28) {
-        level = 2;
-        levelName = 'EMERGENT (Level 2)';
-        levelColor = '#ea580c';
-        actionText = 'High-risk situation or unstable vitals. Assign Monitored Acute Bed. Physician review within 10 minutes.';
-      } else if (q3 === 'many') {
-        level = 3;
-        levelName = 'URGENT (Level 3)';
-        levelColor = 'var(--warning)';
-        actionText = 'Multiple resources needed (IV, Labs, Imaging). Direct to Observation Ward.';
-      } else if (q3 === 'one') {
-        level = 4;
-        levelName = 'LESS URGENT (Level 4)';
-        levelColor = 'var(--success)';
-        actionText = 'Single simple resource needed. Direct to Minor Treatment / Fast Track.';
-      }
-
-      numEl.textContent = `ESI ${level}`;
-      numEl.style.color = levelColor;
-      nameEl.textContent = levelName;
-      nameEl.style.color = levelColor;
-      cardEl.style.borderColor = levelColor;
-
-      boxEl.innerHTML = `
-        <div style="font-weight:700; margin-bottom:2px; color:${levelColor}">Clinical Disposition:</div>
-        <div>${actionText}</div>
-      `;
-    }
-
     function filterBedsByWard(wardName) {
       document.querySelectorAll('.ward-pill').forEach(b => b.classList.remove('active'));
       if (event && event.currentTarget) event.currentTarget.classList.add('active');
@@ -3738,191 +3130,9 @@
       }
     }
 
-    function playQueueChime() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const now = audioCtx.currentTime;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, now);
-        osc.frequency.setValueAtTime(880.00, now + 0.12);
-
-        gain.gain.setValueAtTime(0.18, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.7);
-      } catch (e) {}
-    }
-
-    function renderQueueTable() {
-      const tbody = document.getElementById('queue-tbody');
-      const list = state.queue || [];
-
-      if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.25rem; color:var(--text-muted)">No active OPD queue tokens.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = list.map((item, idx) => `
-        <tr>
-          <td><strong style="font-family:var(--font-mono); color:var(--primary)">${item.token}</strong></td>
-          <td><strong>${item.name}</strong></td>
-          <td style="font-family:var(--font-mono); color:var(--text-muted)">${item.aadhaar}</td>
-          <td>${item.doctor}</td>
-          <td><span class="badge ${item.status === 'Serving' ? 'badge-primary' : 'badge-warning'}">${item.status}</span></td>
-          <td>${item.time}</td>
-          <td><button class="btn btn-secondary btn-sm" onclick="setActiveServingToken(${idx})">Serve</button></td>
-        </tr>
-      `).join('');
-    }
-
-    function setActiveServingToken(idx) {
-      const item = state.queue[idx];
-      state.queue.forEach(q => { if (q.status === 'Serving') q.status = 'Waiting'; });
-      item.status = 'Serving';
-
-      document.getElementById('active-token-num').textContent = `TOKEN ${item.token}`;
-      document.getElementById('active-token-pat').textContent = `${item.name} — ${item.doctor}`;
-
-      playQueueChime();
-      saveState();
-      renderQueueTable();
-      toast(`Calling Token ${item.token}`);
-    }
-
-    function callNextToken() {
-      const waiting = state.queue.find(q => q.status === 'Waiting');
-      if (waiting) {
-        const idx = state.queue.indexOf(waiting);
-        setActiveServingToken(idx);
-      } else {
-        toast('No waiting tokens in the queue');
-      }
-    }
-
-    function recallCurrentToken() {
-      playQueueChime();
-      toast('Recalling active patient');
-    }
-
-    function markTokenCompleted() {
-      const servingIdx = state.queue.findIndex(q => q.status === 'Serving');
-      if (servingIdx !== -1) {
-        const completed = state.queue.splice(servingIdx, 1)[0];
-        toast(`Token ${completed.token} marked completed`);
-        saveState();
-        renderQueueTable();
-
-        if (state.queue.length > 0) {
-          callNextToken();
-        } else {
-          document.getElementById('active-token-num').textContent = 'NO ACTIVE TOKEN';
-          document.getElementById('active-token-pat').textContent = 'Queue completed';
-        }
-      }
-    }
-
-    function openAddQueueModal() {
-      const select = document.getElementById('queue-patient-select');
-      select.innerHTML = state.patients.map(p => `<option value="${p.aadhaar}">${p.name} (${p.aadhaar})</option>`).join('');
-      openModal('modal-add-queue');
-    }
-
-    function confirmIssueToken() {
-      const aadhaar = document.getElementById('queue-patient-select').value;
-      const p = state.patients.find(x => x.aadhaar === aadhaar);
-      const doc = document.getElementById('queue-doctor-select').value;
-
-      const nextNum = 100 + state.queue.length + 1;
-      const tokenObj = {
-        token: 'A-' + nextNum,
-        name: p.name,
-        aadhaar: p.aadhaar,
-        doctor: doc,
-        status: 'Waiting',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-
-      state.queue.push(tokenObj);
-      saveState();
-      closeModal('modal-add-queue');
-      renderQueueTable();
-      toast(`Token ${tokenObj.token} issued`);
-    }
-
-    let deptChartInstance = null;
-    let hospitalChartInstance = null;
     let vitalsChartInstance = null;
 
-    function initAnalyticsCharts() {
-      if (typeof Chart === 'undefined') return;
-
-      const deptCounts = {};
-      const hospitalCounts = {};
-
-      state.patients.forEach(p => {
-        (p.records || []).forEach(r => {
-          deptCounts[r.dept] = (deptCounts[r.dept] || 0) + 1;
-          hospitalCounts[r.hospital] = (hospitalCounts[r.hospital] || 0) + 1;
-        });
-      });
-
-      const deptCtx = document.getElementById('deptChart');
-      if (deptCtx) {
-        if (deptChartInstance) deptChartInstance.destroy();
-        deptChartInstance = new Chart(deptCtx, {
-          type: 'doughnut',
-          data: {
-            labels: Object.keys(deptCounts),
-            datasets: [{
-              data: Object.values(deptCounts),
-              backgroundColor: ['#004b87', '#007799', '#059669', '#f59e0b', '#dc2626', '#6366f1', '#0284c7'],
-              borderWidth: 2
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { position: 'right', labels: { boxWidth: 10, font: { family: 'Inter', size: 11 } } }
-            }
-          }
-        });
-      }
-
-      const hospCtx = document.getElementById('hospitalChart');
-      if (hospCtx) {
-        if (hospitalChartInstance) hospitalChartInstance.destroy();
-        hospitalChartInstance = new Chart(hospCtx, {
-          type: 'bar',
-          data: {
-            labels: Object.keys(hospitalCounts),
-            datasets: [{
-              label: 'Encounters',
-              data: Object.values(hospitalCounts),
-              backgroundColor: '#004b87',
-              borderRadius: 4
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' } },
-              x: { grid: { display: false } }
-            },
-            plugins: { legend: { display: false } }
-          }
-        });
-      }
-    }
-
-    function initPatientVitalsChart(patient) {
+function initPatientVitalsChart(patient) {
       if (typeof Chart === 'undefined') return;
       const canvas = document.getElementById('vitalsChart');
       if (!canvas) return;
@@ -3972,41 +3182,6 @@
       });
     }
 
-    function renderAnalyticsTable(searchKeyword = '') {
-      const tbody = document.getElementById('analytics-tbody');
-      const allEncounters = [];
-
-      state.patients.forEach(p => {
-        (p.records || []).forEach(r => {
-          allEncounters.push({ pName: p.name, aadhaar: p.aadhaar, ...r });
-        });
-      });
-
-      const q = (searchKeyword || '').toLowerCase();
-      const filtered = allEncounters.filter(item => 
-        item.pName.toLowerCase().includes(q) ||
-        item.hospital.toLowerCase().includes(q) ||
-        item.diagnosis.toLowerCase().includes(q)
-      );
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.25rem; color:var(--text-muted)">No matching records.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = filtered.map(r => `
-        <tr>
-          <td><strong>${r.pName}</strong></td>
-          <td style="font-family:var(--font-mono); color:var(--text-muted)">${r.aadhaar}</td>
-          <td>${r.hospital}</td>
-          <td>${r.dept}</td>
-          <td><span class="badge ${r.type === 'Emergency' ? 'badge-danger' : 'badge-primary'}">${r.type}</span></td>
-          <td>${r.diagnosis}</td>
-          <td>${r.date}</td>
-        </tr>
-      `).join('');
-    }
-
     function exportDataToCsv() {
       let csv = 'Patient Name,Aadhaar,Hospital,Department,Visit Type,Diagnosis,Date\n';
       state.patients.forEach(p => {
@@ -4022,23 +3197,6 @@
       a.download = `MediLink_Encounters_${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
       toast('Encounters exported to CSV');
-    }
-
-    function renderAuditLogs() {
-      const tbody = document.getElementById('audit-tbody');
-      const logs = state.auditLogs || [];
-
-      tbody.innerHTML = logs.map(l => `
-        <tr>
-          <td style="font-family:var(--font-mono); color:var(--primary)">${l.id}</td>
-          <td>${l.time}</td>
-          <td style="font-family:var(--font-mono)">${l.aadhaar}</td>
-          <td><strong>${l.accessor}</strong></td>
-          <td>${l.purpose}</td>
-          <td style="font-family:var(--font-mono); color:var(--text-dim)">${l.ip}</td>
-          <td><span class="badge badge-success">${l.status}</span></td>
-        </tr>
-      `).join('');
     }
 
     const SQL_TEMPLATES = {
