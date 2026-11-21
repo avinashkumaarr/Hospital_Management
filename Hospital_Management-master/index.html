@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediLink Enterprise v4.0 — Hospital Management & Unified Medical Records Network</title>
+  
+  <!-- Immediate Theme Initializer: Prevents flash of wrong theme -->
+  <script>
+    (function() {
+      try {
+        var pref = localStorage.getItem('medilink-theme') || localStorage.getItem('medilink_theme') || 'system';
+        if (!['system', 'light', 'dark', 'midnight'].includes(pref)) pref = 'system';
+        var resolved = pref;
+        if (pref === 'system') {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          resolved = isDark ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-preference', pref);
+      } catch (e) {}
+    })();
+  </script>
+  
+  <!-- Clinical Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js for Healthcare Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Modern Hospital Command Center Stylesheet -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚕</text></svg>" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <!-- ====================================================================
+       VIEW 1: MODERN LANDING HOMEPAGE (#view-landing)
+       ==================================================================== -->
+  <div id="view-landing" class="app-view active">
+    <!-- Modern Sticky Navigation Bar -->
+    <nav class="landing-nav">
+      <div class="landing-nav-container">
+        <a href="#hero" class="landing-brand">
+          <div class="landing-brand-icon">⚕</div>
+          <span>MediLink<span style="color:var(--primary); font-weight:800">.</span></span>
+        </a>
+
+        <ul class="landing-nav-links" id="landing-nav-links">
+          <li><a href="#hero" onclick="toggleMobileMenu()">Home</a></li>
+          <li><a href="#features" onclick="toggleMobileMenu()">Features</a></li>
+          <li><a href="#how-it-works" onclick="toggleMobileMenu()">How It Works</a></li>
+          <li><a href="#benefits" onclick="toggleMobileMenu()">Benefits</a></li>
+          <li><a href="#preview" onclick="toggleMobileMenu()">Preview</a></li>
+          <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+
+        <div class="landing-nav-actions">
+          <div class="theme-dropdown-wrap" style="position:relative;">
+            <button class="btn-icon" id="landing-theme-toggle" onclick="toggleLandingThemeMenu(event)" title="Interface Theme (System, Light, Dark, Midnight)">
+              <span id="landing-theme-btn-icon">💻</span>
+            </button>
+            <div class="theme-dropdown-menu" id="landing-theme-dropdown-menu" style="display:none;">
+              <div class="theme-menu-header">Interface Theme</div>
+              <button class="theme-menu-item" data-theme-val="system" onclick="setAppTheme('system'); closeLandingThemeMenu();">
+                <span class="theme-menu-icon">💻</span>
+                <span class="theme-menu-label">System Default</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="light" onclick="setAppTheme('light'); closeLandingThemeMenu();">
+                <span class="theme-menu-icon">☀️</span>
+                <span class="theme-menu-label">Light</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="dark" onclick="setAppTheme('dark'); closeLandingThemeMenu();">
+                <span class="theme-menu-icon">🌙</span>
+                <span class="theme-menu-label">Dark</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="midnight" onclick="setAppTheme('midnight'); closeLandingThemeMenu();">
+                <span class="theme-menu-icon">🌌</span>
+                <span class="theme-menu-label">Midnight Blue</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="switchView('login')">Sign In</button>
+          <button class="btn btn-primary btn-sm" onclick="handleGetStarted()">Get Started</button>
+          <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Premium Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>●</span>
+          <span>Enterprise Healthcare Platform v4.0</span>
+        </div>
+        <h1 class="hero-title">
+          Smarter Healthcare.<br><span>Seamlessly Connected.</span>
+        </h1>
+        <p class="hero-subtitle">
+          One intelligent platform to manage patients, medical records, appointments, hospital operations, and healthcare insights — all in one place.
+        </p>
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="handleGetStarted()" style="padding:0.8rem 1.6rem; font-size:1rem; font-weight:700;">
+            Get Started →
+          </button>
+          <a href="#features" class="btn btn-secondary" style="padding:0.8rem 1.6rem; font-size:1rem; font-weight:600; text-decoration:none;">
+            Explore Features
+          </a>
+        </div>
+        <div class="hero-trust-row">
+          <div class="hero-trust-item">
+            <span class="hero-trust-num">6+</span>
+            <span class="hero-trust-lbl">Tier-1 Nodes</span>
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-num">100%</span>
+            <span class="hero-trust-lbl">CDSS Safety</span>
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-num">11</span>
+            <span class="hero-trust-lbl">DBMS Entities</span>
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-num">Zero</span>
+            <span class="hero-trust-lbl">Data Collisions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual: CSS/SVG Hospital Dashboard Preview -->
+      <div class="hero-visual-card">
+        <div class="mock-window-bar">
+          <span class="mock-dot"></span>
+          <span class="mock-dot"></span>
+          <span class="mock-dot"></span>
+          <span style="font-size:0.75rem; color:var(--text-dim); margin-left:8px; font-family:var(--font-mono)">medilink.hospital/command-center</span>
+        </div>
+        <div class="mock-grid-kpis">
+          <div class="mock-kpi">
+            <div class="mock-kpi-title">Active Inpatients</div>
+            <div class="mock-kpi-val" style="color:var(--primary)">284 / 320</div>
+            <div style="font-size:0.7rem; color:var(--success); margin-top:2px;">● 88.7% Bed Occupancy</div>
+          </div>
+          <div class="mock-kpi">
+            <div class="mock-kpi-title">OPD Live Queue</div>
+            <div class="mock-kpi-val" style="color:var(--teal)">18 Waiting</div>
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Avg Wait: 12 min</div>
+          </div>
+        </div>
+        <!-- Illustrative Patient Encounter Card -->
+        <div class="mock-timeline-item" style="border-left:3px solid var(--primary); background:var(--bg-alt);">
+          <div style="font-size:1.1rem;">🩺</div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong>Cardiology Consultation</strong>
+              <span class="badge badge-success" style="font-size:0.65rem;">Completed</span>
+            </div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Dr. Anita Verma • Verified Digital Rx Slip Issued</div>
+          </div>
+        </div>
+        <div class="mock-timeline-item" style="border-left:3px solid var(--danger); background:var(--bg-alt);">
+          <div style="font-size:1.1rem;">🚨</div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong>Trauma Triage ESI-1</strong>
+              <span class="badge badge-danger" style="font-size:0.65rem;">Immediate</span>
+            </div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Red Bay Allocated • Crash Cart Ready</div>
+          </div>
+        </div>
+        <div class="mock-timeline-item" style="border-left:3px solid var(--teal); background:var(--bg-alt);">
+          <div style="font-size:1.1rem;">🧪</div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong>Digital Lab Diagnostics</strong>
+              <span class="badge badge-info" style="font-size:0.65rem;">Verified</span>
+            </div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Automated Abnormal Value CDSS Trigger</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section (10 Cards with Lucide Icons) -->
+    <section class="landing-section" id="features">
+      <div class="section-header">
+        <span class="section-tag">Clinical Intelligence &amp; Operations</span>
+        <h2 class="section-title">Comprehensive Hospital Management Suite</h2>
+        <p class="section-desc">
+          Engineered for clinical precision, seamless patient flow, and institutional interoperability across modern tertiary care networks.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- 1. Unified Patient Records -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="file-heart"></i>
+          </div>
+          <h3 class="feature-name">Unified Patient Records</h3>
+          <p class="feature-desc">
+            Single longitudinal EHR linked by 12-digit Aadhaar UID. Full encounter timelines, past diagnoses, and treatment notes across multiple hospital nodes.
+          </p>
+        </div>
+
+        <!-- 2. Smart Appointment Scheduling -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="calendar-check"></i>
+          </div>
+          <h3 class="feature-name">Smart Appointment Scheduling</h3>
+          <p class="feature-desc">
+            Seamless multi-specialty slot booking with doctor availability validation, conflict prevention, real-time rescheduling, and automated status tracking.
+          </p>
+        </div>
+
+        <!-- 3. Digital Prescriptions -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="pill"></i>
+          </div>
+          <h3 class="feature-name">Digital Prescriptions</h3>
+          <p class="feature-desc">
+            Clinical prescription generation with drug interaction checking, allergy alerts, dosage safety, and official printable PDF/hospital slip exports.
+          </p>
+        </div>
+
+        <!-- 4. Doctor Management -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="stethoscope"></i>
+          </div>
+          <h3 class="feature-name">Doctor Management</h3>
+          <p class="feature-desc">
+            Specialist roster, department categorization, consultation fee schedules, active on-duty status, and linked encounter histories.
+          </p>
+        </div>
+
+        <!-- 5. Hospital Bed Management -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="bed"></i>
+          </div>
+          <h3 class="feature-name">Hospital Bed Management</h3>
+          <p class="feature-desc">
+            Interactive ward layout covering ICU, General, Emergency, and Pediatric wards. Transactional admission, transfer, and discharge with zero collisions.
+          </p>
+        </div>
+
+        <!-- 6. OPD Queue Management -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="users"></i>
+          </div>
+          <h3 class="feature-name">OPD Queue Management</h3>
+          <p class="feature-desc">
+            Persistent daily token numbering mechanism supporting Waiting, Serving, Completed, and Cancelled states for frictionless patient intake.
+          </p>
+        </div>
+
+        <!-- 7. Hospital Analytics -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="trending-up"></i>
+          </div>
+          <h3 class="feature-name">Hospital Analytics</h3>
+          <p class="feature-desc">
+            Real-time visual charts for inpatient occupancy, outpatient volume trends, department workload distribution, and patient vitals progression.
+          </p>
+        </div>
+
+        <!-- 8. Lab Report Management -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="flask-conical"></i>
+          </div>
+          <h3 class="feature-name">Lab Report Management</h3>
+          <p class="feature-desc">
+            Digital diagnostic report archiving with file upload, automated reference range flags, abnormal value alerts, and direct patient timeline linkage.
+          </p>
+        </div>
+
+        <!-- 9. Emergency Care Coordination -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="ambulance"></i>
+          </div>
+          <h3 class="feature-name">Emergency Care Coordination</h3>
+          <p class="feature-desc">
+            5-level Emergency Severity Index (ESI) trauma triage with automated resuscitation bay recommendations and break-glass emergency record access.
+          </p>
+        </div>
+
+        <!-- 10. Secure Role-Based Access -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <h3 class="feature-name">Secure Role-Based Access</h3>
+          <p class="feature-desc">
+            PBKDF2-secured token authentication with strict role permissions for Administrators, Doctors, Receptionists, and Emergency Staff with audit logging.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How MediLink Works Section -->
+    <section class="landing-section" style="background:var(--bg-alt);" id="how-it-works">
+      <div class="section-header">
+        <span class="section-tag">Operational Workflow</span>
+        <h2 class="section-title">How MediLink Works</h2>
+        <p class="section-desc">
+          Four intuitive steps connecting administrative workflows, clinical diagnostics, and executive oversight.
+        </p>
+      </div>
+
+      <div class="how-it-works-grid">
+        <div class="step-card">
+          <div class="step-num-badge">STEP 1</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="key-round"></i>
+          </div>
+          <h4 class="step-title">Securely Sign In</h4>
+          <p class="step-desc">
+            Authenticate using institutional role credentials (Doctor, Admin, Receptionist, Emergency) with signed session tokens.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">STEP 2</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="layout-grid"></i>
+          </div>
+          <h4 class="step-title">Select Module</h4>
+          <p class="step-desc">
+            Navigate through dedicated clinical workspaces: OPD Queue, Unified EHR, Beds &amp; Wards, Consultations, or Appointments.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">STEP 3</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="activity"></i>
+          </div>
+          <h4 class="step-title">Manage Operations</h4>
+          <p class="step-desc">
+            Perform clinical actions: write prescriptions with CDSS interaction alerts, admit patients, and upload diagnostic tests.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num-badge">STEP 4</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+          <h4 class="step-title">Access Insights</h4>
+          <p class="step-desc">
+            Review real-time hospital occupancy, export compliance CSV reports, inspect audit trails, and run SQL queries in the workbench.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="landing-section" id="benefits">
+      <div class="section-header">
+        <span class="section-tag">Institutional Advantages</span>
+        <h2 class="section-title">Why Leading Facilities Rely on MediLink</h2>
+        <p class="section-desc">
+          Eliminating fragmented data silos to deliver faster care, lower administrative overhead, and higher clinical safety.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Streamlined Hospital Operations</h4>
+            <p class="benefit-desc">Automated bed allocations, daily OPD token management, and doctor rosters minimize bottlenecks.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Centralized Medical Records</h4>
+            <p class="benefit-desc">Longitudinal patient records synchronized across affiliated health facilities using national Aadhaar UID.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Reduced Administrative Complexity</h4>
+            <p class="benefit-desc">Single-click appointment scheduling, instant bed transfers, and verified PDF prescriptions save staff hours.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Better Appointment Coordination</h4>
+            <p class="benefit-desc">Eliminates double bookings with real-time schedule conflict validation across specialist clinics.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Organized Healthcare Data</h4>
+            <p class="benefit-desc">11 normalized relational database entities ensuring data integrity, ACID transactions, and zero orphaned records.</p>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-check">✓</div>
+          <div>
+            <h4 class="benefit-title">Secure Access Control</h4>
+            <p class="benefit-desc">Granular RBAC privileges, emergency break-glass protocols, and permanent cryptographic audit logging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="landing-section" style="background:var(--bg-alt);" id="preview">
+      <div class="section-header">
+        <span class="section-tag">Platform Showcase</span>
+        <h2 class="section-title">Live Hospital Command Center Preview</h2>
+        <p class="section-desc">
+          Experience the intuitive, clinical-grade interface designed for rapid decision-making in high-pressure healthcare environments.
+        </p>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-topbar">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="mock-dot"></span>
+            <span class="mock-dot"></span>
+            <span class="mock-dot"></span>
+            <strong style="font-size:0.85rem; margin-left:8px;">MediLink Command Center v4.0 — AIIMS Node</strong>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="handleGetStarted()">Launch Full Workspace →</button>
+        </div>
+        <div class="preview-body">
+          <div class="metrics-grid" style="margin-bottom:1.5rem;">
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Active Patients</div>
+                <div class="metric-num">5</div>
+                <div class="metric-sub">Linked with Aadhaar UID</div>
+              </div>
+              <div class="metric-icon-box">👥</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Encounters Logged</div>
+                <div class="metric-num">12</div>
+                <div class="metric-sub">Verified Clinical EMR</div>
+              </div>
+              <div class="metric-icon-box">📑</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Bed Occupancy</div>
+                <div class="metric-num">5/16 (31%)</div>
+                <div class="metric-sub">ICU: 2 • General: 2 • ER: 1</div>
+              </div>
+              <div class="metric-icon-box">🛏️</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Live OPD Queue</div>
+                <div class="metric-num">3 Waiting</div>
+                <div class="metric-sub">Daily Auto-Sequenced</div>
+              </div>
+              <div class="metric-icon-box">🎫</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <span class="panel-title">Recent Clinical Encounters</span>
+              <span class="badge badge-primary">Sample Operational View</span>
+            </div>
+            <div class="panel-body" style="padding:0;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Record ID</th>
+                    <th>Patient Name</th>
+                    <th>Diagnosis</th>
+                    <th>Attending Doctor</th>
+                    <th>Facility</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>REC-2024-001</code></td>
+                    <td><strong>Priya Sharma</strong></td>
+                    <td>Essential Hypertension (I10)</td>
+                    <td>Dr. Anita Verma</td>
+                    <td>Apollo Hospital</td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>REC-2024-002</code></td>
+                    <td><strong>Rahul Mehta</strong></td>
+                    <td>Type 2 Diabetes Mellitus (E11)</td>
+                    <td>Dr. Rajesh Gupta</td>
+                    <td>Fortis Healthcare</td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td><code>REC-2024-003</code></td>
+                    <td><strong>Ananya Iyer</strong></td>
+                    <td>Bronchial Asthma (J45)</td>
+                    <td>Dr. Anita Verma</td>
+                    <td>Apollo Hospital</td>
+                    <td><span class="badge badge-info">Follow-up</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call-to-Action Section -->
+    <section class="landing-section">
+      <div class="cta-banner">
+        <h2>Transform the Way You Manage Healthcare.</h2>
+        <p>
+          Experience unified patient care, frictionless clinical workflows, and enterprise-grade data management today.
+        </p>
+        <button class="btn btn-primary" onclick="handleGetStarted()" style="padding:0.85rem 2rem; font-size:1.05rem; font-weight:700; background:#fff; color:var(--primary); border:none; box-shadow:var(--shadow-lg);">
+          Launch MediLink →
+        </button>
+      </div>
+    </section>
+
+    <!-- Clean Footer -->
+    <footer class="landing-footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="landing-brand">
+            <div class="landing-brand-icon">⚕</div>
+            <span>MediLink<span style="color:var(--primary)">.</span></span>
+          </div>
+          <p>
+            MediLink Enterprise is an interoperable, unified hospital management and electronic medical records platform engineered for modern healthcare institutions.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <ul class="footer-links">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#benefits">Institutional Benefits</a></li>
+            <li><a href="#preview">Command Center Preview</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Modules</div>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchView('login')">Patient Directory</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('login')">OPD Queue System</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('login')">Bed &amp; Ward Management</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('login')">Diagnostic Labs</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('login')">SQL Workbench</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Security &amp; Governance</div>
+          <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-bottom:0.75rem;">
+            Built with strict role-based access control, cryptographic PBKDF2 authentication, and immutable audit logs.
+          </p>
+          <div style="font-size:0.78rem; color:var(--text-dim);">
+            DBMS Project Demonstration<br>FastAPI • SQLAlchemy • MySQL/SQLite
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 MediLink Enterprise v4.0. All rights reserved.</div>
+        <div>Engineered for Healthcare Demonstration</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ====================================================================
+       VIEW 2: DEDICATED 2-COLUMN LOGIN VIEW (#view-login)
+       ==================================================================== -->
+  <div id="view-login" class="app-view">
+    <div class="login-viewport">
+      <div class="login-card-wrapper">
+        <!-- Left Brand Side -->
+        <div class="login-brand-side">
+          <div>
+            <div class="landing-brand" style="color:#fff; margin-bottom:1.5rem;">
+              <div class="landing-brand-icon">⚕</div>
+              <span>MediLink<span style="color:var(--primary); font-weight:800">.</span></span>
+            </div>
+            <h2 style="font-family:var(--font-heading); font-size:1.85rem; font-weight:800; line-height:1.25; margin-bottom:1rem;">
+              Next-Generation Hospital Information System.
+            </h2>
+            <p style="color:#94a3b8; font-size:0.92rem; line-height:1.6; margin-bottom:2rem;">
+              Securely access hospital command centers, patient records, clinical consultations, and live bed allocations with role-based governance.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:0.75rem;">
+              <div style="display:flex; align-items:center; gap:0.65rem; font-size:0.85rem; color:#cbd5e1;">
+                <span style="color:var(--success); font-weight:800;">✓</span>
+                <span>Zero Data Collision Bed Management</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.65rem; font-size:0.85rem; color:#cbd5e1;">
+                <span style="color:var(--success); font-weight:800;">✓</span>
+                <span>Automated Drug-Allergy &amp; Drug-Drug CDSS</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.65rem; font-size:0.85rem; color:#cbd5e1;">
+                <span style="color:var(--success); font-weight:800;">✓</span>
+                <span>Cryptographic PBKDF2 Access Control</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.65rem; font-size:0.85rem; color:#cbd5e1;">
+                <span style="color:var(--success); font-weight:800;">✓</span>
+                <span>Dual MySQL 8.0 &amp; Zero-Config SQLite Fallback</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size:0.75rem; color:#64748b; border-top:1px solid #334155; padding-top:1.25rem;">
+            Hospital Network Node v4.0 • Verified ABHA/Aadhaar Linked EMR
+          </div>
+        </div>
+
+        <!-- Right Form Side -->
+        <div class="login-form-side">
+          <div class="login-header">
+            <h2>Welcome to MediLink</h2>
+            <p>Sign in to access your hospital command center</p>
+          </div>
+
+          <form id="login-form" onsubmit="handleLoginFormSubmit(event)">
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label class="form-label" for="login-username">Workstation Username</label>
+              <input type="text" id="login-username" class="form-control" placeholder="e.g. admin" required value="admin" />
+            </div>
+
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" for="login-password">Password</label>
+              <div style="position:relative;">
+                <input type="password" id="login-password" class="form-control" placeholder="Enter password" required value="admin123" style="padding-right:40px;" />
+                <button type="button" class="btn-icon" id="btn-toggle-pw" onclick="togglePasswordVisibility()" style="position:absolute; right:8px; top:50%; transform:translateY(-50%); width:28px; height:28px; font-size:0.9rem;" title="Show/Hide Password">
+                  👁️
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; padding:0.75rem; font-weight:700; font-size:0.95rem; justify-content:center;">
+              Sign In to Workspace →
+            </button>
+          </form>
+
+          <!-- Quick Demo Role Switcher -->
+          <div class="demo-credentials-box">
+            <div style="font-weight:700; color:var(--text); margin-bottom:0.4rem;">⚡ Quick Demo Profiles:</div>
+            <div style="display:flex; flex-wrap:wrap; gap:4px;">
+              <span class="demo-btn-pill" onclick="quickLogin('admin')">🔑 Admin</span>
+              <span class="demo-btn-pill" onclick="quickLogin('doctor')">🩺 Doctor</span>
+              <span class="demo-btn-pill" onclick="quickLogin('receptionist')">📋 Reception</span>
+              <span class="demo-btn-pill" onclick="quickLogin('emergency')">🚑 Emergency</span>
+            </div>
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-top:4px;">
+              Click any role to auto-fill credentials and sign in instantly.
+            </div>
+          </div>
+
+          <div style="text-align:center; margin-top:1.5rem;">
+            <a href="javascript:void(0)" onclick="switchView('landing')" style="font-size:0.85rem; color:var(--primary); text-decoration:none; font-weight:600;">
+              ← Return to Homepage
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       VIEW 3: HOSPITAL COMMAND CENTER SHELL (#view-app)
+       ==================================================================== -->
+  <div id="view-app" class="app-view">
+
+  <div id="app-container">
+    
+    <!-- ====================================================================
+         COLLAPSIBLE SIDEBAR
+         ==================================================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="brand-wrap" onclick="showPage('page-home'); return false;">
+          <div class="brand-icon">⚕</div>
+          <span>MediLink<span style="color:var(--accent); font-weight:800">.</span></span>
+        </a>
+        <button class="btn-icon" style="display:none" id="sidebar-close-btn" onclick="toggleSidebar()">✕</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Overview</div>
+        <button class="nav-link active" data-page="page-home" onclick="showPage('page-home')">
+          <span class="nav-icon"><i data-lucide="layout-dashboard">📊</i></span>
+          <span>Command Center</span>
+        </button>
+        <button class="nav-link" data-page="page-profile" onclick="showPage('page-profile')">
+          <span class="nav-icon"><i data-lucide="user">👤</i></span>
+          <span>Staff Profile</span>
+        </button>
+
+        <div class="nav-section-title">Clinical Operations</div>
+        <button class="nav-link" data-page="page-patients" onclick="showPage('page-patients')">
+          <span class="nav-icon"><i data-lucide="users">👥</i></span>
+          <span>Patient Directory</span>
+          <span class="nav-badge" id="badge-patients">0</span>
+        </button>
+        <button class="nav-link" data-page="page-search" onclick="showPage('page-search')">
+          <span class="nav-icon"><i data-lucide="search">🔍</i></span>
+          <span>Unified EHR Viewer</span>
+        </button>
+        <button class="nav-link" data-page="page-register" onclick="showPage('page-register')">
+          <span class="nav-icon"><i data-lucide="user-plus">➕</i></span>
+          <span>Enroll Patient</span>
+        </button>
+        <button class="nav-link" data-page="page-encounter" onclick="showPage('page-encounter')">
+          <span class="nav-icon"><i data-lucide="stethoscope">🩺</i></span>
+          <span>Doctor Consultation</span>
+        </button>
+        <button class="nav-link" data-page="page-appointments" onclick="showPage('page-appointments')">
+          <span class="nav-icon"><i data-lucide="calendar">📅</i></span>
+          <span>Appointments</span>
+          <span class="nav-badge" id="badge-appts">0</span>
+        </button>
+        <button class="nav-link" data-page="page-doctors" onclick="showPage('page-doctors')">
+          <span class="nav-icon"><i data-lucide="user-check">👨‍⚕️</i></span>
+          <span>Doctor Availability</span>
+        </button>
+
+        <div class="nav-section-title">Hospital Resources</div>
+        <button class="nav-link" data-page="page-beds" onclick="showPage('page-beds')">
+          <span class="nav-icon"><i data-lucide="bed">🛏️</i></span>
+          <span>Beds &amp; Wards</span>
+          <span class="nav-badge" id="badge-beds">0/0</span>
+        </button>
+        <button class="nav-link" data-page="page-queue" onclick="showPage('page-queue')">
+          <span class="nav-icon"><i data-lucide="ticket">🎫</i></span>
+          <span>OPD Live Queue</span>
+          <span class="nav-badge" id="badge-queue">0</span>
+        </button>
+        <button class="nav-link" data-page="page-labs" onclick="showPage('page-labs')">
+          <span class="nav-icon"><i data-lucide="flask-conical">🧪</i></span>
+          <span>Diagnostic Labs</span>
+        </button>
+        <button class="nav-link" data-page="page-triage" onclick="showPage('page-triage')">
+          <span class="nav-icon"><i data-lucide="ambulance">🚑</i></span>
+          <span>Trauma Triage (ESI)</span>
+        </button>
+
+        <div class="nav-section-title">Intelligence &amp; DBMS</div>
+        <button class="nav-link" data-page="page-analytics" onclick="showPage('page-analytics')">
+          <span class="nav-icon"><i data-lucide="trending-up">📈</i></span>
+          <span>Network Analytics</span>
+        </button>
+        <button class="nav-link" data-page="page-audit" onclick="showPage('page-audit')">
+          <span class="nav-icon"><i data-lucide="shield">🛡️</i></span>
+          <span>Access Audit Logs</span>
+        </button>
+        <button class="nav-link" data-page="page-sql" onclick="showPage('page-sql')">
+          <span class="nav-icon"><i data-lucide="database">💾</i></span>
+          <span>SQL DBMS Workbench</span>
+        </button>
+        <button class="nav-link" data-page="page-backup" onclick="showPage('page-backup')">
+          <span class="nav-icon"><i data-lucide="hard-drive">⚙️</i></span>
+          <span>Engine &amp; Health</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card" onclick="showPage('page-profile')" title="View Staff Profile">
+          <div class="avatar-sm" id="sidebar-avatar-initials">SA</div>
+          <div class="sidebar-user-meta">
+            <div id="sidebar-user-name">System Administrator</div>
+            <div id="sidebar-user-role">Administrator</div>
+          </div>
+        </div>
+        <button class="btn-logout-red" id="btn-sidebar-logout" onclick="logoutUser()" title="Sign Out of MediLink">
+          <span class="btn-logout-icon">🚪</span>
+          <span class="btn-logout-label">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN APPLICATION SHELL
+         ==================================================================== -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="btn-icon" onclick="toggleSidebar()" title="Toggle Sidebar">☰</button>
+          
+          <select id="active-facility-select" class="facility-select" onchange="appState.currentFacilityId = parseInt(this.value); loadDashboard();">
+            <option value="1">AIIMS Delhi (Node 01)</option>
+            <option value="2">Apollo Hospitals (Node 02)</option>
+            <option value="3">Fortis Healthcare (Node 03)</option>
+            <option value="4">Max Super Speciality (Node 04)</option>
+            <option value="5">PGIMER Chandigarh (Node 05)</option>
+            <option value="6">Manipal Hospital (Node 06)</option>
+          </select>
+
+          <div class="global-search-box" onclick="openGlobalSearch()" title="Open Global Command Search (Ctrl+K)">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="global-search-input" placeholder="Search patients, doctors, records... (Ctrl+K)" readonly onclick="openGlobalSearch()" style="cursor:pointer;" />
+            <span class="search-shortcut">Ctrl+K</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Role Selector -->
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <select id="active-role-select" class="facility-select" onchange="switchRoleUser(this.value)" style="max-width:180px;">
+              <option value="admin">Administrator</option>
+              <option value="doctor">Doctor</option>
+              <option value="receptionist">Receptionist</option>
+              <option value="emergency">Emergency Staff</option>
+            </select>
+          </div>
+
+          <!-- Notification Bell -->
+          <div style="position:relative;">
+            <button id="btn-notifications" class="btn-icon" onclick="toggleNotificationDropdown()" title="Notifications">
+              🔔
+              <span class="badge-dot" id="notif-unread-dot" style="display:none"></span>
+            </button>
+            <div id="notifications-dropdown" style="display:none; position:absolute; right:0; top:44px; width:300px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); z-index:200;">
+              <div style="padding:10px 14px; border-bottom:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center;">
+                <strong style="font-size:0.85rem">Notifications</strong>
+                <button class="btn btn-secondary btn-sm" onclick="window.api.markAllNotificationsRead(); loadNotifications();">Mark All Read</button>
+              </div>
+              <div id="notifications-dropdown-list" style="max-height:260px; overflow-y:auto;"></div>
+            </div>
+          </div>
+
+          <!-- Theme Toggle Dropdown Menu (Requirement 4) -->
+          <div class="theme-dropdown-wrap" style="position:relative;">
+            <button class="btn-icon" id="btn-theme-toggle" onclick="toggleThemeMenu(event)" title="Interface Theme (System, Light, Dark, Midnight)">
+              <span id="theme-btn-icon">💻</span>
+            </button>
+            <div class="theme-dropdown-menu" id="theme-dropdown-menu" style="display:none;">
+              <div class="theme-menu-header">Interface Theme</div>
+              <button class="theme-menu-item" data-theme-val="system" onclick="setAppTheme('system'); closeThemeMenu();">
+                <span class="theme-menu-icon">💻</span>
+                <span class="theme-menu-label">System Default</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="light" onclick="setAppTheme('light'); closeThemeMenu();">
+                <span class="theme-menu-icon">☀️</span>
+                <span class="theme-menu-label">Light</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="dark" onclick="setAppTheme('dark'); closeThemeMenu();">
+                <span class="theme-menu-icon">🌙</span>
+                <span class="theme-menu-label">Dark</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+              <button class="theme-menu-item" data-theme-val="midnight" onclick="setAppTheme('midnight'); closeThemeMenu();">
+                <span class="theme-menu-icon">🌌</span>
+                <span class="theme-menu-label">Midnight Blue</span>
+                <span class="theme-menu-check">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Topbar Logout Button -->
+          <button class="btn-logout-header" id="btn-header-logout" onclick="logoutUser()" title="Logout of MediLink">
+            <span class="btn-logout-icon">🚪</span>
+            <span class="btn-logout-label">Logout</span>
+          </button>
+
+          <!-- Staff Profile Dropdown -->
+          <div class="profile-dropdown-wrap" style="position:relative; margin-left:0.35rem;">
+            <button class="profile-trigger-btn" id="header-profile-btn" onclick="toggleProfileDropdown(event)" title="Staff Account Menu">
+              <div class="avatar-pill" id="header-avatar-initials">SA</div>
+              <div class="profile-meta-text">
+                <div class="profile-name-line" id="header-user-name">System Administrator</div>
+                <div class="profile-role-line" id="header-user-role">Administrator</div>
+              </div>
+              <span class="dropdown-chevron">▾</span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="profile-dropdown-menu" id="header-profile-menu" style="display:none;">
+              <div class="dropdown-user-info">
+                <div class="dropdown-avatar" id="dropdown-avatar-initials">SA</div>
+                <div class="dropdown-meta">
+                  <strong id="dropdown-user-name">System Administrator</strong>
+                  <span class="badge badge-primary" id="dropdown-user-role" style="display:inline-block; margin-top:2px; font-size:0.7rem;">Administrator</span>
+                  <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="dropdown-user-facility">AIIMS Delhi</div>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" onclick="openProfilePage();">
+                <i data-lucide="user">👤</i>
+                <span>My Profile</span>
+              </button>
+              <button class="dropdown-item" onclick="openProfileSecurity();">
+                <i data-lucide="key">🔒</i>
+                <span>Account Security</span>
+              </button>
+              <button class="dropdown-item" onclick="openProfileAppearance(); closeProfileDropdown();">
+                <i data-lucide="palette">🎨</i>
+                <span>Appearance &amp; Theme</span>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item dropdown-item-danger" id="btn-dropdown-logout" onclick="logoutUser(); closeProfileDropdown();">
+                <i data-lucide="log-out">🚪</i>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Breadcrumbs Bar -->
+      <div class="breadcrumbs-bar">
+        <div class="breadcrumb-trail">
+          <span>MediLink</span>
+          <span>/</span>
+          <span id="breadcrumb-current">Command Dashboard</span>
+        </div>
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <span style="font-size:0.75rem; color:var(--text-dim)">User:</span>
+          <span class="badge badge-primary" id="user-role-label">Administrator</span>
+          <span id="user-name-label" style="font-weight:600; color:var(--text)">System Admin</span>
+        </div>
+      </div>
+
+      <!-- Main Content Viewport -->
+      <div class="content-viewport">
+
+        <!-- ==============================================================
+             PAGE 1: COMMAND DASHBOARD & OVERVIEW
+             ============================================================== -->
+        <section id="page-home" class="page active">
+          <!-- Welcome Greeting Banner -->
+          <div class="welcome-banner">
+            <div>
+              <h2 class="welcome-banner-title">
+                Welcome back, <span id="welcome-user-name">System Administrator</span> 👋
+              </h2>
+              <p class="welcome-banner-sub">
+                Hospital Operations &amp; Unified Clinical Records Network • Active Node: <span id="welcome-facility-node" style="font-weight:700; color:var(--primary);">AIIMS Delhi (Node 01)</span>
+              </p>
+            </div>
+            <div class="welcome-banner-actions">
+              <button class="btn btn-secondary btn-sm" onclick="showPage('page-encounter')">
+                🩺 + New Consultation
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="showPage('page-register')">
+                👥 Enroll Patient
+              </button>
+            </div>
+          </div>
+
+          <!-- Metric KPIs -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Registered Patients</div>
+                <div class="metric-num" id="dash-stat-patients">5</div>
+                <div class="metric-sub">Linked with 12-digit Aadhaar UID</div>
+              </div>
+              <div class="metric-icon-box">👥</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Medical Encounters</div>
+                <div class="metric-num" id="dash-stat-records">7</div>
+                <div class="metric-sub">Central relational history fact table</div>
+              </div>
+              <div class="metric-icon-box">📋</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Bed Occupancy</div>
+                <div class="metric-num" id="dash-stat-beds">3/12 (25%)</div>
+                <div class="metric-sub">Across 4 hospital wards</div>
+              </div>
+              <div class="metric-icon-box">🛏️</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Waiting OPD Queue</div>
+                <div class="metric-num" id="dash-stat-queue">4</div>
+                <div class="metric-sub">Live consultation calling board</div>
+              </div>
+              <div class="metric-icon-box">🎫</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Scheduled Appts</div>
+                <div class="metric-num" id="dash-stat-appts">4</div>
+                <div class="metric-sub">Collision-safe doctor booking</div>
+              </div>
+              <div class="metric-icon-box">📅</div>
+            </div>
+            <div class="metric-card">
+              <div>
+                <div class="metric-title">Emergency Trauma</div>
+                <div class="metric-num" id="dash-stat-emergency">2</div>
+                <div class="metric-sub">Critical ESI 1–2 admissions</div>
+              </div>
+              <div class="metric-icon-box">🚨</div>
+            </div>
+          </div>
+
+          <!-- Quick Actions Bar -->
+          <div class="card" style="padding:1rem 1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+              <div>
+                <h3 style="font-size:0.95rem; font-weight:700">Quick Clinical Actions</h3>
+                <div style="font-size:0.78rem; color:var(--text-muted)">Fast track clinical workflows across departments</div>
+              </div>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="btn btn-primary btn-sm" onclick="showPage('page-register')">➕ Enroll Patient</button>
+                <button class="btn btn-secondary btn-sm" onclick="showPage('page-encounter')">🩺 New Consultation</button>
+                <button class="btn btn-secondary btn-sm" onclick="openAddQueueModal()">🎫 Issue OPD Token</button>
+                <button class="btn btn-secondary btn-sm" onclick="openBookAppointmentModal()">📅 Book Appointment</button>
+                <button class="btn btn-danger btn-sm" onclick="showPage('page-triage')">🚑 Trauma Triage</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Visualizations Grid -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:1.25rem; margin-bottom:1.5rem;">
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <div class="card-title">🩺 Department Consultation Volume</div>
+                <span class="badge badge-info">Chart.js</span>
+              </div>
+              <div style="height:250px; position:relative;">
+                <canvas id="chart-dept-volume"></canvas>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <div class="card-title">🏥 Hospital Network Reach</div>
+                <span class="badge badge-primary">Relational Aggregation</span>
+              </div>
+              <div style="height:250px; position:relative;">
+                <canvas id="chart-hosp-volume"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Encounters Table -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">⏱️ Recent Medical Encounters</div>
+              <button class="btn btn-secondary btn-sm" onclick="showPage('page-patients')">View All Patients →</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Record ID</th>
+                    <th>Visit Date</th>
+                    <th>Type</th>
+                    <th>Clinical Diagnosis</th>
+                    <th>Hospital Facility</th>
+                    <th>Physician</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 2: PATIENT DIRECTORY
+             ============================================================== -->
+        <section id="page-patients" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">👥 Unified Citizen Patient Directory</div>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <button class="btn btn-outline btn-sm" onclick="exportPatientsCSV()" title="Export current patient list as CSV">📥 Export CSV</button>
+                <button class="btn btn-primary btn-sm" onclick="showPage('page-register')">➕ Enroll New Patient</button>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; margin-bottom:1rem; flex-wrap:wrap; align-items:center;">
+              <input type="text" id="patient-dir-search-input" class="form-control" style="max-width:280px;" placeholder="Search name, Aadhaar, phone..." oninput="onPatientDirFilterChange()" />
+              <select id="patient-dir-gender-filter" class="form-control" style="max-width:140px;" onchange="onPatientDirFilterChange()">
+                <option value="">All Genders</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <select id="patient-dir-blood-filter" class="form-control" style="max-width:150px;" onchange="onPatientDirFilterChange()">
+                <option value="">All Blood Types</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+              <button class="btn btn-secondary btn-sm" onclick="resetPatientDirFilters()">Reset</button>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Aadhaar UID</th>
+                    <th>Patient Full Name</th>
+                    <th>Demographics</th>
+                    <th>Blood</th>
+                    <th>Mobile</th>
+                    <th>Documented Allergies</th>
+                    <th>Clinical Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="patient-directory-tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="table-pagination" id="patient-dir-pagination" style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; padding-top:0.75rem; border-top:1px solid var(--border-light); font-size:0.82rem; color:var(--text-muted);">
+              <div id="patient-dir-page-info">Showing patients</div>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <button class="btn btn-secondary btn-sm" id="btn-patient-prev" onclick="changePatientPage(-1)" disabled>◀ Prev</button>
+                <span id="patient-dir-current-page" style="font-weight:700; padding:0 8px; color:var(--primary);">1 / 1</span>
+                <button class="btn btn-secondary btn-sm" id="btn-patient-next" onclick="changePatientPage(1)" disabled>Next ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 3: UNIFIED EHR PATIENT VIEWER
+             ============================================================== -->
+        <section id="page-search" class="page">
+          <div class="card" style="margin-bottom:1rem;">
+            <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+              <input type="text" id="ehr-search-input" class="form-control" style="max-width:320px; font-family:var(--font-mono)" placeholder="Enter 12-digit Aadhaar UID..." oninput="formatAadhaarInput(this)" />
+              <button class="btn btn-primary" onclick="viewPatientEhr(document.getElementById('ehr-search-input').value)">Search Patient EHR</button>
+              <div style="font-size:0.78rem; color:var(--text-muted);">
+                Quick Demo: 
+                <a href="#" onclick="viewPatientEhr('2345 6789 0123'); return false;">Priya Sharma</a> | 
+                <a href="#" onclick="viewPatientEhr('1111 2222 3333'); return false;">Arjun Kapoor</a> | 
+                <a href="#" onclick="viewPatientEhr('5555 6666 7777'); return false;">Rajesh Verma</a>
+              </div>
+            </div>
+          </div>
+
+          <div id="ehr-result-container" style="display:none;">
+            <!-- Patient Top Demographics Banner -->
+            <div class="card" id="patient-banner" style="background:var(--card-alt); border-left:4px solid var(--primary);"></div>
+
+            <!-- Subtabs Navigation -->
+            <div style="display:flex; gap:0.5rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.5rem; flex-wrap:wrap;">
+              <button class="btn btn-secondary btn-sm active" id="tab-btn-timeline" onclick="switchEhrSubTab('timeline')">📋 Clinical Timeline (<span id="subtab-encounter-count">0</span>)</button>
+              <button class="btn btn-secondary btn-sm" id="tab-btn-vitals" onclick="switchEhrSubTab('vitals')">💓 Recorded Vitals &amp; Trend</button>
+              <button class="btn btn-secondary btn-sm" id="tab-btn-labs" onclick="switchEhrSubTab('labs')">🧪 Lab Reports (<span id="subtab-labs-count">0</span>)</button>
+              <button class="btn btn-secondary btn-sm" id="tab-btn-abha" onclick="switchEhrSubTab('abha')">🪪 Smart Health ID Card</button>
+            </div>
+
+            <!-- Subtab 1: Encounter Timeline (Fix Bug 1) -->
+            <div id="ehr-tab-timeline">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <div style="font-size:0.85rem; font-weight:700">Encounter History Across Interoperable Hospitals</div>
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span style="font-size:0.78rem; color:var(--text-muted)">Filter:</span>
+                  <select id="timeline-filter-type" class="form-control" style="padding:3px 8px; font-size:0.78rem;" onchange="renderEhrTimeline()">
+                    <option value="ALL">All Encounters</option>
+                    <option value="OPD Consultation">OPD Consultation</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Surgery">Surgery</option>
+                    <option value="Routine Checkup">Routine Checkup</option>
+                    <option value="Lab Tests">Lab Tests</option>
+                  </select>
+                </div>
+              </div>
+              <div class="timeline-wrap" id="patient-timeline-list"></div>
+            </div>
+
+            <!-- Subtab 2: Vitals Visualization (Fix Bug 3) -->
+            <div id="ehr-tab-vitals" style="display:none;">
+              <div class="vitals-cards-grid" id="vitals-summary-cards"></div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">📈 Longitudinal Vitals Trend (Blood Pressure &amp; Heart Rate)</div>
+                </div>
+                <div style="height:280px; position:relative;">
+                  <canvas id="vitalsChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subtab 3: Diagnostic Labs -->
+            <div id="ehr-tab-labs" style="display:none;">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">🧪 Diagnostic Investigations &amp; Reference Intervals</div>
+                  <button class="btn btn-primary btn-sm" onclick="openModal('modal-upload-lab')">📎 Attach Lab Report</button>
+                </div>
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Investigation Test</th>
+                        <th>Observed Result</th>
+                        <th>Reference Range</th>
+                        <th>Clinical Flag</th>
+                        <th>Report Date</th>
+                        <th>Attachment</th>
+                      </tr>
+                    </thead>
+                    <tbody id="patient-lab-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subtab 4: Digital ABHA Health Card -->
+            <div id="ehr-tab-abha" style="display:none;">
+              <div class="card" style="max-width:440px; margin:0 auto; background:linear-gradient(135deg, #004b87, #0284c7); color:#fff; border-radius:var(--radius-lg); padding:1.5rem; position:relative; box-shadow:var(--shadow-lg);">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem;">
+                  <div>
+                    <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.85">National Health Authority</div>
+                    <div style="font-size:1.1rem; font-weight:800; font-family:var(--font-heading)">Ayushman Smart Health Card</div>
+                  </div>
+                  <div style="width:36px; height:28px; background:linear-gradient(135deg, #f59e0b, #d97706); border-radius:4px; border:1px solid #fff"></div>
+                </div>
+
+                <div style="margin-bottom:1.25rem;">
+                  <div style="font-size:1.2rem; font-weight:800;" id="abha-name">Priya Sharma</div>
+                  <div style="font-family:var(--font-mono); font-size:0.95rem; margin-top:2px;" id="abha-uid">Aadhaar: XXXX-XXXX-0123</div>
+                  <div style="font-size:0.78rem; opacity:0.9; margin-top:2px;" id="abha-dob-gender">DOB: 1990-05-14 | Gender: Female</div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(255,255,255,0.25); padding-top:0.75rem;">
+                  <div>
+                    <div style="font-size:0.68rem; opacity:0.8">Blood Group</div>
+                    <div style="font-size:1.1rem; font-weight:800; color:#fed7aa;" id="abha-blood">B+</div>
+                  </div>
+                  <div style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.1em; opacity:0.85">
+                    ||||| ||| |||| || |||||
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="ehr-no-result" style="display:none; text-align:center; padding:3rem 1rem;">
+            <div style="font-size:2.5rem; margin-bottom:0.5rem">🔍</div>
+            <h3 style="font-size:1.15rem; font-weight:700">Patient Not Found</h3>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">No citizen profile exists for the searched Aadhaar UID in national registry.</p>
+            <button class="btn btn-primary btn-sm" style="margin-top:1rem;" onclick="showPage('page-register')">➕ Enroll New Patient</button>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 4: PATIENT ENROLLMENT
+             ============================================================== -->
+        <section id="page-register" class="page">
+          <div class="card" style="max-width:760px; margin:0 auto;">
+            <div class="card-header">
+              <div class="card-title">📝 New Patient Citizen Enrollment Form</div>
+              <span class="badge badge-primary">Aadhaar Relational PK</span>
+            </div>
+
+            <form id="patient-enroll-form" onsubmit="submitPatientRegistration(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">12-Digit Aadhaar UID *</label>
+                  <input type="text" id="reg-aadhaar" class="form-control" placeholder="XXXX XXXX XXXX" maxlength="14" oninput="formatAadhaarInput(this)" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Patient Full Name *</label>
+                  <input type="text" id="reg-name" class="form-control" placeholder="As per official ID" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Date of Birth *</label>
+                  <input type="date" id="reg-dob" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Gender *</label>
+                  <select id="reg-gender" class="form-control" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Blood Group</label>
+                  <select id="reg-blood" class="form-control">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+" selected>O+</option>
+                    <option value="O-">O-</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Mobile Phone Number</label>
+                  <input type="tel" id="reg-mobile" class="form-control" placeholder="+91 98765 43210" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" id="reg-email" class="form-control" placeholder="patient@example.com" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Residential Address</label>
+                <textarea id="reg-address" class="form-control" rows="2" placeholder="Full street address, city, state"></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Documented Drug / Environmental Allergies</label>
+                  <input type="text" id="reg-allergies" class="form-control" placeholder="e.g. Penicillin, Sulfa drugs, Latex (or None)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Chronic Conditions</label>
+                  <input type="text" id="reg-chronic" class="form-control" placeholder="e.g. Hypertension, Type-2 Diabetes" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Emergency Contact Info</label>
+                <input type="text" id="reg-emergency" class="form-control" placeholder="Name (Relationship): +91 XXXXX XXXXX" />
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+                <button type="submit" class="btn btn-primary">Enroll &amp; Save Patient Record</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 5: DOCTOR CLINICAL CONSULTATION (CDSS & Encounters)
+             ============================================================== -->
+        <section id="page-encounter" class="page">
+          <div class="card" style="max-width:820px; margin:0 auto;">
+            <div class="card-header">
+              <div class="card-title">🩺 Doctor Clinical Consultation &amp; Prescription Slip</div>
+              <span class="badge badge-primary">CDSS Enabled</span>
+            </div>
+
+            <!-- CDSS Live Alert Card -->
+            <div id="cdss-live-alert" style="display:none; background:var(--danger-light); border-left:4px solid var(--danger); padding:10px 14px; border-radius:var(--radius-md); font-size:0.82rem; margin-bottom:1rem; color:var(--text);"></div>
+
+            <form id="clinical-encounter-form" onsubmit="submitClinicalConsultation(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Patient 12-Digit Aadhaar *</label>
+                  <input type="text" id="enc-aadhaar-input" class="form-control" placeholder="2345 6789 0123" oninput="formatAadhaarInput(this); onConsultationPatientSelect(this.value);" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Selected Patient Overview</label>
+                  <div style="padding:0.45rem 0.75rem; background:var(--bg-alt); border-radius:var(--radius-md); font-size:0.8rem;">
+                    <div>Name: <strong id="enc-pat-name-display">—</strong></div>
+                    <div>Allergies: <strong id="enc-pat-allergies-display" style="color:var(--danger)">—</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Attending Doctor</label>
+                  <select id="enc-doctor-select" class="form-control">
+                    <option value="1">Dr. Ramesh Gupta (Cardiology)</option>
+                    <option value="2">Dr. Anita Verma (General Medicine)</option>
+                    <option value="3">Dr. Sanjay Mehta (Pathology)</option>
+                    <option value="4">Dr. Vikram Singh (Orthopaedics)</option>
+                    <option value="5">Dr. Priya Nair (Neurology)</option>
+                    <option value="6">Dr. Rajesh Kulkarni (Emergency)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Department</label>
+                  <select id="enc-dept-select" class="form-control">
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="General Medicine">General Medicine</option>
+                    <option value="Orthopaedics">Orthopaedics</option>
+                    <option value="Pulmonology">Pulmonology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Emergency Medicine">Emergency Medicine</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Visit Type</label>
+                  <select id="enc-visittype-select" class="form-control">
+                    <option value="OPD Consultation">OPD Consultation</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Surgery">Surgery</option>
+                    <option value="Routine Checkup">Routine Checkup</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Chief Complaint &amp; Clinical Symptoms</label>
+                <input type="text" id="enc-complaint-input" class="form-control" placeholder="e.g. Headache, dizziness, chest tightness" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" style="position:relative;">
+                  <label class="form-label">Clinical Diagnosis * (Type to search ICD-10)</label>
+                  <input type="text" id="enc-diagnosis-input" class="form-control" placeholder="e.g. Essential Hypertension" oninput="onIcd10Search(this.value)" required />
+                  <div id="icd10-suggestions-list" style="display:none; position:absolute; top:100%; left:0; right:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); max-height:160px; overflow-y:auto; z-index:50; box-shadow:var(--shadow-md);"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ICD-10 Code</label>
+                  <input type="text" id="enc-icd10-input" class="form-control" placeholder="e.g. I10" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Recorded Vitals Summary</label>
+                <input type="text" id="enc-vitals-input" class="form-control" placeholder="e.g. BP: 140/90 mmHg, HR: 82 bpm, SpO2: 98%, Temp: 98.4°F" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Rx Medications &amp; Dosage (Live Allergy &amp; Drug Conflict Scan)</label>
+                <textarea id="enc-rx-input" class="form-control" rows="3" placeholder="Enter prescription..." oninput="checkCdssSafety()"></textarea>
+                <div style="font-size:0.74rem; color:var(--text-dim); margin-top:2px;">
+                  ⚠️ Clinical Decision Support checks allergens (Penicillin, Sulfa, Aspirin) and interactions (Warfarin+Aspirin, Sildenafil+Nitrates).
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Doctor's Clinical Notes</label>
+                  <input type="text" id="enc-notes-input" class="form-control" placeholder="Additional observations, diet, activity..." />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Follow-up Date</label>
+                  <input type="date" id="enc-followup-input" class="form-control" />
+                </div>
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
+                <button type="submit" class="btn btn-primary">💾 Save &amp; Finalize Encounter</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 6: APPOINTMENTS SCHEDULING (New Feature A)
+             ============================================================== -->
+        <section id="page-appointments" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📅 Doctor Appointments Schedule &amp; Calendar</div>
+              <button class="btn btn-primary btn-sm" onclick="openBookAppointmentModal()">➕ Book New Appointment</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Appt ID</th>
+                    <th>Date &amp; Time Slot</th>
+                    <th>Patient Name</th>
+                    <th>Doctor</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="appointments-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 7: DOCTOR AVAILABILITY (New Feature B)
+             ============================================================== -->
+        <section id="page-doctors" class="page">
+          <div class="card" style="margin-bottom:1rem;">
+            <div class="card-header">
+              <div class="card-title">👨‍⚕️ Medical Specialists &amp; Daily Schedule</div>
+              <button class="btn btn-secondary btn-sm" onclick="loadDoctors()">Refresh Availability</button>
+            </div>
+          </div>
+          <div id="doctors-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;"></div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 8: WARD & BED MANAGEMENT (Phase 4 Bug 4)
+             ============================================================== -->
+        <section id="page-beds" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🛏️ Hospital Ward &amp; Bed Occupancy Matrix</div>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <span style="font-size:0.78rem; color:var(--text-muted)">Ward Filter:</span>
+                <select id="bed-ward-filter" class="form-control" style="padding:3px 8px; font-size:0.78rem;" onchange="loadBedMatrix(this.value)">
+                  <option value="ALL">All Wards</option>
+                  <option value="Emergency Trauma Bay">Emergency Trauma Bay</option>
+                  <option value="Intensive Care Unit">Intensive Care Unit (ICU)</option>
+                  <option value="Cardiac HDU">Cardiac HDU</option>
+                  <option value="Surgical Post-Op Ward">Surgical Post-Op Ward</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="bed-grid" id="bed-matrix-grid"></div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 9: OPD LIVE QUEUE (Phase 4 Bug 2)
+             ============================================================== -->
+        <section id="page-queue" class="page">
+          <!-- Hero Now Serving Display -->
+          <div class="now-serving-hero">
+            <div>
+              <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.9">Now Serving Consultation Room 1</div>
+              <div class="serving-token-display" id="now-serving-token">A-101</div>
+              <div style="font-size:1.1rem; font-weight:700; margin-top:4px;" id="now-serving-patient">Priya Sharma</div>
+              <div style="font-size:0.85rem; opacity:0.9;" id="now-serving-doctor">Dr. Ramesh Gupta (Cardiology)</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.65rem; align-items:flex-end;">
+              <button class="btn btn-secondary" style="background:#fff; color:var(--primary); font-weight:700" onclick="openAddQueueModal()">➕ Issue Walk-in Token</button>
+            </div>
+          </div>
+
+          <!-- Queue Table -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🎫 Today's Live OPD Consultation Queue</div>
+              <button class="btn btn-secondary btn-sm" onclick="loadOpdQueue()">🔄 Refresh Queue</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Token No</th>
+                    <th>Patient Name</th>
+                    <th>Assigned Doctor</th>
+                    <th>Time Issued</th>
+                    <th>Current Status</th>
+                    <th>Desk Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="opd-queue-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 10: DIGITAL LAB REPORTS (New Feature C)
+             ============================================================== -->
+        <section id="page-labs" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🧪 Diagnostic Investigations &amp; Laboratory Reports</div>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modal-upload-lab')">📎 Upload Lab PDF Attachment</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Report ID</th>
+                    <th>Investigation Test</th>
+                    <th>Patient UID</th>
+                    <th>Result</th>
+                    <th>Reference Range</th>
+                    <th>Diagnostic Flag</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="all-labs-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 11: EMERGENCY TRAUMA TRIAGE (ESI 1-5 Engine)
+             ============================================================== -->
+        <section id="page-triage" class="page">
+          <div class="card" style="max-width:760px; margin:0 auto;">
+            <div class="card-header">
+              <div class="card-title">🚑 Emergency Severity Index (ESI 1–5) Triage Engine</div>
+              <span class="badge badge-danger">Trauma Decision Support</span>
+            </div>
+
+            <div style="background:var(--bg-alt); padding:10px 14px; border-radius:var(--radius-md); font-size:0.8rem; margin-bottom:1.25rem;">
+              ⚠️ <em>Emergency Decision Support is an algorithmic educational demonstration tool. It does not replace emergency clinical physician judgment.</em>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="triage-resuscitation" onchange="calculateEsiTriage()" />
+                <span style="font-weight:700; color:var(--danger)">Does patient require immediate life-saving resuscitation? (Unresponsive, intubated, pulseless)</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="triage-high-risk" onchange="calculateEsiTriage()" />
+                <span>Is this a high risk presentation, altered mental status, or severe distress?</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="triage-unstable-vitals" onchange="calculateEsiTriage()" />
+                <span>Are physiological vital signs unstable? (SpO2 &lt; 90%, HR &gt; 120, SBP &lt; 90)</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Estimated Healthcare Resources Needed (Labs, ECG, X-Ray/CT, IV Fluids, Sutures)</label>
+              <select id="triage-resources" class="form-control" onchange="calculateEsiTriage()">
+                <option value="0">0 Resources (Routine examination / Refill)</option>
+                <option value="1">1 Resource (Simple lab or single diagnostic)</option>
+                <option value="2" selected>2 or more Resources (Full trauma panel, IV line, CT Scan)</option>
+              </select>
+            </div>
+
+            <div id="triage-result-card" style="margin-top:1.5rem; padding:1.25rem; background:var(--bg-alt); border-radius:var(--radius-lg); border:1px solid var(--border);">
+              <div style="font-size:0.85rem; font-weight:700">Select clinical criteria above to compute ESI score.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 12: HOSPITAL NETWORK ANALYTICS & REPORTS (New Feature F)
+             ============================================================== -->
+        <section id="page-analytics" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📈 Hospital Network Reports &amp; CSV Data Exports</div>
+              <div style="display:flex; gap:0.5rem;">
+                <a href="/api/analytics/reports/csv?report_type=records" class="btn btn-secondary btn-sm" download>📥 Export Records CSV</a>
+                <a href="/api/analytics/reports/csv?report_type=beds" class="btn btn-secondary btn-sm" download>📥 Export Bed Utilization</a>
+                <a href="/api/analytics/reports/csv?report_type=appointments" class="btn btn-secondary btn-sm" download>📥 Export Appointments</a>
+              </div>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+              Generated export reports automatically mask citizen Aadhaar identifiers to adhere to privacy guidelines while maintaining relational integrity.
+            </p>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 13: ACCESS AUDIT LOGS (Phase 4 Bug 5)
+             ============================================================== -->
+        <section id="page-audit" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🛡️ Backend Security Access Audit Trail</div>
+              <div style="display:flex; gap:0.5rem;">
+                <input type="text" id="audit-filter-aadhaar" class="form-control" style="max-width:240px;" placeholder="Filter by Aadhaar..." oninput="loadAuditLogs(this.value)" />
+                <button class="btn btn-secondary btn-sm" onclick="loadAuditLogs()">Refresh</button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Log ID</th>
+                    <th>Timestamp (UTC)</th>
+                    <th>Citizen Aadhaar</th>
+                    <th>Accessing Personnel</th>
+                    <th>Access Reason / Action</th>
+                    <th>Client IP</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-logs-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 14: SQL DBMS WORKBENCH (Phase 4 Bug 9)
+             ============================================================== -->
+        <section id="page-sql" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">💾 Relational SQL DBMS Query Workbench</div>
+              <span class="badge badge-success">Live Database Execution</span>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label">Select Course Evaluation Demonstration Query (Q1 – Q5)</label>
+              <select id="sql-query-select" class="form-control" onchange="onSqlQuerySelectChange()"></select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Query Parameter</label>
+              <input type="text" id="sql-param-input" class="form-control" placeholder="Aadhaar UID parameter" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">SQL Script</label>
+              <pre id="sql-query-display" style="background:var(--bg-alt); padding:10px; border-radius:var(--radius-md); font-family:var(--font-mono); font-size:0.78rem; overflow-x:auto; border:1px solid var(--border);"></pre>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <button class="btn btn-primary" onclick="executeActiveSqlQuery()">▶ Execute Against Real Database</button>
+              <div id="sql-exec-stat" style="font-size:0.8rem; font-family:var(--font-mono); color:var(--success); font-weight:600;"></div>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table">
+                <thead id="sql-output-thead"></thead>
+                <tbody id="sql-output-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 15: DATABASE BACKUP & HEALTH
+             ============================================================== -->
+        <section id="page-backup" class="page">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">⚙️ Relational Storage Health &amp; Non-Destructive Data Migration</div>
+              <span class="badge badge-primary" id="health-engine-badge">SQLITE</span>
+            </div>
+
+            <div class="metrics-grid" style="margin-bottom:1.25rem;">
+              <div class="metric-card">
+                <div>
+                  <div class="metric-title">Connection Latency</div>
+                  <div class="metric-num" id="health-latency">0 ms</div>
+                </div>
+              </div>
+              <div class="metric-card">
+                <div>
+                  <div class="metric-title">Patients in Table</div>
+                  <div class="metric-num" id="health-patients-count">0</div>
+                </div>
+              </div>
+              <div class="metric-card">
+                <div>
+                  <div class="metric-title">Records in Table</div>
+                  <div class="metric-num" id="health-records-count">0</div>
+                </div>
+              </div>
+              <div class="metric-card">
+                <div>
+                  <div class="metric-title">Beds Configured</div>
+                  <div class="metric-num" id="health-beds-count">0</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; border-top:1px solid var(--border-light); padding-top:1.25rem;">
+              <button class="btn btn-primary" onclick="exportDatabaseJson()">📥 Export Database State (JSON)</button>
+              <label class="btn btn-secondary" style="cursor:pointer;">
+                📤 Import JSON Data / Legacy LocalStorage
+                <input type="file" accept=".json" style="display:none;" onchange="importDatabaseJson(event)" />
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================================
+             PAGE 16: STAFF PROFILE & SETTINGS
+             ============================================================== -->
+        <section id="page-profile" class="page">
+          <!-- Profile Hero Banner -->
+          <div class="profile-header-banner">
+            <div class="profile-avatar-lg" id="profile-hero-avatar">SA</div>
+            <div class="profile-meta-lg">
+              <h2 id="profile-hero-name">System Administrator</h2>
+              <div style="color:#94a3b8; font-size:0.9rem;" id="profile-hero-dept">Hospital Administration • Clinical Operations</div>
+              <div class="profile-tags-row">
+                <span class="badge badge-primary" id="profile-hero-role">Administrator</span>
+                <span class="badge badge-info" id="profile-hero-facility">AIIMS Delhi (Node 01)</span>
+                <span class="badge badge-success">● Active &amp; Authorized</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-grid-layout">
+            <!-- Left Column: Personal & Contact Information -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">👤 Staff Credentials &amp; Profile</div>
+                <span class="badge badge-primary">Institutional EMR</span>
+              </div>
+              <form onsubmit="handleProfileUpdate(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" id="prof-fullname-input" class="form-control" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Username (Immutable)</label>
+                    <input type="text" id="prof-username-input" class="form-control" readonly disabled style="background:var(--bg-alt); cursor:not-allowed;" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Institutional Role</label>
+                    <input type="text" id="prof-role-input" class="form-control" readonly disabled style="background:var(--bg-alt); cursor:not-allowed;" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Assigned Facility Node</label>
+                    <input type="text" id="prof-facility-input" class="form-control" readonly disabled style="background:var(--bg-alt); cursor:not-allowed;" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Clinical Department</label>
+                    <input type="text" id="prof-dept-input" class="form-control" readonly disabled style="background:var(--bg-alt); cursor:not-allowed;" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Account Status</label>
+                    <input type="text" id="prof-status-input" class="form-control" value="Active / Verified" readonly disabled style="background:var(--bg-alt); cursor:not-allowed;" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Workstation Email</label>
+                    <input type="email" id="prof-email-input" class="form-control" placeholder="staff@medilink.hospital" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Direct Contact Phone</label>
+                    <input type="text" id="prof-phone-input" class="form-control" placeholder="+91 98765 43210" />
+                  </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1.25rem;">
+                  <button type="submit" class="btn btn-primary">💾 Save Profile Changes</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Column: Security & Preferences -->
+            <div style="display:flex; flex-direction:column; gap:1.5rem;">
+              <!-- Change Password Card -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">🔒 Account Security &amp; Password</div>
+                  <span class="badge badge-warning">PBKDF2 SHA-256</span>
+                </div>
+                <form onsubmit="handleChangePassword(event)">
+                  <div class="form-group">
+                    <label class="form-label">Current Password *</label>
+                    <input type="password" id="pw-current-input" class="form-control" required placeholder="Enter current password" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">New Password * (Min. 6 chars)</label>
+                    <input type="password" id="pw-new-input" class="form-control" required minlength="6" placeholder="Enter new password" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Confirm New Password *</label>
+                    <input type="password" id="pw-confirm-input" class="form-control" required minlength="6" placeholder="Re-enter new password" />
+                  </div>
+                  <button type="submit" class="btn btn-secondary" style="width:100%; justify-content:center;">
+                    🔑 Update Password
+                  </button>
+                </form>
+              </div>
+
+              <!-- Workstation Session Settings -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">🖥️ Workstation Session</div>
+                  <span class="badge badge-success">Active Session</span>
+                </div>
+                <div style="font-size:0.82rem; color:var(--text-muted); display:flex; flex-direction:column; gap:0.6rem;">
+                  <div>Database Core: <strong style="color:var(--text)">Dual Engine (SQLite / MySQL 8.0)</strong></div>
+                  <div>Security Protocol: <strong style="color:var(--text)">HMAC-SHA256 Token Auth</strong></div>
+                  <div>Appearance Mode: <strong id="profile-current-theme-label" style="color:var(--primary)">System Default</strong></div>
+                </div>
+                <div style="margin-top:1.25rem; border-top:1px solid var(--border-light); padding-top:1rem;">
+                  <button class="btn-logout-red" id="btn-profile-logout" onclick="logoutUser()" style="width:100%; justify-content:center; padding:0.65rem 1rem;">
+                    <span class="btn-logout-icon">🚪</span>
+                    <span class="btn-logout-label">Logout of Workstation</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Appearance & Theme Customization (Requirement 3) -->
+              <div class="card" id="settings-appearance-card" style="margin-top:1.5rem; grid-column:1 / -1;">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">🎨 Appearance &amp; Interface Theme</div>
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">
+                      Choose your clinical interface appearance or automatically follow your operating system appearance.
+                    </div>
+                  </div>
+                  <span class="badge badge-info" id="current-theme-badge">System Default</span>
+                </div>
+
+                <div class="theme-cards-grid">
+                  <!-- Option 1: System Default -->
+                  <div class="theme-preview-card" data-theme-opt="system" onclick="setAppTheme('system')">
+                    <div class="theme-mini-preview preview-system">
+                      <div class="mini-bar"></div>
+                      <div class="mini-body">
+                        <div class="mini-side"></div>
+                        <div class="mini-content">
+                          <div class="mini-kpi"></div>
+                          <div class="mini-kpi"></div>
+                          <div class="mini-chart"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-card-info">
+                      <div class="theme-card-title">
+                        <span class="theme-opt-icon">💻</span>
+                        <strong>System Default</strong>
+                      </div>
+                      <div class="theme-card-desc">Automatically adapts to your operating system appearance in real time.</div>
+                    </div>
+                    <div class="theme-card-check">✓</div>
+                  </div>
+
+                  <!-- Option 2: Light -->
+                  <div class="theme-preview-card" data-theme-opt="light" onclick="setAppTheme('light')">
+                    <div class="theme-mini-preview preview-light">
+                      <div class="mini-bar"></div>
+                      <div class="mini-body">
+                        <div class="mini-side"></div>
+                        <div class="mini-content">
+                          <div class="mini-kpi"></div>
+                          <div class="mini-kpi"></div>
+                          <div class="mini-chart"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-card-info">
+                      <div class="theme-card-title">
+                        <span class="theme-opt-icon">☀️</span>
+                        <strong>Clinical Light</strong>
+                      </div>
+                      <div class="theme-card-desc">Modern white healthcare surface with royal blue and clinical teal accents.</div>
+                    </div>
+                    <div class="theme-card-check">✓</div>
+                  </div>
+
+                  <!-- Option 3: Dark -->
+                  <div class="theme-preview-card" data-theme-opt="dark" onclick="setAppTheme('dark')">
+                    <div class="theme-mini-preview preview-dark">
+                      <div class="mini-bar"></div>
+                      <div class="mini-body">
+                        <div class="mini-side"></div>
+                        <div class="mini-content">
+                          <div class="mini-kpi"></div>
+                          <div class="mini-kpi"></div>
+                          <div class="mini-chart"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-card-info">
+                      <div class="theme-card-title">
+                        <span class="theme-opt-icon">🌙</span>
+                        <strong>Slate Dark</strong>
+                      </div>
+                      <div class="theme-card-desc">Low-glare dark slate background optimized for night shift comfort.</div>
+                    </div>
+                    <div class="theme-card-check">✓</div>
+                  </div>
+
+                  <!-- Option 4: Midnight Blue -->
+                  <div class="theme-preview-card" data-theme-opt="midnight" onclick="setAppTheme('midnight')">
+                    <div class="theme-mini-preview preview-midnight">
+                      <div class="mini-bar"></div>
+                      <div class="mini-body">
+                        <div class="mini-side"></div>
+                        <div class="mini-content">
+                          <div class="mini-kpi"></div>
+                          <div class="mini-kpi"></div>
+                          <div class="mini-chart"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-card-info">
+                      <div class="theme-card-title">
+                        <span class="theme-opt-icon">🌌</span>
+                        <strong>Midnight Blue</strong>
+                      </div>
+                      <div class="theme-card-desc">Deep navy enterprise hospital theme with high-contrast cyan accents.</div>
+                    </div>
+                    <div class="theme-card-check">✓</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+  </div> <!-- /#view-app -->
+
+  <!-- ====================================================================
+       MODALS
+       ==================================================================== -->
+
+  <!-- Modal: Official Prescription Slip (Printable) -->
+  <div id="modal-rx-slip" class="modal-backdrop">
+    <div class="modal-content" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800; font-family:var(--font-heading)">Hospital Prescription Slip</h3>
+        <button class="btn-icon" onclick="closeModal('modal-rx-slip')">✕</button>
+      </div>
+      <div class="modal-body" id="printable-rx-content">
+        <div style="text-align:center; border-bottom:2px solid var(--primary); padding-bottom:0.75rem; margin-bottom:1rem;">
+          <h2 style="font-size:1.35rem; font-weight:800; color:var(--primary)" id="slip-hospital-name">Apollo Hospitals</h2>
+          <div style="font-size:0.78rem; color:var(--text-muted)">NABH Accredited Tertiary Healthcare Node • ABDM Compliant</div>
+          <div style="font-size:0.75rem; font-family:var(--font-mono); margin-top:3px;" id="slip-record-id">REC-2024-001</div>
+          <div style="font-size:0.75rem; color:var(--text-muted);" id="slip-date">Date: 2024-01-10</div>
+        </div>
+
+        <div style="background:var(--bg-alt); padding:8px 12px; border-radius:var(--radius-md); font-size:0.8rem; margin-bottom:1rem;">
+          <div>Patient: <strong id="slip-pat-name">Priya Sharma</strong> | UID: <span id="slip-pat-aadhaar" style="font-family:var(--font-mono)">XXXX-XXXX-0123</span></div>
+          <div id="slip-pat-demog" style="color:var(--text-muted)">34Y / Female / Blood: B+</div>
+          <div>Consulting Clinician: <strong id="slip-doc-name">Dr. Anita Verma</strong></div>
+          <div>Vitals: <span id="slip-vitals" style="font-family:var(--font-mono)">BP: 145/95 mmHg, HR: 82 bpm</span></div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--text-dim)">Diagnosis:</div>
+          <div style="font-size:1rem; font-weight:800; color:var(--text)" id="slip-diagnosis">Essential Hypertension</div>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+          <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--primary)">Rx Prescribed:</div>
+          <pre id="slip-prescription" style="background:var(--bg-alt); padding:10px; border-left:3px solid var(--primary); font-family:var(--font-mono); font-size:0.82rem; white-space:pre-wrap; border-radius:4px; margin-top:4px;"></pre>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--border-light); padding-top:1rem; font-size:0.78rem;">
+          <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-dim)">
+            ||||||||||||||||||||||||||||||||<br>
+            Digitally Signed Encrypted EMR
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700" id="slip-sig-text">Dr. Medical Officer</div>
+            <div style="color:var(--text-dim)">Verified Digital Signature</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-rx-slip')">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print Prescription</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Bed Admission (Fix Bug 4) -->
+  <div id="modal-bed-admit" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800">Inpatient Bed Admission</h3>
+        <button class="btn-icon" onclick="closeModal('modal-bed-admit')">✕</button>
+      </div>
+      <form onsubmit="confirmBedAdmission(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Bed Number</label>
+            <input type="text" id="admit-bed-number-input" class="form-control" readonly />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select Patient</label>
+            <select id="admit-patient-select" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Expected Discharge Date</label>
+            <input type="date" id="admit-discharge-date" class="form-control" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-bed-admit')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Admission</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Issue OPD Queue Token -->
+  <div id="modal-add-queue" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800">Issue Walk-in OPD Consultation Token</h3>
+        <button class="btn-icon" onclick="closeModal('modal-add-queue')">✕</button>
+      </div>
+      <form onsubmit="confirmIssueToken(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Patient</label>
+            <select id="queue-patient-select" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Doctor / Room</label>
+            <select id="queue-doctor-select" class="form-control"></select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-add-queue')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Issue Token</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Book Appointment (New Feature A) -->
+  <div id="modal-book-appointment" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800">Book Doctor Appointment</h3>
+        <button class="btn-icon" onclick="closeModal('modal-book-appointment')">✕</button>
+      </div>
+      <form onsubmit="confirmBookAppointment(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Patient</label>
+            <select id="appt-patient-select" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Doctor</label>
+            <select id="appt-doctor-select" class="form-control" required></select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Appointment Date</label>
+              <input type="date" id="appt-date-input" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Time Slot</label>
+              <select id="appt-slot-select" class="form-control" required>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="09:30 AM">09:30 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="10:30 AM">10:30 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="03:30 PM">03:30 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reason for Visit</label>
+            <input type="text" id="appt-reason-input" class="form-control" placeholder="e.g. Hypertension Checkup" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-book-appointment')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Reschedule Appointment -->
+  <div id="modal-reschedule-appointment" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800">Reschedule Appointment</h3>
+        <button class="btn-icon" onclick="closeModal('modal-reschedule-appointment')">✕</button>
+      </div>
+      <form onsubmit="confirmRescheduleAppointment(event)">
+        <input type="hidden" id="resched-id-input" />
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">New Appointment Date</label>
+              <input type="date" id="resched-date-input" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">New Time Slot</label>
+              <select id="resched-slot-select" class="form-control" required>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="09:30 AM">09:30 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="10:30 AM">10:30 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="03:30 PM">03:30 PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-reschedule-appointment')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Slot</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Upload Lab Report (New Feature C) -->
+  <div id="modal-upload-lab" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800">Attach Diagnostic Lab Report</h3>
+        <button class="btn-icon" onclick="closeModal('modal-upload-lab')">✕</button>
+      </div>
+      <form onsubmit="submitLabReportUpload(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Patient Aadhaar *</label>
+            <input type="text" id="lab-aadhaar-input" class="form-control" placeholder="2345 6789 0123" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Test / Investigation Name *</label>
+            <input type="text" id="lab-test-input" class="form-control" placeholder="e.g. Chest X-Ray, Serum Creatinine" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Result Value</label>
+              <input type="text" id="lab-result-input" class="form-control" placeholder="e.g. 1.1" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Unit</label>
+              <input type="text" id="lab-unit-input" class="form-control" placeholder="mg/dL" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Reference Range</label>
+              <input type="text" id="lab-range-input" class="form-control" placeholder="0.6 - 1.2" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Report Date</label>
+              <input type="date" id="lab-date-input" class="form-control" />
+            </div>
+            <div class="form-group" style="display:flex; align-items:center; margin-top:1.5rem;">
+              <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="lab-abnormal-check" />
+                <span style="font-weight:600; color:var(--danger)">Mark as Abnormal Value</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select File (PDF, PNG, JPG) *</label>
+            <input type="file" id="lab-file-input" class="form-control" accept=".pdf,.png,.jpg,.jpeg" required />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-upload-lab')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Upload &amp; Link Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Break-Glass Justification -->
+  <div id="modal-break-glass" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800; color:var(--danger)">🚨 Break-Glass Emergency Override</h3>
+        <button class="btn-icon" onclick="closeModal('modal-break-glass')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:var(--text); margin-bottom:1rem;">
+          You are initiating an emergency break-glass override to access critical medical records without standard patient consent. This event will be permanently recorded in the immutable security audit log.
+        </p>
+        <div class="form-group">
+          <label class="form-label">Clinical Justification *</label>
+          <textarea id="bg-reason-input" class="form-control" rows="3" placeholder="Provide emergency reason (e.g. Unconscious trauma patient, anaphylaxis)"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modal-break-glass')">Cancel</button>
+        <button class="btn btn-danger" onclick="confirmBreakGlassAccess()">Authorize Emergency Override</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Emergency Snapshot -->
+  <div id="modal-emergency-snapshot" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800; color:var(--danger)">🚨 Critical Emergency Snapshot</h3>
+        <button class="btn-icon" onclick="closeModal('modal-emergency-snapshot')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--bg-alt); padding:12px; border-radius:var(--radius-md); font-size:0.85rem;">
+          <div>Patient Name: <strong id="bg-snap-name">—</strong></div>
+          <div>Blood Group: <strong id="bg-snap-blood" style="color:var(--danger)">—</strong></div>
+          <div>Fatal Allergies: <strong id="bg-snap-allergies" style="color:var(--danger)">—</strong></div>
+          <div>Chronic Conditions: <strong id="bg-snap-chronic">—</strong></div>
+          <div style="margin-top:8px;">Active Medications:</div>
+          <pre id="bg-snap-meds" style="background:var(--surface); padding:6px; border-radius:4px; font-family:var(--font-mono); font-size:0.75rem; white-space:pre-wrap; margin-top:3px;"></pre>
+          <div style="margin-top:8px;">Emergency Contact: <strong id="bg-snap-contact">—</strong></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('modal-emergency-snapshot')">Acknowledge &amp; Proceed</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal: Global Search Command Palette (Ctrl+K) -->
+  <div id="modal-global-search" class="modal-backdrop" onclick="if(event.target===this) closeGlobalSearch()">
+    <div class="modal-content global-search-modal-card" style="max-width: 660px; padding: 0; overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+      <div class="global-search-modal-header" style="display:flex; align-items:center; gap:0.75rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-light); background: var(--surface);">
+        <span style="font-size:1.2rem; color:var(--primary); line-height:1;">🔍</span>
+        <input type="text" id="global-search-palette-input" class="form-control" placeholder="Search patients, doctors, records, or quick navigation..." style="border:none; box-shadow:none; font-size:1rem; padding:0; background:transparent; width:100%; outline:none;" oninput="handlePaletteSearch(this.value)" onkeydown="handlePaletteKeydown(event)" />
+        <span class="badge badge-secondary" style="font-size:0.72rem; padding: 2px 6px; border:1px solid var(--border-light);">ESC</span>
+        <button class="btn-icon" onclick="closeGlobalSearch()" style="margin-left:4px;">✕</button>
+      </div>
+      <div style="display:flex; gap:0.5rem; padding: 0.5rem 1.25rem; background: var(--bg-alt); border-bottom: 1px solid var(--border-light); font-size:0.75rem;">
+        <button class="palette-chip active" id="palette-filter-all" onclick="setPaletteFilter('all', this)">All</button>
+        <button class="palette-chip" id="palette-filter-patients" onclick="setPaletteFilter('patients', this)">Patients</button>
+        <button class="palette-chip" id="palette-filter-doctors" onclick="setPaletteFilter('doctors', this)">Doctors</button>
+        <button class="palette-chip" id="palette-filter-pages" onclick="setPaletteFilter('pages', this)">Pages</button>
+      </div>
+      <div id="global-search-palette-results" style="max-height: 380px; overflow-y: auto; padding: 0.5rem 0;">
+        <!-- Populated dynamically -->
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.5rem 1.25rem; background: var(--bg-alt); border-top:1px solid var(--border-light); font-size: 0.72rem; color: var(--text-muted);">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> to navigate • <kbd>Enter</kbd> to select • <kbd>ESC</kbd> to close</span>
+        <span>MediLink Enterprise v4.0 Quick Search</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Edit Patient Demographic & Clinical Details -->
+  <div id="modal-edit-patient" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.05rem; font-weight:800; font-family:var(--font-heading)">✏️ Edit Patient Demographic & Clinical Details</h3>
+        <button class="btn-icon" onclick="closeModal('modal-edit-patient')">✕</button>
+      </div>
+      <form id="form-edit-patient" onsubmit="submitEditPatient(event)">
+        <input type="hidden" id="edit-pat-aadhaar" />
+        <div class="modal-body" style="display:flex; flex-direction:column; gap:0.9rem;">
+          <div style="background:var(--bg-alt); padding:8px 12px; border-radius:var(--radius-md); font-size:0.82rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>Patient: <strong id="edit-pat-name-display">—</strong></div>
+            <div>UID: <span id="edit-pat-aadhaar-display" style="font-family:var(--font-mono); color:var(--primary); font-weight:700;">—</span></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" id="edit-pat-phone" class="form-control" required pattern="[0-9]{10}" placeholder="10-digit mobile" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="edit-pat-email" class="form-control" placeholder="patient@example.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Residential Address *</label>
+            <input type="text" id="edit-pat-address" class="form-control" required placeholder="Flat, Street, City, State" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Documented Allergies</label>
+              <input type="text" id="edit-pat-allergies" class="form-control" placeholder="e.g. Penicillin, Peanuts (or None)" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Chronic Conditions</label>
+              <input type="text" id="edit-pat-chronic" class="form-control" placeholder="e.g. Hypertension, Type-2 Diabetes (or None)" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Emergency Contact Name</label>
+              <input type="text" id="edit-pat-em-name" class="form-control" placeholder="Next of Kin / Relative Name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Emergency Contact Phone</label>
+              <input type="tel" id="edit-pat-em-phone" class="form-control" placeholder="10-digit contact number" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modal-edit-patient')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-patient-edit">💾 Save Patient Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Client Scripts -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

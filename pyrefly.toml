@@ -1,0 +1,7 @@
+project-includes = ["backend/**/*.py", "*.py"]
+project-excludes = ["Hospital_Management-master/**", "scratch/**"]
+python-interpreter-path = "C:\\Users\\akshi\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+
+[errors]
+read-only = "ignore"
+attribute-assign-on-never = "ignore"
